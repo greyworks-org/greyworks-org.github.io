@@ -183,8 +183,9 @@ main {
 .home-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(520px, 1.08fr);
-  gap: 36px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(500px, 1.04fr);
+  column-gap: 36px;
+  row-gap: 26px;
   align-items: stretch;
   padding: 34px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -199,24 +200,24 @@ main {
   display: grid;
   gap: 18px;
   align-content: start;
-  max-width: 500px;
+  max-width: 560px;
   padding: 10px 4px 0 6px;
 }
 
 .hero-copy h1 {
   margin: 0;
-  max-width: 6.1ch;
-  font-size: clamp(2.9rem, 6.2vw, 5rem);
-  line-height: 0.9;
-  letter-spacing: -0.075em;
+  max-width: 6.8ch;
+  font-size: clamp(3rem, 5.7vw, 4.9rem);
+  line-height: 0.92;
+  letter-spacing: -0.07em;
 }
 
 .hero-lead {
-  max-width: 44ch;
+  max-width: 47ch;
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
-  line-height: 1.74;
+  line-height: 1.72;
 }
 
 .hero-actions {
@@ -317,8 +318,18 @@ button.button {
 }
 
 .hero-summary {
-  max-width: 500px;
-  margin-top: 8px;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+  max-width: none;
+  margin-top: 0;
+  padding: 24px 26px 26px;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.hero-summary-copy {
+  display: grid;
+  gap: 12px;
+  align-content: start;
 }
 
 .panel-label {
@@ -343,8 +354,8 @@ button.button {
 
 .hero-summary h2,
 .hero-panel-copy h2 {
-  font-size: 1.68rem;
-  line-height: 1;
+  font-size: 1.82rem;
+  line-height: 0.98;
 }
 
 .hero-summary p,
@@ -758,17 +769,18 @@ button.button {
 
 .hero-summary .stat-list {
   gap: 1px;
-  margin-top: 2px;
+  margin-top: 0;
   background: rgba(21, 22, 24, 0.1);
+  align-self: stretch;
 }
 
 .hero-summary .stat-list div {
-  padding: 12px 0;
+  padding: 14px 0;
   border-top: 0;
 }
 
 .hero-summary .text-link {
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .product-copy,
@@ -904,9 +916,9 @@ button.button {
 .content-page {
   display: grid;
   gap: 0;
-  max-width: 940px;
+  max-width: 1020px;
   margin: 0 auto;
-  padding: 24px 26px 10px;
+  padding: 28px 32px 12px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 38px;
   background: linear-gradient(180deg, rgba(247, 244, 238, 0.72), rgba(241, 237, 230, 0.58));
@@ -919,9 +931,9 @@ button.button {
 
 .page-hero {
   display: grid;
-  gap: 12px;
-  max-width: 740px;
-  padding: 2px 0 18px;
+  gap: 14px;
+  max-width: 900px;
+  padding: 8px 0 22px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -934,13 +946,13 @@ button.button {
 
 .page-hero h1 {
   margin: 0;
-  max-width: 7.3ch;
-  font-size: clamp(2.45rem, 4.8vw, 3.65rem);
-  line-height: 0.92;
+  max-width: 10.6ch;
+  font-size: clamp(2.8rem, 4.3vw, 4.25rem);
+  line-height: 0.9;
 }
 
 .page-hero p {
-  max-width: 62ch;
+  max-width: 68ch;
 }
 
 .policy-meta {
@@ -1356,6 +1368,7 @@ button.button {
   .hero-panel-copy {
     padding: 22px;
     border-top: 0;
+    grid-template-columns: 1fr;
   }
 
   .experience-copy {
@@ -1405,6 +1418,10 @@ button.button {
     max-width: none;
   }
 
+  .hero-summary {
+    padding: 20px;
+  }
+
   .hero-actions {
     flex-direction: column;
   }
@@ -1435,7 +1452,8 @@ button.button {
   }
 
   .page-hero h1 {
-    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    max-width: 11ch;
+    font-size: clamp(2.55rem, 10.2vw, 3.7rem);
   }
 
   .standard-card,

@@ -55,7 +55,7 @@ check_code "/greyworks-logo-512.png"
 check_code "/greyworks-banner.jpg"
 
 check_body_contains "/" "Digital product surfaces, built for clarity."
-check_body_contains "/" "Capabilities"
+check_body_contains "/" "What Greyworks handles publicly."
 check_body_absent "/" "StockWise|BridgeLingo"
 check_body_absent "/" "/script\\.js|/og-card\\.html"
 
