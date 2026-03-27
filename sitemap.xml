@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+  <url>
+    <loc>https://greyworks.org/</loc>
+    <lastmod>2026-03-23</lastmod>
+    <image:image>
+      <image:loc>https://greyworks.org/greyworks-banner.jpg</image:loc>
+      <image:title>Greyworks logo banner</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://greyworks.org/greyworks-logo-512.png</image:loc>
+      <image:title>Greyworks logo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://greyworks.org/contact/</loc>
+    <lastmod>2026-03-23</lastmod>
+  </url>
+  <url>
+    <loc>https://greyworks.org/support/</loc>
+    <lastmod>2026-03-23</lastmod>
+  </url>
+  <url>
+    <loc>https://greyworks.org/privacy/</loc>
+    <lastmod>2026-03-23</lastmod>
+  </url>
+  <url>
+    <loc>https://greyworks.org/terms/</loc>
+    <lastmod>2026-03-23</lastmod>
+  </url>
+</urlset>
