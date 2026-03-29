@@ -198,25 +198,42 @@ main {
   max-width: none;
 }
 
+.hero-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: 38px;
+  align-items: end;
+}
+
 .hero-copy {
   display: grid;
-  gap: 18px;
+  gap: 14px;
   align-content: start;
   width: 100%;
-  max-width: 940px;
+  max-width: none;
   padding: 10px 4px 0 6px;
 }
 
 .hero-copy h1 {
   margin: 0;
-  max-width: 8.4ch;
-  font-size: clamp(3.2rem, 5.6vw, 5.3rem);
+  max-width: 7.2ch;
+  font-size: clamp(3.25rem, 5.4vw, 5.45rem);
   line-height: 0.92;
   letter-spacing: -0.07em;
 }
 
+.hero-context {
+  display: grid;
+  gap: 18px;
+  align-content: end;
+  justify-self: end;
+  width: 100%;
+  max-width: 430px;
+  padding-bottom: 10px;
+}
+
 .hero-lead {
-  max-width: 64ch;
+  max-width: 40ch;
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
@@ -324,7 +341,7 @@ button.button {
 }
 
 .hero-summary {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
   max-width: none;
   margin-top: 0;
   width: 100%;
@@ -1360,6 +1377,7 @@ button.button {
 @media (max-width: 1024px) {
   .home-hero,
   .home-hero-stack,
+  .hero-top,
   .experience-grid,
   .hero-panel,
   .product-grid,
@@ -1373,6 +1391,12 @@ button.button {
 
   .home-hero-stack {
     max-width: none;
+  }
+
+  .hero-context {
+    max-width: none;
+    justify-self: start;
+    padding-bottom: 0;
   }
 
   .hero-summary,
@@ -1428,6 +1452,10 @@ button.button {
 
   .hero-copy {
     max-width: none;
+  }
+
+  .hero-context {
+    gap: 16px;
   }
 
   .hero-summary {
