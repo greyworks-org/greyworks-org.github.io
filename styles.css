@@ -183,10 +183,9 @@ main {
 .home-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(500px, 1.04fr);
-  column-gap: 36px;
-  row-gap: 26px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 24px;
+  align-items: start;
   padding: 34px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 42px;
@@ -200,14 +199,14 @@ main {
   display: grid;
   gap: 18px;
   align-content: start;
-  max-width: 560px;
+  max-width: 640px;
   padding: 10px 4px 0 6px;
 }
 
 .hero-copy h1 {
   margin: 0;
-  max-width: 6.8ch;
-  font-size: clamp(3rem, 5.7vw, 4.9rem);
+  max-width: 7.4ch;
+  font-size: clamp(3rem, 5vw, 4.85rem);
   line-height: 0.92;
   letter-spacing: -0.07em;
 }
@@ -274,12 +273,14 @@ button.button {
   align-items: start;
   height: auto;
   padding-top: 0;
+  max-width: 760px;
 }
 
 .hero-stage {
+  width: 100%;
   height: auto;
-  min-height: 600px;
-  max-height: 640px;
+  min-height: 580px;
+  max-height: 620px;
 }
 
 .hero-stage .landing-game-stage {
@@ -318,9 +319,8 @@ button.button {
 }
 
 .hero-summary {
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
-  max-width: none;
+  grid-template-columns: 1fr;
+  max-width: 760px;
   margin-top: 0;
   padding: 24px 26px 26px;
   background: rgba(255, 255, 255, 0.42);
@@ -1420,6 +1420,11 @@ button.button {
 
   .hero-summary {
     padding: 20px;
+    max-width: none;
+  }
+
+  .hero-panel {
+    max-width: none;
   }
 
   .hero-actions {
