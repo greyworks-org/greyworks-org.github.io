@@ -193,28 +193,30 @@ main {
 
 .home-hero-stack {
   display: grid;
-  gap: 24px;
-  max-width: 860px;
+  gap: 28px;
+  width: 100%;
+  max-width: none;
 }
 
 .hero-copy {
   display: grid;
   gap: 18px;
   align-content: start;
-  max-width: 680px;
+  width: 100%;
+  max-width: 940px;
   padding: 10px 4px 0 6px;
 }
 
 .hero-copy h1 {
   margin: 0;
-  max-width: 7.4ch;
-  font-size: clamp(3rem, 5vw, 4.85rem);
+  max-width: 8.4ch;
+  font-size: clamp(3.2rem, 5.6vw, 5.3rem);
   line-height: 0.92;
   letter-spacing: -0.07em;
 }
 
 .hero-lead {
-  max-width: 47ch;
+  max-width: 64ch;
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
@@ -282,7 +284,7 @@ button.button {
 .hero-stage {
   width: 100%;
   height: auto;
-  min-height: 560px;
+  min-height: 640px;
   max-height: none;
 }
 
@@ -325,13 +327,14 @@ button.button {
   grid-template-columns: 1fr;
   max-width: none;
   margin-top: 0;
-  padding: 24px 26px 26px;
+  width: 100%;
+  padding: 28px 30px 30px;
   background: rgba(255, 255, 255, 0.42);
 }
 
 .hero-summary-copy {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   align-content: start;
 }
 
@@ -357,7 +360,7 @@ button.button {
 
 .hero-summary h2,
 .hero-panel-copy h2 {
-  font-size: 1.82rem;
+  font-size: 2rem;
   line-height: 0.98;
 }
 
@@ -1420,6 +1423,7 @@ button.button {
 
   .hero-copy h1 {
     font-size: clamp(2.7rem, 13vw, 4.1rem);
+    max-width: 8.5ch;
   }
 
   .hero-copy {
