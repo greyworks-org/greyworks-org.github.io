@@ -182,10 +182,6 @@ main {
 
 .home-hero {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  row-gap: 24px;
-  align-items: start;
   padding: 34px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 42px;
@@ -195,11 +191,17 @@ main {
   border-bottom: 1px solid var(--line);
 }
 
+.home-hero-stack {
+  display: grid;
+  gap: 24px;
+  max-width: 860px;
+}
+
 .hero-copy {
   display: grid;
   gap: 18px;
   align-content: start;
-  max-width: 640px;
+  max-width: 680px;
   padding: 10px 4px 0 6px;
 }
 
@@ -273,14 +275,15 @@ button.button {
   align-items: start;
   height: auto;
   padding-top: 0;
-  max-width: 760px;
+  max-width: none;
+  width: 100%;
 }
 
 .hero-stage {
   width: 100%;
   height: auto;
-  min-height: 580px;
-  max-height: 620px;
+  min-height: 560px;
+  max-height: none;
 }
 
 .hero-stage .landing-game-stage {
@@ -320,7 +323,7 @@ button.button {
 
 .hero-summary {
   grid-template-columns: 1fr;
-  max-width: 760px;
+  max-width: none;
   margin-top: 0;
   padding: 24px 26px 26px;
   background: rgba(255, 255, 255, 0.42);
@@ -1353,6 +1356,7 @@ button.button {
 
 @media (max-width: 1024px) {
   .home-hero,
+  .home-hero-stack,
   .experience-grid,
   .hero-panel,
   .product-grid,
@@ -1362,6 +1366,10 @@ button.button {
   .page-meta-grid,
   .support-grid {
     grid-template-columns: 1fr;
+  }
+
+  .home-hero-stack {
+    max-width: none;
   }
 
   .hero-summary,
