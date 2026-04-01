@@ -31,4 +31,12 @@
     <loc>https://greyworks.org/terms/</loc>
     <lastmod>2026-03-23</lastmod>
   </url>
+  <url>
+    <loc>https://greyworks.org/utku-bozkurt/</loc>
+    <lastmod>2026-04-02</lastmod>
+    <image:image>
+      <image:loc>https://greyworks.org/utku-profile.jpeg</image:loc>
+      <image:title>Utku Bozkurt profile photo</image:title>
+    </image:image>
+  </url>
 </urlset>
