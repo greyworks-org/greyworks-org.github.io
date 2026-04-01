@@ -62,6 +62,7 @@ check_body_absent "/" "U\\.K\\.-based"
 check_body_absent "/contact/" "U\\.K\\.-based"
 check_body_absent "/privacy/" "U\\.K\\.-based"
 check_body_absent "/terms/" "U\\.K\\.-based"
+check_body_absent "/privacy/" "Painter Kid: Color Adventure"
 check_body_absent "/" "/script\\.js|/og-card\\.html"
 
 printf '\nGreyworks smoke check passed for %s\n' "$BASE_URL"
