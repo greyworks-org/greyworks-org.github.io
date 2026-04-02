@@ -1,1222 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Utku Bozkurt | AI Twin</title>
-    <meta
-      name="description"
-      content="Talk to Utku Bozkurt's AI digital twin. Explore experience, background, recognition, and contact details."
-    />
-    <meta property="og:title" content="Utku Bozkurt | AI Twin" />
-    <meta
-      property="og:description"
-      content="Interactive AI twin for recruiter and founder conversations."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://greyworks.org/utku-bozkurt/" />
-    <meta
-      property="og:image"
-      content="https://greyworks.org/utku-profile.jpeg"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.production.min.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
-    ></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="text/babel" data-presets="react">
-      const { useState, useRef, useEffect, useCallback } = React;
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Utku Bozkurt | AI Digital Twin</title>
+<meta name="description" content="Chat with Utku Bozkurt's AI digital twin. Strategy & Business Development Leader.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0e17;font-family:'DM Sans',sans-serif;color:#fff;overflow:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(0,234,255,.12);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes typing{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}
+@keyframes glow{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes breathe{0%,100%{box-shadow:0 0 8px rgba(0,234,255,.08)}50%{box-shadow:0 0 16px rgba(0,234,255,.15)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>
+var ce=React.createElement,us=React.useState,ur=React.useRef,ue=React.useEffect,uc=React.useCallback;
 
-      const EL_KEY = "sk_cce4cf9ad955a3ae385cc6b8d71f874ba7bd9de65e7e4c00";
-      const VOICE_ID_DIRECT = "ZXx7nI6BzemJq3Qy0ZUL";
+var GKEY="AIzaSyAw4nErozoVwtUugySlR-QjdZMWKXXaFqQ";
+var ELKEY="sk_cce4cf9ad955a3ae385cc6b8d71f874ba7bd9de65e7e4c00";
+var VID="ZXx7nI6BzemJq3Qy0ZUL";
+var PHOTO="https://greyworks.org/utku-profile.jpeg";
 
-      const PHOTO = "https://greyworks.org/utku-profile.jpeg";
+var SYS="You are Utku Bozkurt's AI digital twin. Answer exactly how Utku would on a recruiter call. First person only. 30 years old, male, Reading UK.\n\nVOICE:\n- Talk like a real professional in conversation. Short, direct.\n- 1-3 short paragraphs max. One if that covers it.\n- Never use em dashes, bullet points, or lists.\n- When someone greets casually, be warm but professional. Briefly say who you are and ask what they'd like to know.\n- Reference metrics only when directly relevant.\n- If unknown: \"That's best discussed live. Happy to connect.\"\n\nBACKGROUND:\nCURRENT: CSO & Head of BD, WASK Inc. (May 2024-Present). B2B AdTech SaaS. AI-powered ad automation. $2.1M ARR, 85% gross margins, 4.8x LTV/CAC, 7,000+ subscribers, 130+ countries. Led strategy overhaul. BD team of 6, 20.2% YoY subscriber growth. Major product launch cut churn rate 7%, churned revenue 42% in 12 months. 10+ strategic partnerships. Fundraise $1M+. AI suite: Smart Recommendations, Marketing Agent, AI Creative Tools. Series A: $1.9M via SAFEs. Daily: HubSpot, Apollo.io, LinkedIn Sales Nav, Google/Meta Ads, Looker, GA4, Jira, Zapier, n8n.\nPREVIOUS: Founder & CEO, njoyKidz (Jun 2021-May 2024). Child-safe gaming. 500K+ organic downloads, 30+ apps, no paid marketing. $525K raised, $5M peak val. Team of 20. Google Play Teacher Approved.\nEARLIER: BD Specialist, Uraz Patent (Feb 2020-Jan 2021).\nEDUCATION: MSc MIS, Dokuz Eylul (3.81/4.0). BSc Business Admin, Ege (3.20/4.0), Erasmus+ Spain.\nCERTS: HubSpot Sales (2024), Apple Search Ads (2022), HubSpot Inbound (2020), IELTS C1.\nRECOGNITION: UK Global Talent Visa. Google Jury Member (2023,2024). Published researcher IMISC2023. Bloomberg Businessweek quote. Bogazici panelist.\nSTRENGTHS: GTM, pricing, churn reduction, partnerships, investor relations, product lifecycle, AI product strategy, CRM/HubSpot, competitive analysis, team leadership.\nLANGUAGES: Turkish (native), English (C1), Spanish (intermediate).";
 
-      const SYS = `You are Utku Bozkurt's AI digital twin. Answer exactly how Utku would on a recruiter call. First person only. 30 years old, male, Reading UK.
+var liSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
+var emSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#EA4335"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>';
+var phSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="rgba(0,234,255,.55)"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>';
 
-VOICE:
-- Talk like a real professional in conversation. Short, direct.
-- 1-3 short paragraphs max. One if that covers it.
-- Never use em dashes, bullet points, or lists.
-- When someone greets casually, be warm but steer toward professional. Briefly say who you are and ask what they'd like to know.
-- Reference metrics only when directly relevant.
-- If unknown: "That's best discussed live. Happy to connect."
+function dlCV(){
+var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Utku Bozkurt CV</title><style>body{font-family:Segoe UI,Arial,sans-serif;max-width:780px;margin:30px auto;padding:0 24px;color:#1a1a1a;line-height:1.55;font-size:13.5px}h1{font-size:22px;margin-bottom:2px}h2{color:#0a5c8a;border-bottom:1.5px solid #ddd;padding-bottom:3px;margin-top:22px;font-size:15px}h3{font-size:14px;margin-bottom:1px;margin-top:14px}.m{color:#555;font-size:12.5px}.c{color:#444;font-size:13px;margin-bottom:6px}ul{padding-left:18px;margin:4px 0}li{margin-bottom:3px;color:#333}.s{margin:4px 0;color:#333}</style></head><body><h1>UTKU BOZKURT</h1><div class="c">Reading, UK | +44 7435 583 335 | utku.bozkurt3@gmail.com | linkedin.com/in/utku-bozkurtt</div><h2>PROFESSIONAL SUMMARY</h2><p>SaaS and AdTech strategist with 6+ years across BD, product strategy, fundraising, and growth. Leading strategy and BD at a B2B ad automation platform serving 7,000+ subscribers in 130+ countries. Founded and scaled a consumer gaming platform to $5M valuation. UK Global Talent Visa holder.</p><h2>EXPERIENCE</h2><h3>Chief Strategy Officer & Head of BD</h3><div class="m">WASK Inc. · Delaware/Reading, UK · May 2024 - Present</div><ul><li>Business strategy for AI-powered ad platform with $2.1M ARR, 85% gross margins, 4.8x LTV/CAC across 130+ countries</li><li>BD team of 6, 20.2% YoY subscriber growth</li><li>Major product launch: churn rate -7%, churned revenue -42% in 12 months</li><li>10+ strategic partnerships, $1M+ fundraise, Series A: $1.9M via SAFEs</li></ul><h3>Founder & CEO</h3><div class="m">njoyKidz · Istanbul · Jun 2021 - May 2024</div><ul><li>Ad-free child-safe gaming, 500K+ organic downloads, 30+ apps</li><li>$525K raised, $5M peak valuation, team of 20</li></ul><h3>BD Specialist</h3><div class="m">Uraz Patent · Izmir · Feb 2020 - Jan 2021</div><ul><li>Trademark/patent services, market analysis, international clients</li></ul><h2>EDUCATION</h2><p class="s"><b>MSc MIS</b> Dokuz Eylul (3.81/4.0) | <b>BSc Business Admin</b> Ege (3.20/4.0), Erasmus+ Spain</p><h2>SKILLS</h2><p class="s">Google/Meta/Apple Ads · HubSpot, Apollo.io, Zapier · GA, Firebase · Jira, ClickUp · MySQL, REST APIs, n8n</p><h2>CERTIFICATIONS</h2><p class="s">HubSpot Sales (2024) · Apple Search Ads (2022) · HubSpot Inbound (2020) · IELTS C1 · Google Digital Workshop (2018)</p><h2>RECOGNITION</h2><ul><li>UK Global Talent Visa (2025)</li><li>Google Jury Member (2023, 2024)</li><li>Published researcher IMISC2023</li><li>Bloomberg Businessweek expert</li><li>Bogazici University panelist</li></ul><h2>LANGUAGES</h2><p>Turkish (Native) | English (C1) | Spanish (Intermediate)</p></body></html>';
+var b=new Blob([h],{type:"text/html"});var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="Utku_Bozkurt_CV.html";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+}
 
-BACKGROUND:
-CURRENT: CSO & Head of BD, WASK Inc. (May 2024-Present). B2B AdTech SaaS. AI-powered ad automation. $2.1M ARR, 85% gross margins, 4.8x LTV/CAC, 7,000+ subscribers, 130+ countries. Led strategy overhaul. BD team of 6, 20.2% YoY subscriber growth. Major product launch cut churn rate 7%, churned revenue 42% in 12 months. 10+ strategic partnerships. Fundraise $1M+. AI suite: Smart Recommendations, Marketing Agent, AI Creative Tools. Series A: $1.9M via SAFEs. Daily: HubSpot, Apollo.io, LinkedIn Sales Nav, Google/Meta Ads, Looker, GA4, Jira, Zapier, n8n.
-PREVIOUS: Founder & CEO, njoyKidz (Jun 2021-May 2024). Child-safe gaming. 500K+ organic downloads, 30+ apps, no paid marketing. $525K raised, $5M peak val. Team of 20. Google Play Teacher Approved.
-EARLIER: BD Specialist, Uraz Patent (Feb 2020-Jan 2021).
-EDUCATION: MSc MIS, Dokuz Eylul (3.81/4.0). BSc Business Admin, Ege (3.20/4.0), Erasmus+ Spain.
-CERTS: HubSpot Sales (2024), Apple Search Ads (2022), HubSpot Inbound (2020), IELTS C1.
-RECOGNITION: UK Global Talent Visa. Google Jury Member (2023,2024). Published researcher IMISC2023. Bloomberg Businessweek quote. Bogazici panelist.
-STRENGTHS: GTM, pricing, churn reduction, partnerships, investor relations, product lifecycle, AI product strategy, CRM/HubSpot, competitive analysis, team leadership. Bridge between business and technical.
-LANGUAGES: Turkish (native), English (C1), Spanish (intermediate).`;
+// ━━━ AVATAR ━━━
+function Av(props){
+var mo=props.mo||0,sp=props.speaking,sz=props.sz||150;
+// Smooth mouth with multiple shapes
+var mOpen=Math.max(0,Math.min(mo,1));
+var jawDrop=mOpen*12;
+var lipW=14+mOpen*8;
+var lipH=2+mOpen*10;
+var teethH=Math.min(mOpen*5,4);
+var tongueShow=mOpen>0.4;
+var borderGlow=sp?0.45:0.15;
+var shadowSize=sp?24:8;
+var shadowAlpha=sp?0.25:0.06;
 
-      const Avatar = ({ mo = 0, speaking, sz = 60 }) => {
-        const mh = 1.8 + mo * 7;
-        return (
-          <div
-            style={{ position: "relative", width: sz, height: sz, flexShrink: 0 }}
-          >
-            <div
-              style={{
-                width: sz,
-                height: sz,
-                borderRadius: "50%",
-                overflow: "hidden",
-                border: `2px solid rgba(0,234,255,${speaking ? 0.45 : 0.15})`,
-                boxShadow: `0 0 ${speaking ? 20 : 6}px rgba(0,234,255,${
-                  speaking ? 0.25 : 0.06
-                })`,
-                transition: "all .4s",
-              }}
-            >
-              <svg
-                viewBox="0 0 200 200"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "block",
-                  background: "#111118",
-                }}
-              >
-                <defs>
-                  <radialGradient id="fg" cx="50%" cy="38%" r="52%">
-                    <stop offset="0%" stopColor="#F5DCC8" />
-                    <stop offset="100%" stopColor="#E4C4A4" />
-                  </radialGradient>
-                </defs>
-                <path d="M72 170 Q100 180 128 170 L138 200 H62Z" fill="#2C3E50" />
-                <rect x="89" y="157" width="22" height="15" rx="6" fill="#ECC5A8" />
-                <ellipse cx="100" cy="110" rx="43" ry="50" fill="url(#fg)" />
-                <ellipse cx="59" cy="108" rx="5" ry="8" fill="#E0BB9C" />
-                <ellipse cx="141" cy="108" rx="5" ry="8" fill="#E0BB9C" />
-                <ellipse cx="100" cy="74" rx="47" ry="30" fill="#282828" />
-                <circle cx="66" cy="52" r="9" fill="#282828" />
-                <circle cx="80" cy="46" r="10" fill="#282828" />
-                <circle cx="95" cy="43" r="10" fill="#282828" />
-                <circle cx="110" cy="43" r="10" fill="#282828" />
-                <circle cx="124" cy="46" r="10" fill="#282828" />
-                <circle cx="137" cy="52" r="9" fill="#282828" />
-                <circle cx="55" cy="72" r="7" fill="#282828" />
-                <circle cx="145" cy="72" r="7" fill="#282828" />
-                <circle cx="53" cy="88" r="5" fill="#282828" />
-                <circle cx="147" cy="88" r="5" fill="#282828" />
-                <path
-                  d="M78 98 Q86 94 94 97"
-                  stroke="#282828"
-                  strokeWidth="2.2"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M106 97 Q114 94 122 98"
-                  stroke="#282828"
-                  strokeWidth="2.2"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                <ellipse cx="86" cy="108" rx="6.5" ry="6" fill="white" />
-                <ellipse cx="114" cy="108" rx="6.5" ry="6" fill="white" />
-                <circle cx="86" cy="108" r="3.5" fill="#3B2718" />
-                <circle cx="114" cy="108" r="3.5" fill="#3B2718" />
-                <circle cx="87.3" cy="107" r="1.3" fill="white" />
-                <circle cx="115.3" cy="107" r="1.3" fill="white" />
-                <ellipse cx="100" cy="118" rx="3.5" ry="2.5" fill="#D9B498" opacity="0.3" />
-                <path
-                  d="M77 133 Q82 145 92 150 Q100 153 108 150 Q118 145 123 133"
-                  fill="#282828"
-                  opacity="0.06"
-                />
-                <path
-                  d="M89 128 Q94 126 100 127 Q106 126 111 128 L111 130 Q106 128.5 100 129 Q94 128.5 89 130Z"
-                  fill="#282828"
-                  opacity="0.1"
-                />
-                <ellipse
-                  cx="100"
-                  cy="138"
-                  rx={7 + mo * 3}
-                  ry={mh}
-                  fill="#B85450"
-                  opacity={mo > 0.05 ? 1 : 0.15}
-                />
-                <rect
-                  x={96 - mo * 2}
-                  y={136}
-                  width={8 + mo * 4}
-                  height={Math.min(mo * 3, 3)}
-                  rx="1"
-                  fill="white"
-                  opacity={mo > 0.25 ? 0.85 : 0}
-                />
-                <path
-                  d="M90 137 Q95 140 100 139 Q105 140 110 137"
-                  stroke="#D4A090"
-                  strokeWidth=".8"
-                  fill="none"
-                  opacity={mo < 0.1 ? 0.5 : 0}
-                />
-              </svg>
-            </div>
-          </div>
-        );
+return ce("div",{style:{position:"relative",width:sz,height:sz,flexShrink:0,margin:"0 auto"}},
+  // Outer glow ring
+  sp&&ce("div",{style:{position:"absolute",inset:-6,borderRadius:"50%",border:"1px solid rgba(0,234,255,.12)",animation:"breathe 2s ease-in-out infinite"}}),
+  ce("div",{style:{width:sz,height:sz,borderRadius:"50%",overflow:"hidden",border:"2.5px solid rgba(0,234,255,"+borderGlow+")",boxShadow:"0 0 "+shadowSize+"px rgba(0,234,255,"+shadowAlpha+")",transition:"all .3s"}},
+    ce("svg",{viewBox:"0 0 200 200",style:{width:"100%",height:"100%",display:"block",background:"linear-gradient(180deg,#141420 0%,#0d0d18 100%)"}},
+      ce("defs",null,
+        ce("radialGradient",{id:"skin",cx:"50%",cy:"38%",r:"52%"},
+          ce("stop",{offset:"0%",stopColor:"#F8DFC8"}),
+          ce("stop",{offset:"100%",stopColor:"#E8C4A4"})
+        ),
+        ce("radialGradient",{id:"cheek",cx:"50%",cy:"50%",r:"50%"},
+          ce("stop",{offset:"0%",stopColor:"#F0A0A0",stopOpacity:.2}),
+          ce("stop",{offset:"100%",stopColor:"#F0A0A0",stopOpacity:0})
+        )
+      ),
+      // Body/shirt
+      ce("path",{d:"M65 172 Q100 184 135 172 L148 200 H52Z",fill:"#1e3a4f"}),
+      ce("path",{d:"M85 172 Q100 178 115 172 L115 176 Q100 181 85 176Z",fill:"#16303f"}),
+      // Neck
+      ce("rect",{x:90,y:158,width:20,height:16,rx:5,fill:"#ECC5A8"}),
+      // Head
+      ce("ellipse",{cx:100,cy:112,rx:44,ry:50,fill:"url(#skin)"}),
+      // Ears
+      ce("ellipse",{cx:57,cy:110,rx:5.5,ry:9,fill:"#E0BB9C"}),
+      ce("ellipse",{cx:57,cy:110,rx:3,ry:5,fill:"#D4A88A",opacity:.3}),
+      ce("ellipse",{cx:143,cy:110,rx:5.5,ry:9,fill:"#E0BB9C"}),
+      ce("ellipse",{cx:143,cy:110,rx:3,ry:5,fill:"#D4A88A",opacity:.3}),
+      // Hair base
+      ce("ellipse",{cx:100,cy:76,rx:48,ry:32,fill:"#222"}),
+      // Hair curls
+      ce("circle",{cx:62,cy:54,r:10,fill:"#222"}),
+      ce("circle",{cx:76,cy:46,r:11,fill:"#222"}),
+      ce("circle",{cx:92,cy:42,r:11,fill:"#222"}),
+      ce("circle",{cx:108,cy:42,r:11,fill:"#222"}),
+      ce("circle",{cx:124,cy:46,r:11,fill:"#222"}),
+      ce("circle",{cx:138,cy:54,r:10,fill:"#222"}),
+      // Side hair
+      ce("circle",{cx:53,cy:74,r:8,fill:"#222"}),
+      ce("circle",{cx:147,cy:74,r:8,fill:"#222"}),
+      ce("circle",{cx:51,cy:90,r:5.5,fill:"#222"}),
+      ce("circle",{cx:149,cy:90,r:5.5,fill:"#222"}),
+      // Eyebrows
+      ce("path",{d:"M74 98 Q82 93 92 97",stroke:"#333",strokeWidth:2.5,fill:"none",strokeLinecap:"round"}),
+      ce("path",{d:"M108 97 Q118 93 126 98",stroke:"#333",strokeWidth:2.5,fill:"none",strokeLinecap:"round"}),
+      // Eyes - white
+      ce("ellipse",{cx:84,cy:110,rx:7,ry:6.5,fill:"white"}),
+      ce("ellipse",{cx:116,cy:110,rx:7,ry:6.5,fill:"white"}),
+      // Eyes - iris
+      ce("circle",{cx:84,cy:110,r:3.8,fill:"#3B2718"}),
+      ce("circle",{cx:116,cy:110,r:3.8,fill:"#3B2718"}),
+      // Eyes - pupil
+      ce("circle",{cx:84,cy:110,r:2,fill:"#1a0f08"}),
+      ce("circle",{cx:116,cy:110,r:2,fill:"#1a0f08"}),
+      // Eyes - highlight
+      ce("circle",{cx:85.8,cy:108.5,r:1.5,fill:"white"}),
+      ce("circle",{cx:117.8,cy:108.5,r:1.5,fill:"white"}),
+      // Nose
+      ce("path",{d:"M100 116 Q97 122 95 126 Q100 128 105 126 Q103 122 100 116",fill:"#D9B498",opacity:.25}),
+      // Cheek blush
+      ce("circle",{cx:72,cy:122,r:8,fill:"url(#cheek)"}),
+      ce("circle",{cx:128,cy:122,r:8,fill:"url(#cheek)"}),
+      // Beard shadow
+      ce("path",{d:"M74 134 Q78 148 88 155 Q100 160 112 155 Q122 148 126 134",fill:"#222",opacity:.07}),
+      // Stubble area
+      ce("path",{d:"M78 132 Q82 144 90 150 Q100 154 110 150 Q118 144 122 132",fill:"#333",opacity:.04}),
+      // Mustache hint
+      ce("path",{d:"M88 130 Q94 128 100 129 Q106 128 112 130 L112 132 Q106 130 100 131 Q94 130 88 132Z",fill:"#333",opacity:.08}),
+      // MOUTH - dynamic
+      // Outer lips
+      ce("ellipse",{cx:100,cy:139+jawDrop*.3,rx:lipW/2,ry:lipH/2,fill:"#C45555",opacity:mOpen>0.05?1:0}),
+      // Teeth
+      teethH>0.5&&ce("rect",{x:100-lipW/2+3,y:138+jawDrop*.2,width:lipW-6,height:teethH,rx:1,fill:"white",opacity:.9}),
+      // Tongue
+      tongueShow&&ce("ellipse",{cx:100,cy:141+jawDrop*.35,rx:4,ry:2.5,fill:"#C06060",opacity:.5}),
+      // Inner mouth darkness
+      mOpen>0.15&&ce("ellipse",{cx:100,cy:139.5+jawDrop*.3,rx:lipW/2-2,ry:Math.max(lipH/2-1.5,1),fill:"#3a1515",opacity:.6}),
+      // Closed mouth smile
+      mOpen<=0.05&&ce("path",{d:"M89 138 Q95 142 100 141.5 Q105 142 111 138",stroke:"#C09080",strokeWidth:1,fill:"none",opacity:.5}),
+      // Speaking glow
+      sp&&ce("circle",{cx:100,cy:100,r:97,fill:"none",stroke:"rgba(0,234,255,.06)",strokeWidth:2})
+    )
+  )
+);
+}
+
+function TL(p){
+return ce("div",{style:{display:"flex",gap:9,alignItems:"flex-start"}},
+  ce("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",minWidth:8}},
+    ce("div",{style:{width:5,height:5,borderRadius:"50%",background:"#00eaff",boxShadow:"0 0 4px rgba(0,234,255,.3)",marginTop:5}}),
+    ce("div",{style:{width:1,flex:1,background:"rgba(0,234,255,.06)",marginTop:2}})
+  ),
+  ce("div",{style:{paddingBottom:12}},
+    ce("div",{style:{fontSize:10,color:"rgba(0,234,255,.45)",fontFamily:"Sora,sans-serif",fontWeight:600}},p.y),
+    ce("div",{style:{fontSize:11.5,color:"#fff",fontFamily:"Sora,sans-serif",fontWeight:600,marginTop:1}},p.t),
+    ce("div",{style:{fontSize:10.5,color:"rgba(255,255,255,.3)",marginTop:1}},p.c),
+    p.h&&ce("div",{style:{fontSize:10.5,color:"rgba(0,234,255,.38)",marginTop:2,lineHeight:"1.3"}},p.h)
+  )
+);
+}
+
+function App(){
+var _m=us([]),msgs=_m[0],setMsgs=_m[1];
+var _i=us(""),input=_i[0],setInput=_i[1];
+var _l=us(false),loading=_l[0],setLoading=_l[1];
+var _s=us(false),speaking=_s[0],setSpeaking=_s[1];
+var _o=us(0),mo=_o[0],setMo=_o[1];
+var _t=us("chat"),tab=_t[0],setTab=_t[1];
+var _v=us(true),voiceOn=_v[0],setVoiceOn=_v[1];
+var _mb=us(false),isMob=_mb[0],setIsMob=_mb[1];
+var _e=us(""),errMsg=_e[0],setErr=_e[1];
+var endRef=ur(null),acRef=ur(null),afRef=ur(null),srcRef=ur(null);
+
+ue(function(){var c=function(){setIsMob(window.innerWidth<768)};c();window.addEventListener("resize",c);return function(){window.removeEventListener("resize",c)}},[]);
+ue(function(){endRef.current&&endRef.current.scrollIntoView({behavior:"smooth"})},[msgs,loading]);
+
+var stopSpeak=uc(function(){
+  if(srcRef.current)try{srcRef.current.stop()}catch(x){}
+  cancelAnimationFrame(afRef.current);setSpeaking(false);setMo(0);srcRef.current=null;
+},[]);
+
+var speakText=uc(function(text){
+  if(!voiceOn)return;
+  fetch("https://api.elevenlabs.io/v1/text-to-speech/"+VID,{
+    method:"POST",
+    headers:{"xi-api-key":ELKEY,"Content-Type":"application/json","Accept":"audio/mpeg"},
+    body:JSON.stringify({text:text.slice(0,3000),model_id:"eleven_multilingual_v2",voice_settings:{stability:.3,similarity_boost:.75,style:.4,use_speaker_boost:true}})
+  }).then(function(r){
+    if(!r.ok)throw new Error("EL "+r.status);
+    return r.arrayBuffer();
+  }).then(function(buf){
+    if(!acRef.current)acRef.current=new(window.AudioContext||window.webkitAudioContext)();
+    var ctx=acRef.current;
+    var resume=ctx.state==="suspended"?ctx.resume():Promise.resolve();
+    return resume.then(function(){return ctx.decodeAudioData(buf)}).then(function(dec){
+      var src=ctx.createBufferSource();src.buffer=dec;
+      var an=ctx.createAnalyser();an.fftSize=512;an.smoothingTimeConstant=0.7;
+      src.connect(an);an.connect(ctx.destination);
+      var da=new Uint8Array(an.frequencyBinCount);
+      if(srcRef.current)try{srcRef.current.stop()}catch(x){}
+      srcRef.current=src;setSpeaking(true);
+      var tick=function(){
+        an.getByteFrequencyData(da);
+        // Focus on voice frequencies (85-300Hz range for fundamental, harmonics up to ~3kHz)
+        var low=0,mid=0;
+        for(var i=1;i<16;i++)low+=da[i]; low/=15;
+        for(var i=16;i<40;i++)mid+=da[i]; mid/=24;
+        var val=(low*0.6+mid*0.4)/90;
+        setMo(Math.min(Math.max(val,0),1));
+        afRef.current=requestAnimationFrame(tick);
       };
+      src.onended=function(){cancelAnimationFrame(afRef.current);setSpeaking(false);setMo(0);srcRef.current=null};
+      src.start(0);tick();
+    });
+  }).catch(function(x){console.warn("Voice:",x)});
+},[voiceOn]);
 
-      const TL = ({ y, t, c, h }) => (
-        <div style={{ display: "flex", gap: 9, alignItems: "flex-start" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              minWidth: 8,
-            }}
-          >
-            <div
-              style={{
-                width: 5,
-                height: 5,
-                borderRadius: "50%",
-                background: "#00eaff",
-                boxShadow: "0 0 4px rgba(0,234,255,.3)",
-                marginTop: 5,
-              }}
-            />
-            <div
-              style={{
-                width: 1,
-                flex: 1,
-                background: "rgba(0,234,255,.06)",
-                marginTop: 2,
-              }}
-            />
-          </div>
-          <div style={{ paddingBottom: 12 }}>
-            <div
-              style={{
-                fontSize: 10,
-                color: "rgba(0,234,255,.45)",
-                fontFamily: "'Sora',sans-serif",
-                fontWeight: 600,
-              }}
-            >
-              {y}
-            </div>
-            <div
-              style={{
-                fontSize: 11.5,
-                color: "#fff",
-                fontFamily: "'Sora',sans-serif",
-                fontWeight: 600,
-                marginTop: 1,
-              }}
-            >
-              {t}
-            </div>
-            <div style={{ fontSize: 10.5, color: "rgba(255,255,255,.3)", marginTop: 1 }}>
-              {c}
-            </div>
-            {h && (
-              <div
-                style={{
-                  fontSize: 10.5,
-                  color: "rgba(0,234,255,.38)",
-                  marginTop: 2,
-                  lineHeight: 1.3,
-                }}
-              >
-                {h}
-              </div>
-            )}
-          </div>
-        </div>
-      );
+var send=uc(function(text){
+  if(!text.trim())return;stopSpeak();setErr("");
+  var u={role:"user",content:text.trim()};
+  var all=msgs.concat([u]);
+  setMsgs(all);setInput("");setLoading(true);
+  var h=all.map(function(m){return{role:m.role==="user"?"user":"model",parts:[{text:m.content}]}});
+  fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+GKEY,{
+    method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({system_instruction:{parts:[{text:SYS}]},contents:h,generationConfig:{temperature:.7,maxOutputTokens:800}})
+  }).then(function(r){return r.json()}).then(function(d){
+    if(d.error){setErr(d.error.message);throw new Error(d.error.message)}
+    var t=d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts;
+    var reply=t?t[0].text:"Could you rephrase that?";
+    setMsgs(function(p){return p.concat([{role:"assistant",content:reply}])});
+    setLoading(false);
+    if(voiceOn)speakText(reply);
+  }).catch(function(x){
+    setMsgs(function(p){return p.concat([{role:"assistant",content:"Something went wrong. Please try again."}])});
+    setLoading(false);
+    setErr(x.message||"Unknown error");
+  });
+},[msgs,speakText,stopSpeak,voiceOn]);
 
-      const downloadCV = () => {
-        const html = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Utku Bozkurt - CV</title><style>body{font-family:'Segoe UI',Arial,sans-serif;max-width:780px;margin:30px auto;padding:0 24px;color:#1a1a1a;line-height:1.55;font-size:13.5px}h1{font-size:22px;margin-bottom:2px}h2{color:#0a5c8a;border-bottom:1.5px solid #ddd;padding-bottom:3px;margin-top:22px;font-size:15px}h3{font-size:14px;margin-bottom:1px;margin-top:14px}.meta{color:#555;font-size:12.5px}.contact{color:#444;font-size:13px;margin-bottom:6px}.summary{color:#333;margin-bottom:4px}ul{padding-left:18px;margin:4px 0}li{margin-bottom:3px;color:#333}.skills{margin:4px 0;color:#333}.si{color:#333;margin:3px 0}</style></head><body>
-<h1>UTKU BOZKURT</h1><div class="contact">Reading, United Kingdom<br>+44 7435 583 335 | utku.bozkurt3@gmail.com | linkedin.com/in/utku-bozkurtt</div>
-<h2>PROFESSIONAL SUMMARY</h2><p class="summary">SaaS and AdTech strategist with 6+ years of experience across business development, product strategy, fundraising, and growth. Currently leading strategy and business development at a B2B advertising automation platform serving 7,000+ subscribers in 130+ countries. Founded and scaled a consumer gaming platform to $5M valuation, raising $525K in funding. UK Global Talent Visa holder (Digital Technology) with unrestricted right to work.</p>
-<h2>CORE COMPETENCIES</h2><p class="skills">Business Development & Partnerships | SaaS Growth Strategy | Fundraising & Investor Relations | Product Strategy & Lifecycle Management | Market Analysis & GTM Execution | Cross-Functional Team Leadership | AdTech & MarTech | Digital Advertising (Google Ads, Meta Ads) | CRM & Marketing Automation (HubSpot) | Data-Informed Decision Making | Stakeholder Management | International Expansion</p>
-<h2>PROFESSIONAL EXPERIENCE</h2>
-<h3>Chief Strategy Officer & Head of Business Development</h3><div class="meta">WASK Inc. (B2B AdTech) · Delaware, US / Reading, UK · May 2024 – Present</div><ul><li>Worked on the business strategy for an AI-powered advertising automation platform with $2.1M ARR, 85% gross margins, and a 4.8x LTV/CAC ratio across 130+ countries.</li><li>Directed a cross-functional business development team of 6, delivering a 20.2% year-on-year increase in active paying subscribers.</li><li>Led end-to-end development and launch of a major product version that reduced churn rate by 7% and churned revenue by 42% within 12 months.</li><li>Cultivated and managed 10+ strategic partnerships with VCs, technology partners, and channel distributors.</li><li>Drove a fundraise process secured $1M+, managing investor due diligence, financial modelling, and pitch preparation.</li><li>Led cross-team restructuring initiatives to scale operations.</li></ul>
-<h3>Founder & Chief Executive Officer</h3><div class="meta">njoyKidz · Istanbul, Turkey · June 2021 – May 2024</div><ul><li>Built an ad-free, child-safe mobile gaming platform from concept to launch, achieving 500K+ organic downloads across 30+ educational apps.</li><li>Secured $525,000 in total funding and achieved a peak valuation of $5 million.</li><li>Managed a team of 20 across product, engineering, design, and marketing.</li><li>Established IP licensing partnerships and local stakeholder alliances to drive international growth.</li><li>Defined product roadmap and ran user acquisition experiments driving sustained organic growth without paid spend.</li></ul>
-<h3>Business Development Specialist</h3><div class="meta">Uraz Patent · Izmir, Turkey · Feb 2020 – Jan 2021</div><ul><li>Supported trademark, patent, and design registration services for domestic and international clients.</li><li>Conducted market analysis and competitive intelligence to inform client acquisition strategies.</li></ul>
-<h3>Business Development Intern</h3><div class="meta">Uraz Patent · Izmir, Turkey · Nov 2019 – Feb 2020</div><ul><li>Conducted market research to identify high-potential prospects and supported outreach.</li></ul>
-<h2>EDUCATION</h2><div class="si"><strong>MSc Management Information Systems</strong> · Dokuz Eylul University · Sept 2020 – Aug 2023 · GPA: 3.81/4.0<br>Thesis: Mobile-Based Educational Game Design and Application</div><div class="si" style="margin-top:8px"><strong>BSc Business Administration</strong> · Ege University · Sept 2014 – June 2020 · GPA: 3.20/4.0<br>Erasmus+ Exchange: Universidad de Oviedo, Spain</div>
-<h2>TECHNICAL SKILLS & TOOLS</h2><p class="skills"><strong>Advertising:</strong> Google Ads, Meta Ads, Apple Search Ads<br><strong>CRM & Automation:</strong> HubSpot, Apollo.io, Zapier, Heyreach<br><strong>Analytics:</strong> Google Analytics, Firebase<br><strong>Project:</strong> Jira, ClickUp<br><strong>Technical:</strong> MySQL, HTML5, CSS3, REST APIs, n8n</p>
-<h2>CERTIFICATIONS</h2><ul><li>Sales Software Certification – HubSpot (2024)</li><li>Search Ads Certification – Apple (2022)</li><li>Inbound Marketing Certification – HubSpot (2020)</li><li>IELTS Academic – British Council, C1 Level (2020)</li><li>Digital Workshop Certificate – Google (2018)</li></ul>
-<h2>ACHIEVEMENTS & RECOGNITION</h2><ul><li>UK Global Talent Visa endorsement, Tech Nation, Digital Technology track (October 2025)</li><li>Panelist, Private Equity & Advisors Academy, Bogazici University (March 2024)</li><li>Jury Member, Game and Application Academy, Google (April 2023 & March 2024)</li><li>Published research paper at the International M.I.S. Conference (November 2023)</li><li>Mentor, Birlesmiş Eller Social Aid Association (May 2023)</li></ul>
-<h2>LANGUAGES</h2><p class="skills">Turkish (Native) | English (Advanced / C1) | Spanish (Intermediate)</p></body></html>`;
-        const b = new Blob([html], { type: "text/html" });
-        const u = URL.createObjectURL(b);
-        const a = document.createElement("a");
-        a.href = u;
-        a.download = "Utku_Bozkurt_CV.html";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(u);
-      };
+// ━━━ RENDER ━━━
+return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM Sans',sans-serif",color:"#fff"}},
 
-      function App() {
-        const [msgs, setMsgs] = useState([]);
-        const [input, setInput] = useState("");
-        const [loading, setLoading] = useState(false);
-        const [speaking, setSpeaking] = useState(false);
-        const [mo, setMo] = useState(0);
-        const [tab, setTab] = useState("chat");
-        const [voiceOn, setVoiceOn] = useState(true);
-        const [voiceId, setVoiceId] = useState(null);
-        const [isMob, setIsMob] = useState(false);
-        const endRef = useRef(null);
-        const acRef = useRef(null);
-        const afRef = useRef(null);
-        const srcRef = useRef(null);
-        const miRef = useRef(null);
+  // NAV
+  ce("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"11px 18px",borderBottom:"1px solid rgba(0,234,255,.05)",background:"rgba(10,14,23,.93)",backdropFilter:"blur(20px)",position:"sticky",top:0,zIndex:100}},
+    ce("div",{style:{display:"flex",alignItems:"center",gap:7}},
+      ce("div",{style:{width:5,height:5,borderRadius:"50%",background:"#00eaff",boxShadow:"0 0 5px rgba(0,234,255,.45)",animation:"glow 3s ease-in-out infinite"}}),
+      ce("span",{style:{fontFamily:"Sora,sans-serif",fontSize:12.5,fontWeight:700}},"Utku's ",ce("span",{style:{color:"#00eaff"}},"Twin"))
+    ),
+    ce("div",{style:{display:"flex",gap:3}},
+      ["chat","about"].map(function(id){
+        return ce("button",{key:id,onClick:function(){setTab(id)},style:{background:tab===id?"rgba(0,234,255,.1)":"transparent",border:"1px solid "+(tab===id?"rgba(0,234,255,.2)":"rgba(255,255,255,.04)"),color:tab===id?"#00eaff":"rgba(255,255,255,.35)",padding:"4px 12px",borderRadius:16,fontSize:10,fontWeight:600,fontFamily:"Sora,sans-serif",cursor:"pointer",textTransform:"uppercase",letterSpacing:".06em"}},id==="chat"?"Chat":"About");
+      })
+    )
+  ),
 
-        const liSvg =
-          '<svg width="17" height="17" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
-        const emSvg =
-          '<svg width="17" height="17" viewBox="0 0 24 24" fill="#EA4335"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>';
-        const phSvg =
-          '<svg width="17" height="17" viewBox="0 0 24 24" fill="rgba(0,234,255,.55)"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>';
-
-        useEffect(() => {
-          const c = () => setIsMob(window.innerWidth < 768);
-          c();
-          window.addEventListener("resize", c);
-          return () => window.removeEventListener("resize", c);
-        }, []);
-        useEffect(() => {
-          endRef.current?.scrollIntoView({ behavior: "smooth" });
-        }, [msgs, loading]);
-
-        useEffect(() => {
-          setVoiceId(VOICE_ID_DIRECT);
-        }, []);
-
-        const stopSpeak = useCallback(() => {
-          if (srcRef.current) {
-            try {
-              srcRef.current.stop();
-            } catch (e) {}
-          }
-          if (miRef.current) clearInterval(miRef.current);
-          try {
-            window.speechSynthesis?.cancel();
-          } catch (e) {}
-          cancelAnimationFrame(afRef.current);
-          setSpeaking(false);
-          setMo(0);
-          srcRef.current = null;
-        }, []);
-
-        const speakText = useCallback(
-          async (text) => {
-            if (!voiceOn) return;
-            const short = text.slice(0, 3000);
-            if (voiceId && EL_KEY) {
-              try {
-                const r = await fetch(
-                  `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
-                  {
-                    method: "POST",
-                    headers: {
-                      "xi-api-key": EL_KEY,
-                      "Content-Type": "application/json",
-                      Accept: "audio/mpeg",
-                    },
-                    body: JSON.stringify({
-                      text: short,
-                      model_id: "eleven_multilingual_v2",
-                      voice_settings: {
-                        stability: 0.3,
-                        similarity_boost: 0.75,
-                        style: 0.4,
-                        use_speaker_boost: true,
-                      },
-                    }),
-                  }
-                );
-                if (r.ok) {
-                  const buf = await r.arrayBuffer();
-                  if (!acRef.current) {
-                    acRef.current = new (
-                      window.AudioContext || window.webkitAudioContext
-                    )();
-                  }
-                  const ctx = acRef.current;
-                  if (ctx.state === "suspended") await ctx.resume();
-                  const dec = await ctx.decodeAudioData(buf);
-                  const src = ctx.createBufferSource();
-                  src.buffer = dec;
-                  const an = ctx.createAnalyser();
-                  an.fftSize = 256;
-                  an.smoothingTimeConstant = 0.65;
-                  src.connect(an);
-                  an.connect(ctx.destination);
-                  const da = new Uint8Array(an.frequencyBinCount);
-                  if (srcRef.current) {
-                    try {
-                      srcRef.current.stop();
-                    } catch (e) {}
-                  }
-                  srcRef.current = src;
-                  setSpeaking(true);
-                  const tick = () => {
-                    an.getByteFrequencyData(da);
-                    setMo(
-                      Math.min(
-                        da.slice(0, 24).reduce((a, b) => a + b, 0) / 24 / 75,
-                        1
-                      )
-                    );
-                    afRef.current = requestAnimationFrame(tick);
-                  };
-                  src.onended = () => {
-                    cancelAnimationFrame(afRef.current);
-                    setSpeaking(false);
-                    setMo(0);
-                    srcRef.current = null;
-                  };
-                  src.start(0);
-                  tick();
-                  return;
-                }
-              } catch (e) {
-                console.warn("EL:", e);
-              }
-            }
-          },
-          [voiceOn, voiceId]
-        );
-
-        const OR_KEY =
-          "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";
-        const GEMINI_KEY = "AIzaSyAw4nErozoVwtUugySlR-QjdZMWKXXaFqQ";
-
-        const tryAnthropic = async (all) => {
-          const r = await fetch("https://api.anthropic.com/v1/messages", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              model: "claude-sonnet-4-20250514",
-              max_tokens: 1000,
-              system: SYS,
-              messages: all.map((m) => ({ role: m.role, content: m.content })),
-            }),
-          });
-          const d = await r.json();
-          if (d.error) throw new Error(d.error.message || JSON.stringify(d.error));
-          return (
-            d.content
-              ?.map((b) => (b.type === "text" ? b.text : ""))
-              .filter(Boolean)
-              .join("\n") || "Could you rephrase that?"
+  ce("div",{style:{display:"flex",flexDirection:"column",height:"calc(100vh - 45px)"}},
+    tab==="chat"?
+    // ━━━ CHAT TAB ━━━
+    ce(React.Fragment,null,
+      // Header with large centered avatar
+      ce("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",padding:"20px 18px 16px",borderBottom:"1px solid rgba(0,234,255,.04)",background:"rgba(10,14,23,.5)"}},
+        ce(Av,{mo:mo,speaking:speaking,sz:150}),
+        ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:600,color:"rgba(0,234,255,.5)",marginTop:10,letterSpacing:".05em"}},"Utku's Twin"),
+        ce("button",{onClick:function(){if(speaking)stopSpeak();setVoiceOn(function(v){return!v})},style:{marginTop:8,padding:"6px 14px",borderRadius:16,fontSize:10,fontWeight:600,fontFamily:"Sora,sans-serif",background:voiceOn?"rgba(0,234,255,.1)":"rgba(255,255,255,.03)",border:"1px solid "+(voiceOn?"rgba(0,234,255,.25)":"rgba(255,255,255,.06)"),color:voiceOn?"#00eaff":"rgba(255,255,255,.25)",cursor:"pointer",display:"flex",alignItems:"center",gap:5}},voiceOn?"\uD83D\uDD0A Voice On":"\uD83D\uDD07 Voice Off")
+      ),
+      // Messages
+      ce("div",{style:{flex:1,overflowY:"auto",padding:isMob?"12px":"16px 20px"}},
+        msgs.length===0&&ce("div",{style:{display:"flex",alignItems:"center",justifyContent:"center",height:"100%",animation:"fadeUp .4s ease-out"}},
+          ce("div",{style:{textAlign:"center",padding:"20px 16px",maxWidth:380}},
+            ce("h2",{style:{fontFamily:"Sora,sans-serif",fontSize:15,fontWeight:700,marginBottom:4}},"Ask me anything."),
+            ce("p",{style:{fontSize:12,color:"rgba(255,255,255,.3)",lineHeight:1.55}},"I'm Utku's AI twin. Ask about experience, leadership, what I've built, or anything you'd cover in a first conversation.")
+          )
+        ),
+        msgs.map(function(m,i){
+          return ce("div",{key:i,style:{display:"flex",justifyContent:m.role==="user"?"flex-end":"flex-start",marginBottom:10,animation:"fadeUp .2s ease-out"}},
+            ce("div",{style:{maxWidth:isMob?"88%":"70%",padding:"10px 14px",borderRadius:12,fontSize:13.5,lineHeight:1.6,whiteSpace:"pre-wrap",background:m.role==="user"?"linear-gradient(135deg,rgba(0,234,255,.09),rgba(0,100,200,.05))":"rgba(255,255,255,.025)",border:"1px solid "+(m.role==="user"?"rgba(0,234,255,.12)":"rgba(255,255,255,.04)"),color:m.role==="user"?"#fff":"rgba(255,255,255,.78)"}},
+              m.role==="assistant"&&ce("div",{style:{fontSize:8.5,color:"rgba(0,234,255,.35)",fontWeight:700,fontFamily:"Sora,sans-serif",marginBottom:3,textTransform:"uppercase",letterSpacing:".1em"}},"UTKU.twin"),
+              m.content
+            )
           );
-        };
+        }),
+        loading&&ce("div",{style:{display:"flex",marginBottom:10}},ce("div",{style:{padding:"10px 14px",borderRadius:12,background:"rgba(255,255,255,.025)",border:"1px solid rgba(255,255,255,.04)"}},ce("div",{style:{display:"flex",gap:5,alignItems:"center"}},ce("div",{style:{width:4,height:4,borderRadius:"50%",background:"rgba(0,234,255,.35)",animation:"typing 1s ease-in-out 0s infinite"}}),ce("div",{style:{width:4,height:4,borderRadius:"50%",background:"rgba(0,234,255,.35)",animation:"typing 1s ease-in-out .2s infinite"}}),ce("div",{style:{width:4,height:4,borderRadius:"50%",background:"rgba(0,234,255,.35)",animation:"typing 1s ease-in-out .4s infinite"}}),ce("span",{style:{fontSize:10,color:"rgba(255,255,255,.15)",marginLeft:4,fontStyle:"italic"}},"thinking...")))),
+        errMsg&&ce("div",{style:{fontSize:10,color:"rgba(255,150,150,.4)",textAlign:"center",marginTop:4}},errMsg),
+        ce("div",{ref:endRef})
+      ),
+      // Input
+      ce("div",{style:{padding:"8px 16px 12px",borderTop:"1px solid rgba(0,234,255,.04)",background:"rgba(10,14,23,.88)"}},
+        ce("div",{style:{display:"flex",gap:5,alignItems:"flex-end",background:"rgba(255,255,255,.02)",border:"1px solid rgba(0,234,255,.06)",borderRadius:10,padding:"3px 3px 3px 10px"}},
+          ce("textarea",{value:input,onChange:function(e){setInput(e.target.value)},onKeyDown:function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(input)}},placeholder:"Ask Utku anything...",rows:1,style:{flex:1,background:"transparent",border:"none",outline:"none",color:"#fff",fontSize:13,fontFamily:"'DM Sans',sans-serif",resize:"none",padding:"7px 0",lineHeight:1.5,maxHeight:80},onInput:function(e){e.target.style.height="auto";e.target.style.height=Math.min(e.target.scrollHeight,80)+"px"}}),
+          ce("button",{onClick:function(){send(input)},disabled:loading||!input.trim(),style:{width:32,height:32,borderRadius:7,flexShrink:0,background:input.trim()?"rgba(0,234,255,.12)":"rgba(255,255,255,.015)",border:"1px solid "+(input.trim()?"rgba(0,234,255,.25)":"rgba(255,255,255,.03)"),color:input.trim()?"#00eaff":"rgba(255,255,255,.1)",cursor:input.trim()?"pointer":"default",fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}},"\u2191")
+        )
+      )
+    )
+    :
+    // ━━━ ABOUT TAB ━━━
+    ce("div",{style:{flex:1,overflowY:"auto",padding:isMob?"16px 12px":"22px 28px"}},
+      ce("div",{style:{maxWidth:600,margin:"0 auto",animation:"fadeUp .3s ease-out"}},
+        ce("div",{style:{width:160,height:160,borderRadius:"50%",overflow:"hidden",margin:"0 auto 10px",border:"2.5px solid rgba(0,234,255,.15)",boxShadow:"0 0 24px rgba(0,234,255,.1)"}},
+          ce("img",{src:PHOTO,alt:"Utku Bozkurt",style:{width:"100%",height:"100%",objectFit:"cover"}})
+        ),
+        ce("div",{style:{textAlign:"center",marginBottom:16}},ce("span",{style:{fontFamily:"Sora,sans-serif",fontSize:12,fontWeight:600,color:"rgba(0,234,255,.5)",letterSpacing:".05em"}},"Utku's Twin")),
+        ce("h2",{style:{fontFamily:"Sora,sans-serif",fontSize:20,fontWeight:800,marginBottom:5,textAlign:"center"}},"About ",ce("span",{style:{color:"#00eaff"}},"Me")),
+        ce("p",{style:{fontSize:13,color:"rgba(255,255,255,.45)",lineHeight:1.7,textAlign:"center",maxWidth:520,margin:"0 auto 20px"}},"SaaS and AdTech strategist with 6+ years across business development, product strategy, fundraising, and growth. Currently leading strategy and BD at a B2B advertising automation platform serving 7,000+ subscribers in 130+ countries. Previously founded and scaled a consumer gaming platform to $5M valuation. UK Global Talent Visa holder based in Reading, UK."),
+        ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Career Path"),
+        ce("div",{style:{marginBottom:20}},
+          ce(TL,{y:"2024 \u2013 Present",t:"CSO & Head of BD",c:"WASK Inc.",h:"Strategic turnaround, AI products, Series A"}),
+          ce(TL,{y:"2021 \u2013 2024",t:"Founder & CEO",c:"njoyKidz",h:"500K+ downloads, $5M valuation"}),
+          ce(TL,{y:"2020 \u2013 2023",t:"MSc MIS",c:"Dokuz Eylul University",h:"3.81 GPA, published research"}),
+          ce(TL,{y:"2020 \u2013 2021",t:"Business Development",c:"Uraz Patent"})
+        ),
+        ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"What I Bring"),
+        [{t:"Strategic Turnarounds",d:"Joined WASK when metrics were declining. Restructured pricing, launched an AI product suite, realigned GTM. Churned revenue dropped 42% and subscriber growth hit 20% YoY within 12 months."},{t:"GTM & Growth Execution",d:"Built go-to-market strategies across 130+ countries. From positioning and pricing to pipeline management in HubSpot and Apollo, I operate across the full funnel."},{t:"AI Product & CRM Operations",d:"Scoped and launched WASK\u2019s AI suite. Daily HubSpot power user for CRM, pipeline, and marketing automation. I bridge business strategy and technical execution."},{t:"Founder Perspective",d:"Built njoyKidz from thesis idea to 500K+ users, $525K raised, team of 20. That shapes how I prioritize, ship, and think about the full picture."}].map(function(x,i){return ce("div",{key:i,style:{padding:"11px 14px",marginBottom:5,borderRadius:9,background:"rgba(0,234,255,.015)",border:"1px solid rgba(0,234,255,.05)"}},ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:11.5,fontWeight:700,color:"#fff",marginBottom:2}},x.t),ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.42)",lineHeight:1.55}},x.d))}),
+        ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8,marginTop:20}},"Recognition"),
+        ce("div",{style:{display:"flex",flexDirection:"column",gap:4,marginBottom:20}},
+          ["Google Jury Member, Game & App Academy (2023 & 2024)","Published researcher, International MIS Conference (2023)","Quoted as industry expert in Bloomberg Businessweek","Panelist, Private Equity & Advisors Academy, Bogazici University","Speaker at HIT Games Conference and Show Turk TV","Mentored 60+ students across two cohorts"].map(function(r,i){return ce("div",{key:i,style:{fontSize:11.5,color:"rgba(255,255,255,.38)",lineHeight:1.45,paddingLeft:10,borderLeft:"2px solid rgba(0,234,255,.08)"}},r)})
+        ),
+        ce("button",{onClick:dlCV,style:{display:"flex",alignItems:"center",justifyContent:"center",gap:9,width:"100%",padding:"14px 18px",borderRadius:11,marginBottom:18,cursor:"pointer",background:"rgba(0,234,255,.04)",border:"1px solid rgba(0,234,255,.12)",color:"rgba(0,234,255,.6)"},onMouseEnter:function(e){e.currentTarget.style.background="rgba(0,234,255,.1)"},onMouseLeave:function(e){e.currentTarget.style.background="rgba(0,234,255,.04)"}},
+          ce("span",{dangerouslySetInnerHTML:{__html:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,234,255,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>'}}),
+          ce("span",{style:{fontSize:13,fontWeight:600,fontFamily:"Sora,sans-serif"}},"Download Full CV")
+        ),
+        ce("div",{style:{padding:18,borderRadius:12,background:"linear-gradient(135deg,rgba(0,234,255,.035),rgba(0,100,200,.015))",border:"1px solid rgba(0,234,255,.07)"}},
+          ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:14.5,fontWeight:700,marginBottom:2,textAlign:"center"}},"Let\u2019s talk."),
+          ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.32)",marginBottom:12,textAlign:"center"}},"Always open to the right conversation."),
+          ce("div",{style:{display:"flex",flexDirection:"column",gap:5,maxWidth:340,margin:"0 auto"}},
+            [[liSvg,"Connect on LinkedIn","https://www.linkedin.com/in/utku-bozkurtt/","#0077B5","0,119,181",true],[emSvg,"utku.bozkurt3@gmail.com","mailto:utku.bozkurt3@gmail.com","#EA4335","234,67,53",false],[phSvg,"+44 7435 583 335","tel:+447435583335","rgba(0,234,255,.55)","0,234,255",false]].map(function(it,i){
+              return ce("a",{key:i,href:it[2],target:it[5]?"_blank":undefined,rel:it[5]?"noopener noreferrer":undefined,style:{display:"flex",alignItems:"center",gap:9,padding:"10px 14px",borderRadius:9,background:"rgba("+it[4]+",.04)",border:"1px solid rgba("+it[4]+",.1)",textDecoration:"none",transition:"all .2s"},onMouseEnter:function(e){e.currentTarget.style.background="rgba("+it[4]+",.1)"},onMouseLeave:function(e){e.currentTarget.style.background="rgba("+it[4]+",.04)"}},
+                ce("span",{dangerouslySetInnerHTML:{__html:it[0]}}),
+                ce("span",{style:{fontSize:12.5,color:it[3],fontWeight:600,fontFamily:"Sora,sans-serif"}},it[1])
+              );
+            })
+          )
+        )
+      )
+    )
+  )
+);
+}
 
-        const tryOpenRouter = async (all) => {
-          const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${OR_KEY}`,
-              "Content-Type": "application/json",
-              "HTTP-Referer": window.location.href,
-            },
-            body: JSON.stringify({
-              model: "google/gemini-2.0-flash-exp:free",
-              messages: [
-                { role: "system", content: SYS },
-                ...all.map((m) => ({ role: m.role, content: m.content })),
-              ],
-              max_tokens: 800,
-              temperature: 0.7,
-            }),
-          });
-          const d = await r.json();
-          if (d.error) throw new Error(d.error.message || JSON.stringify(d.error));
-          return d.choices?.[0]?.message?.content || "Could you rephrase that?";
-        };
-
-        const tryGemini = async (all) => {
-          const h = all.map((m) => ({
-            role: m.role === "user" ? "user" : "model",
-            parts: [{ text: m.content }],
-          }));
-          const r = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                system_instruction: { parts: [{ text: SYS }] },
-                contents: h,
-                generationConfig: { temperature: 0.7, maxOutputTokens: 800 },
-              }),
-            }
-          );
-          const d = await r.json();
-          if (d.error) throw new Error(d.error.message || JSON.stringify(d.error));
-          return d?.candidates?.[0]?.content?.parts?.[0]?.text || "Could you rephrase that?";
-        };
-
-        const send = useCallback(
-          async (text) => {
-            if (!text.trim()) return;
-            stopSpeak();
-            const u = { role: "user", content: text.trim() };
-            const all = [...msgs, u];
-            setMsgs(all);
-            setInput("");
-            setLoading(true);
-            let reply = null;
-            const attempts = [tryAnthropic, tryOpenRouter, tryGemini];
-            for (const fn of attempts) {
-              try {
-                reply = await fn(all);
-                break;
-              } catch (e) {
-                console.warn("API attempt failed:", e.message);
-                continue;
-              }
-            }
-            if (!reply) {
-              reply = "All API connections are temporarily unavailable. Please try again in a moment.";
-            }
-            setMsgs((p) => [...p, { role: "assistant", content: reply }]);
-            setLoading(false);
-            if (voiceOn) speakText(reply);
-          },
-          [msgs, speakText, stopSpeak, voiceOn]
-        );
-
-        const hp = PHOTO?.length > 5;
-
-        return (
-          <div
-            style={{
-              minHeight: "100vh",
-              background: "#0a0e17",
-              fontFamily: "'DM Sans',sans-serif",
-              color: "#fff",
-            }}
-          >
-            <style>{`@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@keyframes typing{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}@keyframes glow{0%,100%{opacity:.5}50%{opacity:1}}*{box-sizing:border-box;margin:0;padding:0}::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(0,234,255,.12);border-radius:3px}`}</style>
-
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "11px 18px",
-                borderBottom: "1px solid rgba(0,234,255,.05)",
-                background: "rgba(10,14,23,.93)",
-                backdropFilter: "blur(20px)",
-                position: "sticky",
-                top: 0,
-                zIndex: 100,
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
-                <div
-                  style={{
-                    width: 5,
-                    height: 5,
-                    borderRadius: "50%",
-                    background: "#00eaff",
-                    boxShadow: "0 0 5px rgba(0,234,255,.45)",
-                    animation: "glow 3s ease-in-out infinite",
-                  }}
-                />
-                <span
-                  style={{
-                    fontFamily: "'Sora',sans-serif",
-                    fontSize: 12.5,
-                    fontWeight: 700,
-                  }}
-                >
-                  UTKU<span style={{ color: "#00eaff" }}>.twin</span>
-                </span>
-              </div>
-              <div style={{ display: "flex", gap: 3 }}>
-                {[["chat", "Chat"], ["about", "About"]].map(([id, l]) => (
-                  <button
-                    key={id}
-                    onClick={() => setTab(id)}
-                    style={{
-                      background: tab === id ? "rgba(0,234,255,.1)" : "transparent",
-                      border: `1px solid ${
-                        tab === id ? "rgba(0,234,255,.2)" : "rgba(255,255,255,.04)"
-                      }`,
-                      color: tab === id ? "#00eaff" : "rgba(255,255,255,.35)",
-                      padding: "4px 12px",
-                      borderRadius: 16,
-                      fontSize: 10,
-                      fontWeight: 600,
-                      fontFamily: "'Sora',sans-serif",
-                      cursor: "pointer",
-                      textTransform: "uppercase",
-                      letterSpacing: ".06em",
-                    }}
-                  >
-                    {l}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                height: "calc(100vh - 45px)",
-              }}
-            >
-              {tab === "chat" ? (
-                <>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      padding: "16px 18px",
-                      borderBottom: "1px solid rgba(0,234,255,.04)",
-                      background: "rgba(10,14,23,.5)",
-                    }}
-                  >
-                    <Avatar mo={mo} speaking={speaking} sz={120} />
-                    <div
-                      style={{
-                        fontFamily: "'Sora',sans-serif",
-                        fontSize: 12,
-                        fontWeight: 600,
-                        color: "rgba(0,234,255,.5)",
-                        marginTop: 8,
-                        letterSpacing: ".05em",
-                      }}
-                    >
-                      Utku's Twin
-                    </div>
-                    <button
-                      onClick={() => {
-                        if (speaking) stopSpeak();
-                        setVoiceOn((v) => !v);
-                      }}
-                      style={{
-                        marginTop: 8,
-                        padding: "5px 10px",
-                        borderRadius: 14,
-                        fontSize: 10,
-                        fontWeight: 600,
-                        fontFamily: "'Sora',sans-serif",
-                        background: voiceOn
-                          ? "rgba(0,234,255,.1)"
-                          : "rgba(255,255,255,.03)",
-                        border: `1px solid ${
-                          voiceOn ? "rgba(0,234,255,.25)" : "rgba(255,255,255,.06)"
-                        }`,
-                        color: voiceOn ? "#00eaff" : "rgba(255,255,255,.25)",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 4,
-                      }}
-                    >
-                      {voiceOn ? "🔊 Voice On" : "🔇 Voice Off"}
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      flex: 1,
-                      overflowY: "auto",
-                      padding: isMob ? "12px" : "16px 20px",
-                    }}
-                  >
-                    {msgs.length === 0 && (
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          height: "100%",
-                          animation: "fadeUp .4s ease-out",
-                        }}
-                      >
-                        <div style={{ textAlign: "center", padding: "30px 16px", maxWidth: 380 }}>
-                          <h2
-                            style={{
-                              fontFamily: "'Sora',sans-serif",
-                              fontSize: 15,
-                              fontWeight: 700,
-                              marginBottom: 4,
-                            }}
-                          >
-                            Ask me anything.
-                          </h2>
-                          <p
-                            style={{
-                              fontSize: 12,
-                              color: "rgba(255,255,255,.3)",
-                              lineHeight: 1.55,
-                            }}
-                          >
-                            I'm Utku's AI twin. Ask about experience, leadership, what I've
-                            built, or anything you'd cover in a first conversation.
-                          </p>
-                        </div>
-                      </div>
-                    )}
-                    {msgs.map((m, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: "flex",
-                          justifyContent: m.role === "user" ? "flex-end" : "flex-start",
-                          marginBottom: 10,
-                          animation: "fadeUp .2s ease-out",
-                        }}
-                      >
-                        <div
-                          style={{
-                            maxWidth: isMob ? "88%" : "70%",
-                            padding: "10px 14px",
-                            borderRadius: 12,
-                            fontSize: 13.5,
-                            lineHeight: 1.6,
-                            whiteSpace: "pre-wrap",
-                            background:
-                              m.role === "user"
-                                ? "linear-gradient(135deg,rgba(0,234,255,.09),rgba(0,100,200,.05))"
-                                : "rgba(255,255,255,.025)",
-                            border: `1px solid ${
-                              m.role === "user"
-                                ? "rgba(0,234,255,.12)"
-                                : "rgba(255,255,255,.04)"
-                            }`,
-                            color: m.role === "user" ? "#fff" : "rgba(255,255,255,.78)",
-                          }}
-                        >
-                          {m.role === "assistant" && (
-                            <div
-                              style={{
-                                fontSize: 8.5,
-                                color: "rgba(0,234,255,.35)",
-                                fontWeight: 700,
-                                fontFamily: "'Sora',sans-serif",
-                                marginBottom: 3,
-                                textTransform: "uppercase",
-                                letterSpacing: ".1em",
-                              }}
-                            >
-                              UTKU.twin
-                            </div>
-                          )}
-                          {m.content}
-                        </div>
-                      </div>
-                    ))}
-                    {loading && (
-                      <div style={{ display: "flex", marginBottom: 10 }}>
-                        <div
-                          style={{
-                            padding: "10px 14px",
-                            borderRadius: 12,
-                            background: "rgba(255,255,255,.025)",
-                            border: "1px solid rgba(255,255,255,.04)",
-                          }}
-                        >
-                          <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-                            {[0, 1, 2].map((i) => (
-                              <div
-                                key={i}
-                                style={{
-                                  width: 4,
-                                  height: 4,
-                                  borderRadius: "50%",
-                                  background: "rgba(0,234,255,.35)",
-                                  animation: `typing 1s ease-in-out ${i * 0.2}s infinite`,
-                                }}
-                              />
-                            ))}
-                            <span
-                              style={{
-                                fontSize: 10,
-                                color: "rgba(255,255,255,.15)",
-                                marginLeft: 4,
-                                fontStyle: "italic",
-                              }}
-                            >
-                              thinking...
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    <div ref={endRef} />
-                  </div>
-                  <div
-                    style={{
-                      padding: "8px 16px 12px",
-                      borderTop: "1px solid rgba(0,234,255,.04)",
-                      background: "rgba(10,14,23,.88)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: 5,
-                        alignItems: "flex-end",
-                        background: "rgba(255,255,255,.02)",
-                        border: "1px solid rgba(0,234,255,.06)",
-                        borderRadius: 10,
-                        padding: "3px 3px 3px 10px",
-                      }}
-                    >
-                      <textarea
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" && !e.shiftKey) {
-                            e.preventDefault();
-                            send(input);
-                          }
-                        }}
-                        placeholder="Ask Utku anything..."
-                        rows={1}
-                        style={{
-                          flex: 1,
-                          background: "transparent",
-                          border: "none",
-                          outline: "none",
-                          color: "#fff",
-                          fontSize: 13,
-                          fontFamily: "'DM Sans',sans-serif",
-                          resize: "none",
-                          padding: "7px 0",
-                          lineHeight: 1.5,
-                          maxHeight: 80,
-                        }}
-                        onInput={(e) => {
-                          e.target.style.height = "auto";
-                          e.target.style.height =
-                            Math.min(e.target.scrollHeight, 80) + "px";
-                        }}
-                      />
-                      <button
-                        onClick={() => send(input)}
-                        disabled={loading || !input.trim()}
-                        style={{
-                          width: 32,
-                          height: 32,
-                          borderRadius: 7,
-                          flexShrink: 0,
-                          background: input.trim()
-                            ? "rgba(0,234,255,.12)"
-                            : "rgba(255,255,255,.015)",
-                          border: `1px solid ${
-                            input.trim() ? "rgba(0,234,255,.25)" : "rgba(255,255,255,.03)"
-                          }`,
-                          color: input.trim() ? "#00eaff" : "rgba(255,255,255,.1)",
-                          cursor: input.trim() ? "pointer" : "default",
-                          fontSize: 14,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        ↑
-                      </button>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <div
-                  style={{
-                    flex: 1,
-                    overflowY: "auto",
-                    padding: isMob ? "16px 12px" : "22px 28px",
-                  }}
-                >
-                  <div style={{ maxWidth: 600, margin: "0 auto", animation: "fadeUp .3s ease-out" }}>
-                    <div
-                      style={{
-                        width: 160,
-                        height: 160,
-                        borderRadius: "50%",
-                        overflow: "hidden",
-                        margin: "0 auto 10px",
-                        border: "2.5px solid rgba(0,234,255,.15)",
-                        boxShadow: "0 0 24px rgba(0,234,255,.1)",
-                        background: "#111118",
-                      }}
-                    >
-                      <img
-                        src={PHOTO}
-                        alt="Utku Bozkurt"
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                      />
-                    </div>
-                    <div style={{ textAlign: "center", marginBottom: 16 }}>
-                      <span
-                        style={{
-                          fontFamily: "'Sora',sans-serif",
-                          fontSize: 12,
-                          fontWeight: 600,
-                          color: "rgba(0,234,255,.5)",
-                          letterSpacing: ".05em",
-                        }}
-                      >
-                        Utku's Twin
-                      </span>
-                    </div>
-
-                    <h2
-                      style={{
-                        fontFamily: "'Sora',sans-serif",
-                        fontSize: 20,
-                        fontWeight: 800,
-                        marginBottom: 5,
-                        textAlign: "center",
-                      }}
-                    >
-                      About <span style={{ color: "#00eaff" }}>Me</span>
-                    </h2>
-                    <p
-                      style={{
-                        fontSize: 13,
-                        color: "rgba(255,255,255,.45)",
-                        lineHeight: 1.7,
-                        textAlign: "center",
-                        maxWidth: 520,
-                        margin: "0 auto 20px",
-                      }}
-                    >
-                      SaaS and AdTech strategist with 6+ years across business development,
-                      product strategy, fundraising, and growth. Currently leading strategy
-                      and BD at a B2B advertising automation platform serving 7,000+
-                      subscribers in 130+ countries. Previously founded and scaled a consumer
-                      gaming platform to $5M valuation. UK Global Talent Visa holder based in
-                      Reading, UK.
-                    </p>
-
-                    <h3
-                      style={{
-                        fontFamily: "'Sora',sans-serif",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        color: "#00eaff",
-                        marginBottom: 8,
-                      }}
-                    >
-                      Career Path
-                    </h3>
-                    <div style={{ marginBottom: 20 }}>
-                      <TL
-                        y="2024 – Present"
-                        t="CSO & Head of BD"
-                        c="WASK Inc."
-                        h="Strategic turnaround, AI products, Series A"
-                      />
-                      <TL
-                        y="2021 – 2024"
-                        t="Founder & CEO"
-                        c="njoyKidz"
-                        h="500K+ downloads, $5M valuation"
-                      />
-                      <TL
-                        y="2020 – 2023"
-                        t="MSc MIS"
-                        c="Dokuz Eylul University"
-                        h="3.81 GPA, published research"
-                      />
-                      <TL y="2020 – 2021" t="Business Development" c="Uraz Patent" />
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: "'Sora',sans-serif",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        color: "#00eaff",
-                        marginBottom: 8,
-                      }}
-                    >
-                      What I Bring
-                    </h3>
-                    {[
-                      {
-                        t: "Strategic Turnarounds",
-                        d: "Joined WASK when metrics were declining. Restructured pricing, launched an AI product suite, realigned GTM. Churned revenue dropped 42% and subscriber growth hit 20% YoY within 12 months.",
-                      },
-                      {
-                        t: "GTM & Growth Execution",
-                        d: "Built go-to-market strategies across 130+ countries. From positioning and pricing to pipeline management in HubSpot and Apollo, I operate across the full funnel.",
-                      },
-                      {
-                        t: "AI Product & CRM Operations",
-                        d: "Scoped and launched WASK's AI suite. Daily HubSpot power user for CRM, pipeline, and marketing automation. I bridge business strategy and technical execution.",
-                      },
-                      {
-                        t: "Founder Perspective",
-                        d: "Built njoyKidz from thesis idea to 500K+ users, $525K raised, team of 20. That shapes how I prioritize, ship, and think about the full picture.",
-                      },
-                    ].map((x, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          padding: "11px 14px",
-                          marginBottom: 5,
-                          borderRadius: 9,
-                          background: "rgba(0,234,255,.015)",
-                          border: "1px solid rgba(0,234,255,.05)",
-                        }}
-                      >
-                        <div
-                          style={{
-                            fontFamily: "'Sora',sans-serif",
-                            fontSize: 11.5,
-                            fontWeight: 700,
-                            color: "#fff",
-                            marginBottom: 2,
-                          }}
-                        >
-                          {x.t}
-                        </div>
-                        <div
-                          style={{
-                            fontSize: 11.5,
-                            color: "rgba(255,255,255,.42)",
-                            lineHeight: 1.55,
-                          }}
-                        >
-                          {x.d}
-                        </div>
-                      </div>
-                    ))}
-
-                    <h3
-                      style={{
-                        fontFamily: "'Sora',sans-serif",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        color: "#00eaff",
-                        marginBottom: 8,
-                        marginTop: 20,
-                      }}
-                    >
-                      Recognition
-                    </h3>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 4,
-                        marginBottom: 20,
-                      }}
-                    >
-                      {[
-                        "Google Jury Member, Game & App Academy (2023 & 2024)",
-                        "Published researcher, International MIS Conference (2023)",
-                        "Quoted as industry expert in Bloomberg Businessweek",
-                        "Panelist, Private Equity & Advisors Academy, Bogazici University",
-                        "Speaker at HIT Games Conference and Show Turk TV",
-                        "Mentored 60+ students across two cohorts",
-                      ].map((r, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            fontSize: 11.5,
-                            color: "rgba(255,255,255,.38)",
-                            lineHeight: 1.45,
-                            paddingLeft: 10,
-                            borderLeft: "2px solid rgba(0,234,255,.08)",
-                          }}
-                        >
-                          {r}
-                        </div>
-                      ))}
-                    </div>
-
-                    <button
-                      onClick={downloadCV}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: 9,
-                        width: "100%",
-                        padding: "14px 18px",
-                        borderRadius: 11,
-                        marginBottom: 18,
-                        cursor: "pointer",
-                        background: "rgba(0,234,255,.04)",
-                        border: "1px solid rgba(0,234,255,.12)",
-                        transition: "all .2s",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "rgba(0,234,255,.1)";
-                        e.currentTarget.style.borderColor = "rgba(0,234,255,.25)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "rgba(0,234,255,.04)";
-                        e.currentTarget.style.borderColor = "rgba(0,234,255,.12)";
-                      }}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="rgba(0,234,255,.6)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                        <line x1="12" y1="18" x2="12" y2="12" />
-                        <polyline points="9 15 12 18 15 15" />
-                      </svg>
-                      <span
-                        style={{
-                          fontSize: 13,
-                          color: "rgba(0,234,255,.6)",
-                          fontWeight: 600,
-                          fontFamily: "'Sora',sans-serif",
-                        }}
-                      >
-                        Download Full CV
-                      </span>
-                    </button>
-
-                    <div
-                      style={{
-                        padding: 18,
-                        borderRadius: 12,
-                        background:
-                          "linear-gradient(135deg,rgba(0,234,255,.035),rgba(0,100,200,.015))",
-                        border: "1px solid rgba(0,234,255,.07)",
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontFamily: "'Sora',sans-serif",
-                          fontSize: 14.5,
-                          fontWeight: 700,
-                          marginBottom: 2,
-                          textAlign: "center",
-                        }}
-                      >
-                        Let's talk.
-                      </div>
-                      <div
-                        style={{
-                          fontSize: 11.5,
-                          color: "rgba(255,255,255,.32)",
-                          marginBottom: 12,
-                          textAlign: "center",
-                        }}
-                      >
-                        Always open to the right conversation.
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 5,
-                          maxWidth: 340,
-                          margin: "0 auto",
-                        }}
-                      >
-                        {[
-                          [
-                            liSvg,
-                            "Connect on LinkedIn",
-                            "https://www.linkedin.com/in/utku-bozkurtt/",
-                            "#0077B5",
-                            "0,119,181",
-                            true,
-                          ],
-                          [
-                            emSvg,
-                            "utku.bozkurt3@gmail.com",
-                            "mailto:utku.bozkurt3@gmail.com",
-                            "#EA4335",
-                            "234,67,53",
-                            false,
-                          ],
-                          [
-                            phSvg,
-                            "+44 7435 583 335",
-                            "tel:+447435583335",
-                            "rgba(0,234,255,.55)",
-                            "0,234,255",
-                            false,
-                          ],
-                        ].map(([svg, label, href, clr, acc, ext], i) => (
-                          <a
-                            key={i}
-                            href={href}
-                            target={ext ? "_blank" : undefined}
-                            rel={ext ? "noopener noreferrer" : undefined}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 9,
-                              padding: "10px 14px",
-                              borderRadius: 9,
-                              background: `rgba(${acc},.04)`,
-                              border: `1px solid rgba(${acc},.1)`,
-                              textDecoration: "none",
-                              transition: "all .2s",
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.background = `rgba(${acc},.1)`;
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.background = `rgba(${acc},.04)`;
-                            }}
-                          >
-                            <span dangerouslySetInnerHTML={{ __html: svg }} />
-                            <span
-                              style={{
-                                fontSize: 12.5,
-                                color: clr,
-                                fontWeight: 600,
-                                fontFamily: "'Sora',sans-serif",
-                              }}
-                            >
-                              {label}
-                            </span>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        );
-      }
-
-      const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(<App />);
-    </script>
-  </body>
+ReactDOM.render(ce(App),document.getElementById("root"));
+</script>
+</body>
 </html>
