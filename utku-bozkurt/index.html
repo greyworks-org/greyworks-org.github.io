@@ -1014,8 +1014,6 @@
     </div>
 
     <script>
-      const PUBLIC_MODE = true;
-
       const tags = [
         "Strategic Planning",
         "Revenue Growth",
@@ -1137,11 +1135,12 @@ Facts:
 
       const state = {
         messages: [],
-        voiceEnabled: false,
+        voiceEnabled: true,
         loading: false,
         activeTab: "chat",
         speaking: false,
-        currentAudio: null
+        currentAudio: null,
+        currentUtterance: null
       };
 
       const elements = {
@@ -1232,11 +1231,58 @@ Facts:
           state.currentAudio.pause();
           state.currentAudio = null;
         }
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel();
+        }
+        state.currentUtterance = null;
         setSpeaking(false);
       }
 
-      function speakText() {
-        setNotice("Voice is disabled on the public page while the private server-side version is prepared.");
+      function pickSpeechVoice() {
+        if (!("speechSynthesis" in window)) return null;
+        const voices = window.speechSynthesis.getVoices();
+        if (!voices.length) return null;
+        return (
+          voices.find((voice) => /en-?gb/i.test(voice.lang) && /male|daniel|thomas|fred/i.test(voice.name)) ||
+          voices.find((voice) => /en-?gb/i.test(voice.lang)) ||
+          voices.find((voice) => /en/i.test(voice.lang)) ||
+          voices[0]
+        );
+      }
+
+      function speakText(text) {
+        if (!state.voiceEnabled || !("speechSynthesis" in window)) return;
+
+        stopAudio();
+        setSpeaking(true);
+
+        try {
+          const utterance = new SpeechSynthesisUtterance(text);
+          const voice = pickSpeechVoice();
+          if (voice) {
+            utterance.voice = voice;
+            utterance.lang = voice.lang;
+          } else {
+            utterance.lang = "en-GB";
+          }
+          utterance.rate = 1;
+          utterance.pitch = 1;
+          utterance.onend = () => {
+            state.currentUtterance = null;
+            setSpeaking(false);
+          };
+          utterance.onerror = () => {
+            state.currentUtterance = null;
+            setSpeaking(false);
+            setNotice("Voice playback is unavailable on this browser right now.", "error");
+          };
+          state.currentUtterance = utterance;
+          window.speechSynthesis.speak(utterance);
+        } catch (error) {
+          console.error(error);
+          setSpeaking(false);
+          setNotice("Voice playback is unavailable on this browser right now.", "error");
+        }
       }
 
       function buildDemoAnswer(text) {
@@ -1291,7 +1337,7 @@ Facts:
           content.innerHTML = escapeHtml(message.content).replace(/\n/g, "<br>");
           bubble.appendChild(content);
 
-          if (message.role === "assistant" && state.voiceEnabled) {
+          if (message.role === "assistant") {
             const actions = document.createElement("div");
             actions.className = "bubble-actions";
             const playButton = document.createElement("button");
@@ -1391,16 +1437,34 @@ Facts:
 
         elements.send.addEventListener("click", sendMessage);
 
-        elements.voiceToggle.classList.remove("active");
-        elements.voiceToggle.textContent = "Voice Private";
-        elements.voiceToggle.disabled = true;
-        elements.voiceToggle.setAttribute("aria-disabled", "true");
+        elements.voiceToggle.classList.add("active");
+        elements.voiceToggle.textContent = "Voice On";
+        elements.voiceToggle.disabled = false;
+        elements.voiceToggle.removeAttribute("aria-disabled");
+
+        elements.voiceToggle.addEventListener("click", () => {
+          state.voiceEnabled = !state.voiceEnabled;
+          elements.voiceToggle.classList.toggle("active", state.voiceEnabled);
+          elements.voiceToggle.textContent = state.voiceEnabled ? "Voice On" : "Voice Off";
+          if (!state.voiceEnabled) {
+            stopAudio();
+            setNotice("Voice disabled. Replies will stay text-only until you turn it back on.");
+          } else {
+            setNotice("Voice enabled. Assistant replies will play automatically when available.");
+          }
+        });
+
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.onvoiceschanged = () => {
+            pickSpeechVoice();
+          };
+        }
 
         elements.tabButtons.forEach((button) => {
           button.addEventListener("click", () => setActiveTab(button.dataset.tabTarget));
         });
 
-        setNotice("Public page is in private mode. Live AI and voice were disabled to keep API keys secret.");
+        setNotice("Voice enabled. Assistant replies will play automatically when available.");
       }
 
       boot();
