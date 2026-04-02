@@ -216,7 +216,7 @@ var send=uc(function(text){
   var all=msgs.concat([u]);
   setMsgs(all);setInput("");setLoading(true);
   var h=all.map(function(m){return{role:m.role==="user"?"user":"model",parts:[{text:m.content}]}});
-  fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key="+GKEY,{
+  fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="+GKEY,{
     method:"POST",headers:{"Content-Type":"application/json"},
     body:JSON.stringify({system_instruction:{parts:[{text:SYS}]},contents:h,generationConfig:{temperature:.7,maxOutputTokens:800}})
   }).then(function(r){return r.json()}).then(function(d){
