@@ -21,17 +21,15 @@ body{background:#0a0e17;font-family:'DM Sans',sans-serif;color:#fff;overflow:hid
 <div id="root"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>window.__UTKU_TWIN_API__ = "https://dobby.greyworks.org";</script>
 <script>
 var ce=React.createElement,us=React.useState,ur=React.useRef,ue=React.useEffect,uc=React.useCallback;
 
-var API_BASE=(window.__UTKU_TWIN_API__||"").replace(/\/$/,"");
-var API_READY=!!API_BASE;
-var VID="ZXx7nI6BzemJq3Qy0ZUL";
-var PHOTO="https://greyworks.org/utku-profile.jpeg";
-function apiUrl(path){return(API_BASE||"")+path}
-function b64ToBuf(b64){var bin=atob(b64),len=bin.length,bytes=new Uint8Array(len);for(var i=0;i<len;i++)bytes[i]=bin.charCodeAt(i);return bytes.buffer}
-
-var SYS="You are Utku Bozkurt's AI digital twin. Answer exactly how Utku would on a recruiter call. First person only. 30 years old, male, Reading UK.\n\nVOICE:\n- Talk like a real professional in conversation. Short, direct.\n- 1-3 short paragraphs max. One if that covers it.\n- Never use em dashes, bullet points, or lists.\n- When someone greets casually, be warm but professional. Briefly say who you are and ask what they'd like to know.\n- Reference metrics only when directly relevant.\n- If unknown: \"That's best discussed live. Happy to connect.\"\n\nBACKGROUND:\nCURRENT: CSO & Head of BD, WASK Inc. (May 2024-Present). B2B AdTech SaaS. AI-powered ad automation. $2.1M ARR, 85% gross margins, 4.8x LTV/CAC, 7,000+ subscribers, 130+ countries. Led strategy overhaul. BD team of 6, 20.2% YoY subscriber growth. Major product launch cut churn rate 7%, churned revenue 42% in 12 months. 10+ strategic partnerships. Fundraise $1M+. AI suite: Smart Recommendations, Marketing Agent, AI Creative Tools. Series A: $1.9M via SAFEs. Daily: HubSpot, Apollo.io, LinkedIn Sales Nav, Google/Meta Ads, Looker, GA4, Jira, Zapier, n8n.\nPREVIOUS: Founder & CEO, njoyKidz (Jun 2021-May 2024). Child-safe gaming. 500K+ organic downloads, 30+ apps, no paid marketing. $525K raised, $5M peak val. Team of 20. Google Play Teacher Approved.\nEARLIER: BD Specialist, Uraz Patent (Feb 2020-Jan 2021).\nEDUCATION: MSc MIS, Dokuz Eylul (3.81/4.0). BSc Business Admin, Ege (3.20/4.0), Erasmus+ Spain.\nCERTS: HubSpot Sales (2024), Apple Search Ads (2022), HubSpot Inbound (2020), IELTS C1.\nRECOGNITION: UK Global Talent Visa. Google Jury Member (2023,2024). Published researcher IMISC2023. Bloomberg Businessweek quote. Bogazici panelist.\nSTRENGTHS: GTM, pricing, churn reduction, partnerships, investor relations, product lifecycle, AI product strategy, CRM/HubSpot, competitive analysis, team leadership.\nLANGUAGES: Turkish (native), English (C1), Spanish (intermediate).";
+function normApiBase(value){return String(value||"").trim().replace(/\/$/,"")}
+var INJECTED_API_BASE=normApiBase(window.__UTKU_TWIN_API__||"");
+var SAME_ORIGIN_API_BASE=normApiBase(window.location.origin||"");
+var PHOTO="/utku-profile.jpeg";
+function apiUrlFor(base,path){return(base||"")+path}
 
 var liSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
 var emSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#EA4335"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>';
@@ -160,71 +158,46 @@ function App(){
 var _m=us([]),msgs=_m[0],setMsgs=_m[1];
 var _i=us(""),input=_i[0],setInput=_i[1];
 var _l=us(false),loading=_l[0],setLoading=_l[1];
-var _s=us(false),speaking=_s[0],setSpeaking=_s[1];
-var _o=us(0),mo=_o[0],setMo=_o[1];
+var speaking=false;
+var mo=0;
 var _t=us("chat"),tab=_t[0],setTab=_t[1];
-var _v=us(true),voiceOn=_v[0],setVoiceOn=_v[1];
 var _mb=us(false),isMob=_mb[0],setIsMob=_mb[1];
 var _e=us(""),errMsg=_e[0],setErr=_e[1];
-var endRef=ur(null),acRef=ur(null),afRef=ur(null),srcRef=ur(null);
+var _ab=us(INJECTED_API_BASE),apiBase=_ab[0],setApiBase=_ab[1];
+var _as=us(INJECTED_API_BASE?"checking":"offline"),apiStatus=_as[0],setApiStatus=_as[1];
+var endRef=ur(null);
+var apiReady=apiStatus==="ready"&&!!apiBase;
 
 ue(function(){var c=function(){setIsMob(window.innerWidth<768)};c();window.addEventListener("resize",c);return function(){window.removeEventListener("resize",c)}},[]);
 ue(function(){endRef.current&&endRef.current.scrollIntoView({behavior:"smooth"})},[msgs,loading]);
-
-var stopSpeak=uc(function(){
-  if(srcRef.current)try{srcRef.current.stop()}catch(x){}
-  cancelAnimationFrame(afRef.current);setSpeaking(false);setMo(0);srcRef.current=null;
+ue(function(){
+  var cancelled=false;
+  var fallbackBase=INJECTED_API_BASE||SAME_ORIGIN_API_BASE;
+  if(!fallbackBase){setApiStatus("offline");setApiBase("");return function(){cancelled=true}};
+  setApiBase(fallbackBase);
+  setApiStatus("checking");
+  fetch(apiUrlFor(fallbackBase,"/healthz"),{headers:{"accept":"application/json"}}).then(function(r){
+    if(!r.ok)throw new Error("health "+r.status);
+    return r.json().catch(function(){return {}})
+  }).then(function(d){
+    if(cancelled)return;
+    if(d&&d.ok&&(d.chat_configured||d.gemini_configured)){setApiBase(fallbackBase);setApiStatus("ready");return}
+    setApiStatus("offline");
+  }).catch(function(){if(!cancelled)setApiStatus("offline")});
+  return function(){cancelled=true};
 },[]);
 
-var speakText=uc(function(text){
-  if(!voiceOn||!API_READY)return;
-  fetch(apiUrl("/v1/digital-twin/speak"),{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({text:text.slice(0,2400)})
-  }).then(function(r){
-    return r.json().catch(function(){return {}}).then(function(d){
-      if(!r.ok||!d.audio_base64||!d.mime_type)throw new Error(d.message||("Voice "+r.status));
-      return b64ToBuf(d.audio_base64);
-    })
-  }).then(function(buf){
-    if(!acRef.current)acRef.current=new(window.AudioContext||window.webkitAudioContext)();
-    var ctx=acRef.current;
-    var resume=ctx.state==="suspended"?ctx.resume():Promise.resolve();
-    return resume.then(function(){return ctx.decodeAudioData(buf)}).then(function(dec){
-      var src=ctx.createBufferSource();src.buffer=dec;
-      var an=ctx.createAnalyser();an.fftSize=512;an.smoothingTimeConstant=0.7;
-      src.connect(an);an.connect(ctx.destination);
-      var da=new Uint8Array(an.frequencyBinCount);
-      if(srcRef.current)try{srcRef.current.stop()}catch(x){}
-      srcRef.current=src;setSpeaking(true);
-      var tick=function(){
-        an.getByteFrequencyData(da);
-        // Focus on voice frequencies (85-300Hz range for fundamental, harmonics up to ~3kHz)
-        var low=0,mid=0;
-        for(var i=1;i<16;i++)low+=da[i]; low/=15;
-        for(var i=16;i<40;i++)mid+=da[i]; mid/=24;
-        var val=(low*0.6+mid*0.4)/90;
-        setMo(Math.min(Math.max(val,0),1));
-        afRef.current=requestAnimationFrame(tick);
-      };
-      src.onended=function(){cancelAnimationFrame(afRef.current);setSpeaking(false);setMo(0);srcRef.current=null};
-      src.start(0);tick();
-    });
-  }).catch(function(x){console.warn("Voice:",x)});
-},[voiceOn]);
-
 var send=uc(function(text){
-  if(!text.trim())return;stopSpeak();setErr("");
-  if(!API_READY){
-    setMsgs(function(p){return p.concat([{role:"assistant",content:"The secure chat service is temporarily unavailable while the private backend is being configured. Please reach out directly through LinkedIn, email, or phone for now."}])});
+  if(!text.trim())return;setErr("");
+  if(!apiReady){
+    setMsgs(function(p){return p.concat([{role:"assistant",content:"The recruiter chat is temporarily offline while the private backend is being connected. Please use LinkedIn, email, or phone in the About tab for a direct response."}])});
     return;
   }
   var u={role:"user",content:text.trim()};
   var all=msgs.concat([u]);
   setMsgs(all);setInput("");setLoading(true);
   var h=all.map(function(m){return{role:m.role,text:m.content}});
-  fetch(apiUrl("/v1/digital-twin/chat"),{
+  fetch(apiUrlFor(apiBase,"/v1/digital-twin/chat"),{
     method:"POST",headers:{"Content-Type":"application/json"},
     body:JSON.stringify({text:text.trim(),history:h})
   }).then(function(r){
@@ -236,13 +209,20 @@ var send=uc(function(text){
     var reply=d.answer||"Could you rephrase that?";
     setMsgs(function(p){return p.concat([{role:"assistant",content:reply}])});
     setLoading(false);
-    if(voiceOn&&d.voice_available!==false)speakText(reply);
   }).catch(function(x){
-    setMsgs(function(p){return p.concat([{role:"assistant",content:"Something went wrong. Please try again."}])});
+    setApiStatus("offline");
+    setMsgs(function(p){return p.concat([{role:"assistant",content:"The recruiter chat is temporarily offline. Please try again later or use LinkedIn, email, or phone in the About tab if you need a direct response."}])});
     setLoading(false);
     setErr(x.message||"Unknown error");
   });
-},[msgs,speakText,stopSpeak,voiceOn]);
+},[apiBase,apiReady,msgs]);
+
+var statusLabel=apiStatus==="ready"?"Text chat connected":apiStatus==="checking"?"Checking secure backend":"Text chat temporarily offline";
+var statusBackground=apiStatus==="ready"?"rgba(0,234,255,.08)":apiStatus==="checking"?"rgba(120,190,255,.08)":"rgba(255,180,120,.08)";
+var statusBorder=apiStatus==="ready"?"rgba(0,234,255,.18)":apiStatus==="checking"?"rgba(120,190,255,.18)":"rgba(255,180,120,.16)";
+var statusColor=apiStatus==="ready"?"#00eaff":apiStatus==="checking"?"rgba(170,220,255,.88)":"rgba(255,205,160,.82)";
+var introBody=apiReady?"I'm Utku's AI twin for recruiter-style conversations. Ask about experience, leadership, GTM, fundraising, or product work.":apiStatus==="checking"?"The page is checking whether the secure recruiter-chat backend is reachable.":"The public page is in secure mode until the private text backend is live. For now, use the About tab for LinkedIn, email, and phone.";
+var inputPlaceholder=apiReady?"Ask about experience, leadership, or product work...":apiStatus==="checking"?"Checking secure backend...":"Recruiter chat temporarily offline";
 
 // ━━━ RENDER ━━━
 return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM Sans',sans-serif",color:"#fff"}},
@@ -268,14 +248,14 @@ return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM S
       ce("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",padding:"20px 18px 16px",borderBottom:"1px solid rgba(0,234,255,.04)",background:"rgba(10,14,23,.5)"}},
         ce(Av,{mo:mo,speaking:speaking,sz:150}),
         ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:600,color:"rgba(0,234,255,.5)",marginTop:10,letterSpacing:".05em"}},"Utku's Twin"),
-        ce("button",{onClick:function(){if(speaking)stopSpeak();setVoiceOn(function(v){return!v})},style:{marginTop:8,padding:"6px 14px",borderRadius:16,fontSize:10,fontWeight:600,fontFamily:"Sora,sans-serif",background:voiceOn?"rgba(0,234,255,.1)":"rgba(255,255,255,.03)",border:"1px solid "+(voiceOn?"rgba(0,234,255,.25)":"rgba(255,255,255,.06)"),color:voiceOn?"#00eaff":"rgba(255,255,255,.25)",cursor:"pointer",display:"flex",alignItems:"center",gap:5}},voiceOn?"\uD83D\uDD0A Voice On":"\uD83D\uDD07 Voice Off")
+        ce("div",{style:{marginTop:8,padding:"6px 14px",borderRadius:16,fontSize:10,fontWeight:600,fontFamily:"Sora,sans-serif",background:statusBackground,border:"1px solid "+statusBorder,color:statusColor,letterSpacing:".04em",textTransform:"uppercase"}},statusLabel)
       ),
       // Messages
       ce("div",{style:{flex:1,overflowY:"auto",padding:isMob?"12px":"16px 20px"}},
         msgs.length===0&&ce("div",{style:{display:"flex",alignItems:"center",justifyContent:"center",height:"100%",animation:"fadeUp .4s ease-out"}},
         ce("div",{style:{textAlign:"center",padding:"20px 16px",maxWidth:380}},
-          ce("h2",{style:{fontFamily:"Sora,sans-serif",fontSize:15,fontWeight:700,marginBottom:4}},"Ask me anything."),
-          ce("p",{style:{fontSize:12,color:"rgba(255,255,255,.3)",lineHeight:1.55}},API_READY?"I'm Utku's AI twin. Ask about experience, leadership, what I've built, or anything you'd cover in a first conversation.":"The public page is running in secure mode. Chat will come back once the private backend is connected.")
+          ce("h2",{style:{fontFamily:"Sora,sans-serif",fontSize:15,fontWeight:700,marginBottom:4}},"Ask about experience, leadership, or what I've built."),
+          ce("p",{style:{fontSize:12,color:"rgba(255,255,255,.3)",lineHeight:1.55}},introBody)
         )
       ),
         msgs.map(function(m,i){
@@ -293,8 +273,8 @@ return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM S
       // Input
       ce("div",{style:{padding:"8px 16px 12px",borderTop:"1px solid rgba(0,234,255,.04)",background:"rgba(10,14,23,.88)"}},
         ce("div",{style:{display:"flex",gap:5,alignItems:"flex-end",background:"rgba(255,255,255,.02)",border:"1px solid rgba(0,234,255,.06)",borderRadius:10,padding:"3px 3px 3px 10px"}},
-          ce("textarea",{value:input,onChange:function(e){setInput(e.target.value)},onKeyDown:function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(input)}},placeholder:API_READY?"Ask Utku anything...":"Secure backend not connected yet",disabled:!API_READY,rows:1,style:{flex:1,background:"transparent",border:"none",outline:"none",color:API_READY?"#fff":"rgba(255,255,255,.3)",fontSize:13,fontFamily:"'DM Sans',sans-serif",resize:"none",padding:"7px 0",lineHeight:1.5,maxHeight:80},onInput:function(e){e.target.style.height="auto";e.target.style.height=Math.min(e.target.scrollHeight,80)+"px"}}),
-          ce("button",{onClick:function(){send(input)},disabled:loading||!input.trim()||!API_READY,style:{width:32,height:32,borderRadius:7,flexShrink:0,background:input.trim()&&API_READY?"rgba(0,234,255,.12)":"rgba(255,255,255,.015)",border:"1px solid "+(input.trim()&&API_READY?"rgba(0,234,255,.25)":"rgba(255,255,255,.03)"),color:input.trim()&&API_READY?"#00eaff":"rgba(255,255,255,.1)",cursor:input.trim()&&API_READY?"pointer":"default",fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}},"\u2191")
+          ce("textarea",{value:input,onChange:function(e){setInput(e.target.value)},onKeyDown:function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(input)}},placeholder:inputPlaceholder,disabled:!apiReady,rows:1,style:{flex:1,background:"transparent",border:"none",outline:"none",color:apiReady?"#fff":"rgba(255,255,255,.3)",fontSize:13,fontFamily:"'DM Sans',sans-serif",resize:"none",padding:"7px 0",lineHeight:1.5,maxHeight:80},onInput:function(e){e.target.style.height="auto";e.target.style.height=Math.min(e.target.scrollHeight,80)+"px"}}),
+          ce("button",{onClick:function(){send(input)},disabled:loading||!input.trim()||!apiReady,style:{width:32,height:32,borderRadius:7,flexShrink:0,background:input.trim()&&apiReady?"rgba(0,234,255,.12)":"rgba(255,255,255,.015)",border:"1px solid "+(input.trim()&&apiReady?"rgba(0,234,255,.25)":"rgba(255,255,255,.03)"),color:input.trim()&&apiReady?"#00eaff":"rgba(255,255,255,.1)",cursor:input.trim()&&apiReady?"pointer":"default",fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}},"\u2191")
         )
       )
     )
