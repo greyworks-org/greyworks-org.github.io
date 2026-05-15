@@ -31,7 +31,7 @@ check_code "/healthz"
 check_code "/utku-bozkurt/"
 check_code "/utku-profile.jpeg"
 check_contains "/healthz" '"chat_configured":true'
-check_contains "/utku-bozkurt/" "Utku's Twin"
-check_contains "/utku-bozkurt/" "Ask about experience, leadership, or what I've built\\."
+check_contains "/utku-bozkurt/" "Strategy & Business Development Leader"
+check_contains "/utku-bozkurt/" "Ask about leadership, GTM, fundraising, partnerships, AI product work, or role fit."
 
 printf '\nGreyworks twin public smoke check passed for %s\n' "$BASE_URL"
