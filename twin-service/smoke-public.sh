@@ -32,6 +32,18 @@ check_code "/utku-bozkurt/"
 check_code "/utku-profile.jpeg"
 check_contains "/healthz" '"chat_configured":true'
 check_contains "/utku-bozkurt/" "Strategy & Business Development Leader"
-check_contains "/utku-bozkurt/" "Ask about leadership, GTM, fundraising, partnerships, AI product work, or role fit."
+check_contains "/utku-bozkurt/" "Recruiter FAQ"
+check_contains "/utku-bozkurt/" "Quick recruiter snapshot"
+
+chat_code="$($CURL_BIN -sSL -o /tmp/greyworks-twin-chat.json -w "%{http_code}" -H 'content-type: application/json' --data '{"text":"Summarize Utku for a recruiter in two lines."}' "${BASE_URL}/v1/digital-twin/chat")"
+if [[ "$chat_code" != "200" ]]; then
+  printf 'FAIL  /v1/digital-twin/chat -> expected 200, got %s\n' "$chat_code" >&2
+  exit 1
+fi
+if ! "$RG_BIN" -q '"answer":' /tmp/greyworks-twin-chat.json; then
+  printf 'FAIL  /v1/digital-twin/chat -> missing answer field\n' >&2
+  exit 1
+fi
+printf 'OK    /v1/digital-twin/chat -> 200 with answer\n'
 
 printf '\nGreyworks twin public smoke check passed for %s\n' "$BASE_URL"
