@@ -34,6 +34,8 @@ test('GET /utku-bozkurt/ serves the public recruiter page shell', async () => {
   assert.match(response.headers.get('content-type') || '', /text\/html/);
   assert.match(html, /Strategy & business development leader for SaaS, AdTech, and AI product growth/);
   assert.match(html, /Quick recruiter snapshot/);
+  assert.match(html, /Recruiter FAQ/);
+  assert.match(html, /Rolling 6-week notice/);
 
   await app.close();
 });

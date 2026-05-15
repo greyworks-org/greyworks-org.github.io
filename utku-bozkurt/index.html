@@ -26,8 +26,11 @@ body{background:#0a0e17;font-family:'DM Sans',sans-serif;color:#fff;overflow:hid
 var ce=React.createElement,us=React.useState,ur=React.useRef,ue=React.useEffect,uc=React.useCallback;
 
 function normApiBase(value){return String(value||"").trim().replace(/\/$/,"")}
+function uniqueBases(list){return list.filter(Boolean).filter(function(base,idx,all){return all.indexOf(base)===idx})}
 var INJECTED_API_BASE=normApiBase(window.__UTKU_TWIN_API__||"");
 var SAME_ORIGIN_API_BASE=normApiBase(window.location.origin||"");
+var EXTRA_API_BASES=Array.isArray(window.__UTKU_TWIN_FALLBACKS__)?window.__UTKU_TWIN_FALLBACKS__.map(normApiBase):[];
+var API_BASE_CANDIDATES=uniqueBases([INJECTED_API_BASE].concat(EXTRA_API_BASES).concat([SAME_ORIGIN_API_BASE]));
 var PHOTO="/utku-profile.jpeg";
 function apiUrlFor(base,path){return(base||"")+path}
 
@@ -167,7 +170,8 @@ var _t=us(getInitialTab()),tab=_t[0],setTab=_t[1];
 var _mb=us(false),isMob=_mb[0],setIsMob=_mb[1];
 var _e=us(""),errMsg=_e[0],setErr=_e[1];
 var _ab=us(INJECTED_API_BASE),apiBase=_ab[0],setApiBase=_ab[1];
-var _as=us((INJECTED_API_BASE||SAME_ORIGIN_API_BASE)?"checking":"offline"),apiStatus=_as[0],setApiStatus=_as[1];
+var _as=us(API_BASE_CANDIDATES.length?"checking":"offline"),apiStatus=_as[0],setApiStatus=_as[1];
+var _ad=us(""),apiDetail=_ad[0],setApiDetail=_ad[1];
 var endRef=ur(null);
 var apiReady=apiStatus==="ready"&&!!apiBase;
 var contactItems=[
@@ -182,14 +186,20 @@ var recruiterSnapshot=[
   ["Track record","6+ years across SaaS, AdTech, growth, and fundraising"],
   ["Founder history","Built njoyKidz to 500K+ downloads and $5M valuation"],
   ["Location","Reading, UK"],
+  ["Availability","Rolling 6-week notice"],
   ["Work authorization","UK Global Talent Visa"]
+];
+var recruiterFaq=[
+  {q:"What roles fit best right now?",a:"Chief of staff, strategy leadership, business development leadership, GM, and product-commercial bridge roles where growth, partnerships, and operator judgment matter."},
+  {q:"Why does the founder background matter?",a:"It adds commercial range. Utku can move between strategy, GTM, product, investor, and execution conversations without losing the operator view."},
+  {q:"What is the easiest next step?",a:"Send the role brief or outreach note by email or LinkedIn. For a quick screen, use the CV and recruiter snapshot on this page first."}
 ];
 var bestFitRoles=["Chief of Staff / strategy leadership","Business development & partnerships leadership","GM / growth leadership","AI product-commercial bridge roles"];
 var recruiterTopics=["How he led turnarounds at WASK","Fundraising and partnership experience","Founder-to-operator transition","Role fit for strategy, growth, or product-commercial leadership"];
-var introTitle=apiReady?"Recruiter chat is live.":apiStatus==="checking"?"Checking secure recruiter chat.":"Recruiter chat is temporarily offline.";
-var introBody=apiReady?"Ask about leadership, GTM, fundraising, partnerships, AI product work, or role fit.":apiStatus==="checking"?"The page is checking whether the secure backend is reachable.":"Use the direct contact actions below or open the recruiter brief for a fast scan of experience, work authorization, and fit.";
-var inputPlaceholder=apiReady?"Ask about strategy, growth, fundraising, partnerships, or product work...":apiStatus==="checking"?"Checking secure backend...":"Chat unavailable — use direct contact actions";
-var statusLabel=apiStatus==="ready"?"Text chat connected":apiStatus==="checking"?"Checking secure backend":"Text chat temporarily offline";
+var introTitle=apiReady?"Recruiter chat is live.":apiStatus==="checking"?"Checking secure recruiter chat.":"Text chat is offline on this page.";
+var introBody=apiReady?"Ask about leadership, GTM, fundraising, partnerships, AI product work, or role fit.":apiStatus==="checking"?"The page is checking whether the secure backend is reachable.":"The recruiter brief, CV, LinkedIn, email, and phone actions still work. Use them now while the secure text host is unavailable.";
+var inputPlaceholder=apiReady?"Ask about strategy, growth, fundraising, partnerships, or product work...":apiStatus==="checking"?"Checking secure backend...":"Text chat offline on this page";
+var statusLabel=apiStatus==="ready"?"Text chat connected":apiStatus==="checking"?"Checking secure backend":"Text chat offline on this page";
 var statusBackground=apiStatus==="ready"?"rgba(0,234,255,.08)":apiStatus==="checking"?"rgba(120,190,255,.08)":"rgba(255,180,120,.08)";
 var statusBorder=apiStatus==="ready"?"rgba(0,234,255,.18)":apiStatus==="checking"?"rgba(120,190,255,.18)":"rgba(255,180,120,.16)";
 var statusColor=apiStatus==="ready"?"#00eaff":apiStatus==="checking"?"rgba(170,220,255,.88)":"rgba(255,205,160,.82)";
@@ -212,19 +222,30 @@ ue(function(){var sync=function(){setTab(getInitialTab())};window.addEventListen
 ue(function(){var wanted="#"+tab;if(window.location.hash!==wanted){window.history.replaceState(null,"",wanted)}},[tab]);
 ue(function(){
   var cancelled=false;
-  var fallbackBase=INJECTED_API_BASE||SAME_ORIGIN_API_BASE;
-  if(!fallbackBase){setApiStatus("offline");setApiBase("");if(!window.location.hash)setTab("about");return function(){cancelled=true}};
-  setApiBase(fallbackBase);
+  if(!API_BASE_CANDIDATES.length){setApiStatus("offline");setApiBase("");setApiDetail("No public text endpoint is configured for this page yet.");if(!window.location.hash)setTab("about");return function(){cancelled=true}};
   setApiStatus("checking");
-  fetch(apiUrlFor(fallbackBase,"/healthz"),{headers:{accept:"application/json"}}).then(function(r){
-    if(!r.ok)throw new Error("health "+r.status);
-    return r.json().catch(function(){return {}})
-  }).then(function(d){
-    if(cancelled)return;
-    if(d&&d.ok&&(d.chat_configured||d.gemini_configured)){setApiBase(fallbackBase);setApiStatus("ready");return}
-    setApiStatus("offline");
-    if(!window.location.hash)setTab("about");
-  }).catch(function(){if(!cancelled){setApiStatus("offline");if(!window.location.hash)setTab("about")}});
+  setApiDetail("");
+  (function tryBase(idx){
+    var candidate=API_BASE_CANDIDATES[idx];
+    if(!candidate){
+      if(!cancelled){
+        setApiBase(API_BASE_CANDIDATES[0]||"");
+        setApiStatus("offline");
+        setApiDetail("The secure text host for this page is not responding right now.");
+        if(!window.location.hash)setTab("about");
+      }
+      return;
+    }
+    setApiBase(candidate);
+    fetch(apiUrlFor(candidate,"/healthz"),{headers:{accept:"application/json"}}).then(function(r){
+      if(!r.ok)throw new Error("health "+r.status);
+      return r.json().catch(function(){return {}})
+    }).then(function(d){
+      if(cancelled)return;
+      if(d&&d.ok&&(d.chat_configured||d.gemini_configured)){setApiBase(candidate);setApiStatus("ready");setApiDetail("");return}
+      tryBase(idx+1);
+    }).catch(function(){if(!cancelled){tryBase(idx+1)}});
+  })(0);
   return function(){cancelled=true};
 },[]);
 
@@ -285,7 +306,8 @@ return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM S
             ce("p",{style:{fontSize:12.5,color:"rgba(255,255,255,.4)",lineHeight:1.6,maxWidth:540,margin:"0 auto"}},introBody),
             !apiReady&&ce("div",{style:{marginTop:16,padding:16,borderRadius:14,background:"linear-gradient(135deg,rgba(255,196,120,.08),rgba(0,234,255,.04))",border:"1px solid rgba(255,196,120,.14)",textAlign:"left"}},
               ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,marginBottom:6}},"Direct recruiter path"),
-              ce("p",{style:{fontSize:12,color:"rgba(255,255,255,.5)",lineHeight:1.6,marginBottom:12}},"If you are screening fit or trying to reach Utku quickly, use direct contact or switch to the recruiter brief for the summary, timeline, and proof points."),
+              ce("p",{style:{fontSize:12,color:"rgba(255,255,255,.5)",lineHeight:1.6,marginBottom:10}},apiDetail||"If you are screening fit or trying to reach Utku quickly, use direct contact or switch to the recruiter brief for the summary, timeline, and proof points."),
+              ce("div",{style:{fontSize:11,color:"rgba(255,255,255,.42)",lineHeight:1.55,marginBottom:12}},"Best next step: open the recruiter brief for a fast read, then use LinkedIn, email, or phone for a direct response."),
               ce("div",{style:{display:"flex",flexWrap:"wrap",gap:8}},contactItems.map(function(item,idx){return renderCTA(item,"offline-cta-"+idx,true)})),
               ce("button",{onClick:function(){setTab("about")},style:{marginTop:12,padding:"10px 14px",borderRadius:10,border:"1px solid rgba(0,234,255,.16)",background:"rgba(0,234,255,.05)",color:"#00eaff",fontFamily:"Sora,sans-serif",fontSize:11.5,fontWeight:700,cursor:"pointer"}},"Open recruiter brief")
             ),
@@ -339,6 +361,10 @@ return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM S
         ce("div",{style:{marginTop:20,marginBottom:20}},
           ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"What recruiters usually ask"),
           ce("div",{style:{display:"flex",flexDirection:"column",gap:6}},recruiterTopics.map(function(topic,idx){return ce("div",{key:idx,style:{fontSize:11.5,color:"rgba(255,255,255,.42)",lineHeight:1.5,paddingLeft:10,borderLeft:"2px solid rgba(0,234,255,.08)"}},topic)}))
+        ),
+        ce("div",{style:{marginBottom:20}},
+          ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Recruiter FAQ"),
+          ce("div",{style:{display:"flex",flexDirection:"column",gap:8}},recruiterFaq.map(function(item,idx){return ce("div",{key:idx,style:{padding:"12px 14px",borderRadius:10,background:"rgba(255,255,255,.025)",border:"1px solid rgba(255,255,255,.05)"}},ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:11.5,fontWeight:700,color:"#fff",marginBottom:4}},item.q),ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.48)",lineHeight:1.6}},item.a))}))
         ),
         ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Recognition"),
         ce("div",{style:{display:"flex",flexDirection:"column",gap:4,marginBottom:20}},["Google Jury Member, Game & App Academy (2023 & 2024)","Published researcher, International MIS Conference (2023)","Quoted as industry expert in Bloomberg Businessweek","Panelist, Private Equity & Advisors Academy, Bogazici University","Speaker at HIT Games Conference and Show Turk TV","Mentored 60+ students across two cohorts"].map(function(r,i){return ce("div",{key:i,style:{fontSize:11.5,color:"rgba(255,255,255,.38)",lineHeight:1.45,paddingLeft:10,borderLeft:"2px solid rgba(0,234,255,.08)"}},r)})),
