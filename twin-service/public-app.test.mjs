@@ -36,6 +36,9 @@ test('GET /utku-bozkurt/ serves the public recruiter page shell', async () => {
   assert.match(html, /Quick recruiter snapshot/);
   assert.match(html, /Recruiter FAQ/);
   assert.match(html, /Rolling 6-week notice/);
+  assert.match(html, /Start a live twin conversation/);
+  assert.match(html, /Ask the twin about this/);
+  assert.match(html, /https:\/\/dobby\.greyworks\.org/);
 
   await app.close();
 });

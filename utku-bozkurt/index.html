@@ -22,8 +22,8 @@ body{background:#0a0e17;font-family:'DM Sans',sans-serif;color:#fff;overflow:hid
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script>
-window.__UTKU_TWIN_API__ = window.__UTKU_TWIN_API__ || ((window.location && /(^|\.)greyworks\.org$/i.test(window.location.hostname || "")) ? "https://twin.greyworks.org" : (window.location ? window.location.origin : ""));
-window.__UTKU_TWIN_FALLBACKS__ = window.__UTKU_TWIN_FALLBACKS__ || ["https://shell-jewel-victory-intervention.trycloudflare.com"];
+window.__UTKU_TWIN_API__ = window.__UTKU_TWIN_API__ || ((window.location && /(^|\.)greyworks\.org$/i.test(window.location.hostname || "")) ? "https://dobby.greyworks.org" : (window.location ? window.location.origin : ""));
+window.__UTKU_TWIN_FALLBACKS__ = window.__UTKU_TWIN_FALLBACKS__ || ["http://46.62.134.122:8788","https://shell-jewel-victory-intervention.trycloudflare.com"];
 </script>
 <script>
 var ce=React.createElement,us=React.useState,ur=React.useRef,ue=React.useEffect,uc=React.useCallback;
@@ -193,12 +193,27 @@ var recruiterSnapshot=[
   ["Work authorization","UK Global Talent Visa"]
 ];
 var recruiterFaq=[
-  {q:"What roles fit best right now?",a:"Chief of staff, strategy leadership, business development leadership, GM, and product-commercial bridge roles where growth, partnerships, and operator judgment matter."},
-  {q:"Why does the founder background matter?",a:"It adds commercial range. Utku can move between strategy, GTM, product, investor, and execution conversations without losing the operator view."},
-  {q:"What is the easiest next step?",a:"Send the role brief or outreach note by email or LinkedIn. For a quick screen, use the CV and recruiter snapshot on this page first."}
+  {q:"What roles fit best right now?",a:"Chief of staff, strategy leadership, business development leadership, GM, and product-commercial bridge roles where growth, partnerships, and operator judgment matter.",prompt:"What roles are the best fit for Utku right now, and why?"},
+  {q:"Why does the founder background matter?",a:"It adds commercial range. Utku can move between strategy, GTM, product, investor, and execution conversations without losing the operator view.",prompt:"How does Utku's founder background help in operator and leadership roles?"},
+  {q:"What is the easiest next step?",a:"Send the role brief or outreach note by email or LinkedIn. For a quick screen, use the CV and recruiter snapshot on this page first.",prompt:"What is the best next step for a recruiter after reading this brief?"}
 ];
-var bestFitRoles=["Chief of Staff / strategy leadership","Business development & partnerships leadership","GM / growth leadership","AI product-commercial bridge roles"];
-var recruiterTopics=["How he led turnarounds at WASK","Fundraising and partnership experience","Founder-to-operator transition","Role fit for strategy, growth, or product-commercial leadership"];
+var bestFitRoles=[
+  {label:"Chief of Staff / strategy leadership",prompt:"Why is Utku a fit for chief of staff or strategy leadership roles?"},
+  {label:"Business development & partnerships leadership",prompt:"How does Utku fit business development and partnerships leadership roles?"},
+  {label:"GM / growth leadership",prompt:"What makes Utku a fit for GM or growth leadership roles?"},
+  {label:"AI product-commercial bridge roles",prompt:"How does Utku bridge AI product work with commercial leadership?"}
+];
+var recruiterTopics=[
+  {label:"How he led turnarounds at WASK",prompt:"How did Utku lead the turnaround at WASK?"},
+  {label:"Fundraising and partnership experience",prompt:"Summarize Utku's fundraising and partnership experience for a recruiter."},
+  {label:"Founder-to-operator transition",prompt:"How should a recruiter think about Utku's founder-to-operator transition?"},
+  {label:"Role fit for strategy, growth, or product-commercial leadership",prompt:"Which strategy, growth, or product-commercial leadership roles fit Utku best?"}
+];
+var twinStarterPrompts=[
+  {label:"Role fit summary",prompt:"Summarize Utku's best-fit roles for a recruiter in two short paragraphs."},
+  {label:"WASK impact",prompt:"What changed at WASK under Utku's leadership?"},
+  {label:"Founder background",prompt:"How does Utku's founder background make him stronger in leadership roles?"}
+];
 var introTitle=apiReady?"Recruiter chat is live.":apiStatus==="checking"?"Checking secure recruiter chat.":"Text chat is offline on this page.";
 var introBody=apiReady?"Ask about leadership, GTM, fundraising, partnerships, AI product work, or role fit.":apiStatus==="checking"?"The page is checking whether the secure backend is reachable.":"The recruiter brief, CV, LinkedIn, email, and phone actions still work. Use them now while the secure text host is unavailable.";
 var inputPlaceholder=apiReady?"Ask about strategy, growth, fundraising, partnerships, or product work...":apiStatus==="checking"?"Checking secure backend...":"Text chat offline on this page";
@@ -279,6 +294,16 @@ var send=uc(function(text){
   });
 },[apiBase,apiReady,msgs]);
 
+var openTwinPrompt=uc(function(prompt){
+  if(!prompt)return;
+  setTab("chat");
+  if(apiReady){
+    send(prompt);
+    return;
+  }
+  setInput(prompt);
+},[apiReady,send]);
+
 return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM Sans',sans-serif",color:"#fff"}},
   ce("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"11px 18px",borderBottom:"1px solid rgba(0,234,255,.05)",background:"rgba(10,14,23,.93)",backdropFilter:"blur(20px)",position:"sticky",top:0,zIndex:100}},
     ce("div",{style:{display:"flex",alignItems:"center",gap:7}},
@@ -344,13 +369,23 @@ return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM S
         ce("h2",{style:{fontFamily:"Sora,sans-serif",fontSize:22,fontWeight:800,marginBottom:6,textAlign:"center"}},"Utku ",ce("span",{style:{color:"#00eaff"}},"Bozkurt")),
         ce("p",{style:{fontSize:13,color:"rgba(255,255,255,.5)",lineHeight:1.7,textAlign:"center",maxWidth:620,margin:"0 auto 18px"}},"SaaS and AdTech strategist with 6+ years across business development, product strategy, fundraising, and growth. Currently leading strategy and BD at a B2B advertising automation platform serving 7,000+ subscribers in 130+ countries. Previously founded and scaled a consumer gaming platform to a $5M valuation."),
         ce("div",{style:{display:"flex",flexWrap:"wrap",gap:8,justifyContent:"center",marginBottom:18}},contactItems.map(function(item,idx){return renderCTA(item,"about-cta-"+idx,false)})),
+        ce("div",{style:{padding:16,borderRadius:14,background:"linear-gradient(135deg,rgba(0,234,255,.045),rgba(0,100,200,.02))",border:"1px solid rgba(0,234,255,.09)",marginBottom:18}},
+          ce("div",{style:{display:"flex",justifyContent:"space-between",alignItems:isMob?"flex-start":"center",gap:10,flexDirection:isMob?"column":"row",marginBottom:10}},
+            ce("div",null,
+              ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:14,fontWeight:700,color:"#00eaff",marginBottom:4}},"Start a live twin conversation"),
+              ce("p",{style:{fontSize:12,color:"rgba(255,255,255,.52)",lineHeight:1.6,maxWidth:500}},apiReady?"Use one of these recruiter prompts to ask the live twin directly from the brief.":"The prompt buttons still prepare a recruiter question, but the page is waiting for the secure chat host to come back.")
+            ),
+            ce("div",{style:{padding:"6px 10px",borderRadius:999,border:"1px solid "+statusBorder,background:statusBackground,color:statusColor,fontSize:10.5,fontFamily:"Sora,sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em"}},apiReady?"Twin live":"Twin offline")
+          ),
+          ce("div",{style:{display:"flex",flexWrap:"wrap",gap:8}},twinStarterPrompts.map(function(item,idx){return ce("button",{key:idx,onClick:function(){openTwinPrompt(item.prompt)},style:{padding:"10px 12px",borderRadius:999,border:"1px solid rgba(0,234,255,.12)",background:"rgba(0,234,255,.04)",color:"rgba(255,255,255,.84)",fontSize:11.5,cursor:"pointer"}},item.label)}))
+        ),
         ce("div",{style:{padding:16,borderRadius:14,background:"linear-gradient(135deg,rgba(0,234,255,.04),rgba(0,100,200,.02))",border:"1px solid rgba(0,234,255,.08)",marginBottom:18}},
           ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:14,fontWeight:700,color:"#00eaff",marginBottom:10}},"Quick recruiter snapshot"),
           ce("div",{style:{display:"grid",gridTemplateColumns:isMob?"1fr":"repeat(2,minmax(0,1fr))",gap:10}},recruiterSnapshot.map(function(item,idx){return ce("div",{key:idx,style:{padding:"10px 12px",borderRadius:10,background:"rgba(255,255,255,.025)",border:"1px solid rgba(255,255,255,.05)"}},ce("div",{style:{fontSize:10.5,textTransform:"uppercase",letterSpacing:".08em",color:"rgba(0,234,255,.5)",fontFamily:"Sora,sans-serif",marginBottom:4}},item[0]),ce("div",{style:{fontSize:12.5,color:"rgba(255,255,255,.84)",lineHeight:1.5}},item[1]))}))
         ),
         ce("div",{style:{marginBottom:18}},
           ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Best-fit conversations"),
-          ce("div",{style:{display:"flex",flexWrap:"wrap",gap:8}},bestFitRoles.map(function(role,idx){return ce("div",{key:idx,style:{padding:"9px 11px",borderRadius:999,border:"1px solid rgba(0,234,255,.11)",background:"rgba(0,234,255,.03)",fontSize:11.5,color:"rgba(255,255,255,.8)"}},role)}))
+          ce("div",{style:{display:"flex",flexWrap:"wrap",gap:8}},bestFitRoles.map(function(role,idx){return ce("button",{key:idx,onClick:function(){openTwinPrompt(role.prompt)},style:{padding:"9px 11px",borderRadius:999,border:"1px solid rgba(0,234,255,.11)",background:"rgba(0,234,255,.03)",fontSize:11.5,color:"rgba(255,255,255,.8)",cursor:"pointer"}},role.label)}))
         ),
         ce("div",{style:{marginBottom:20}},
           ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Career path"),
@@ -363,11 +398,11 @@ return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM S
         [{t:"Strategic turnarounds",d:"Joined WASK when metrics were declining. Restructured pricing, launched an AI product suite, and realigned GTM. Churned revenue dropped 42% and subscriber growth reached 20% YoY within 12 months."},{t:"GTM and growth execution",d:"Built go-to-market strategies across 130+ countries, covering positioning, pricing, demand capture, pipeline management, and commercial execution."},{t:"AI product and CRM operations",d:"Scoped and launched WASK’s AI suite. Strong operating range across HubSpot, pipeline design, marketing automation, and business-to-technical translation."},{t:"Founder perspective",d:"Built njoyKidz from thesis idea to 500K+ users, $525K raised, and a 20-person team. Brings founder empathy with operator discipline."}].map(function(x,i){return ce("div",{key:i,style:{padding:"11px 14px",marginBottom:6,borderRadius:10,background:"rgba(0,234,255,.015)",border:"1px solid rgba(0,234,255,.05)"}},ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:11.5,fontWeight:700,color:"#fff",marginBottom:2}},x.t),ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.46)",lineHeight:1.55}},x.d))}),
         ce("div",{style:{marginTop:20,marginBottom:20}},
           ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"What recruiters usually ask"),
-          ce("div",{style:{display:"flex",flexDirection:"column",gap:6}},recruiterTopics.map(function(topic,idx){return ce("div",{key:idx,style:{fontSize:11.5,color:"rgba(255,255,255,.42)",lineHeight:1.5,paddingLeft:10,borderLeft:"2px solid rgba(0,234,255,.08)"}},topic)}))
+          ce("div",{style:{display:"flex",flexDirection:"column",gap:6}},recruiterTopics.map(function(topic,idx){return ce("button",{key:idx,onClick:function(){openTwinPrompt(topic.prompt)},style:{fontSize:11.5,color:"rgba(255,255,255,.6)",lineHeight:1.5,padding:"10px 12px",borderLeft:"2px solid rgba(0,234,255,.12)",borderTop:"1px solid rgba(255,255,255,.04)",borderRight:"1px solid rgba(255,255,255,.04)",borderBottom:"1px solid rgba(255,255,255,.04)",borderRadius:10,background:"rgba(255,255,255,.018)",textAlign:"left",cursor:"pointer"}},topic.label)}))
         ),
         ce("div",{style:{marginBottom:20}},
           ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Recruiter FAQ"),
-          ce("div",{style:{display:"flex",flexDirection:"column",gap:8}},recruiterFaq.map(function(item,idx){return ce("div",{key:idx,style:{padding:"12px 14px",borderRadius:10,background:"rgba(255,255,255,.025)",border:"1px solid rgba(255,255,255,.05)"}},ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:11.5,fontWeight:700,color:"#fff",marginBottom:4}},item.q),ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.48)",lineHeight:1.6}},item.a))}))
+          ce("div",{style:{display:"flex",flexDirection:"column",gap:8}},recruiterFaq.map(function(item,idx){return ce("div",{key:idx,style:{padding:"12px 14px",borderRadius:10,background:"rgba(255,255,255,.025)",border:"1px solid rgba(255,255,255,.05)"}},ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:11.5,fontWeight:700,color:"#fff",marginBottom:4}},item.q),ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.48)",lineHeight:1.6,marginBottom:10}},item.a),ce("button",{onClick:function(){openTwinPrompt(item.prompt)},style:{padding:"8px 11px",borderRadius:999,border:"1px solid rgba(0,234,255,.12)",background:"rgba(0,234,255,.04)",color:"#00eaff",fontSize:11,cursor:"pointer",fontFamily:"Sora,sans-serif",fontWeight:700}},"Ask the twin about this"))}))
         ),
         ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Recognition"),
         ce("div",{style:{display:"flex",flexDirection:"column",gap:4,marginBottom:20}},["Google Jury Member, Game & App Academy (2023 & 2024)","Published researcher, International MIS Conference (2023)","Quoted as industry expert in Bloomberg Businessweek","Panelist, Private Equity & Advisors Academy, Bogazici University","Speaker at HIT Games Conference and Show Turk TV","Mentored 60+ students across two cohorts"].map(function(r,i){return ce("div",{key:i,style:{fontSize:11.5,color:"rgba(255,255,255,.38)",lineHeight:1.45,paddingLeft:10,borderLeft:"2px solid rgba(0,234,255,.08)"}},r)})),

@@ -69,6 +69,8 @@ check_body_absent "/" "/script\\.js|/og-card\\.html"
 check_body_contains "/utku-bozkurt/" "Strategy & business development leader for SaaS, AdTech, and AI product growth"
 check_body_contains "/utku-bozkurt/" "Recruiter brief"
 check_body_contains "/utku-bozkurt/" "Quick recruiter snapshot"
+check_body_contains "/utku-bozkurt/" "Start a live twin conversation"
+check_body_contains "/utku-bozkurt/" "dobby\.greyworks\.org"
 check_body_absent "/utku-bozkurt/" "digital-twin/speak|Voice On|Voice Off"
 
 printf '\nGreyworks smoke check passed for %s\n' "$BASE_URL"
