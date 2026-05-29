@@ -4,8 +4,8 @@ import { buildSystemInstruction, SCOPE_REFUSAL } from './policy-pack.mjs';
 
 const DEFAULT_ALLOWED_ORIGIN = '*';
 const DEFAULT_GEMINI_MODEL = 'gemini-2.5-flash';
-const DEFAULT_OPENAI_BASE = 'http://127.0.0.1:8787/v1';
-const DEFAULT_OPENAI_MODEL = 'xiaomi/mimo-v2.5-pro';
+const DEFAULT_OPENAI_BASE = 'https://api.deepseek.com/v1';
+const DEFAULT_OPENAI_MODEL = 'deepseek-chat';
 const DEFAULT_PORT = '8788';
 const DEGRADED_MESSAGE = 'The secure chat service is temporarily unavailable. Please use LinkedIn, email, or phone for now.';
 const MAX_TEXT_LENGTH = 2400;
