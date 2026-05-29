@@ -2,396 +2,392 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Utku Bozkurt | Strategy & Business Development Leader</title>
-<meta name="description" content="Recruiter brief for Utku Bozkurt — strategy, business development, fundraising, GTM, and AI product leadership.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utku Bozkurt — Digital Twin</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#0a0e17;font-family:'DM Sans',sans-serif;color:#fff;overflow:hidden}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(0,234,255,.12);border-radius:3px}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes typing{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #09090b; --surface: #111113; --border: #27272a; --border-light: #3f3f46;
+    --text: #fafafa; --text-muted: #a1a1aa; --text-dim: #71717a;
+    --accent: #6366f1; --accent-hover: #818cf8; --accent-dim: rgba(99,102,241,0.12);
+    --user-bubble: #1e1e2a; --ai-bubble: #161618;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  html, body { height: 100%; overflow: hidden; font-family: var(--font); background: var(--bg); color: var(--text); }
+  .app { display: flex; height: 100vh; }
 
-/* ===== DESKTOP SIDE-BY-SIDE ===== */
-.desktop-layout{display:flex;height:100vh;overflow:hidden}
-.chat-panel{flex:1;min-width:0;display:flex;flex-direction:column;border-right:1px solid rgba(0,234,255,.06)}
-.brief-panel{display:none;flex:1;min-width:0;overflow-y:auto}
-@media(min-width:900px){.brief-panel{display:block}}
+  /* Sidebar */
+  .sidebar {
+    width: 320px; flex-shrink: 0;
+    background: var(--surface); border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 2px; }
+  .profile-top { padding: 28px 24px 20px; border-bottom: 1px solid var(--border); }
+  .avatar-wrap {
+    width: 72px; height: 72px; border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--border-light); margin-bottom: 16px;
+    background: var(--accent-dim); display: flex; align-items: center; justify-content: center;
+  }
+  .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .avatar-fallback {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 700; color: var(--accent);
+  }
+  .profile-name { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 2px; }
+  .profile-title { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .status-row { display: flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.5); flex-shrink: 0; }
+  .sidebar-section { padding: 20px 24px; border-bottom: 1px solid var(--border); }
+  .sidebar-section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+  .fact-list { display: flex; flex-direction: column; gap: 10px; }
+  .fact-item { display: flex; gap: 10px; align-items: flex-start; }
+  .fact-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; opacity: 0.8; }
+  .fact-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .fact-text strong { color: var(--text); font-weight: 500; }
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .metric-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 10px; }
+  .metric-val { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; }
+  .metric-lbl { font-size: 11px; color: var(--text-dim); margin-top: 2px; line-height: 1.3; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 99px;
+    font-size: 11.5px; font-weight: 500; background: var(--accent-dim);
+    color: var(--accent-hover); border: 1px solid rgba(99,102,241,0.2);
+  }
+  .contact-list { display: flex; flex-direction: column; gap: 8px; }
+  .contact-btn {
+    display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px;
+    background: var(--bg); border: 1px solid var(--border); color: var(--text-muted);
+    text-decoration: none; font-size: 13px; transition: all 0.15s;
+  }
+  .contact-btn:hover { border-color: var(--accent); color: var(--text); background: var(--accent-dim); }
+  .contact-icon { font-size: 15px; flex-shrink: 0; }
+  .contact-label { font-size: 12px; color: var(--text-dim); }
 
-/* ===== HEADER ===== */
-.panel-header{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-bottom:1px solid rgba(0,234,255,.05);background:rgba(10,14,23,.93);backdrop-filter:blur(20px);flex-shrink:0}
-.panel-header .brand{display:flex;align-items:center;gap:7px}
-.panel-header .brand .dot{width:5px;height:5px;border-radius:50%;background:#00eaff;box-shadow:0 0 5px rgba(0,234,255,.45)}
-.panel-header .brand span{font-family:Sora,sans-serif;font-size:12.5px;font-weight:700}
-.panel-header .brand span em{color:#00eaff;font-style:normal}
-
-/* ===== MOBILE TABS ===== */
-.mobile-tabs{display:flex;gap:6px;background:rgba(255,255,255,.03);border-radius:22px;padding:3px}
-@media(min-width:900px){.mobile-tabs{display:none}}
-.tab-btn{padding:8px 22px;border-radius:20px;border:none;font-size:13px;font-weight:700;font-family:Sora,sans-serif;cursor:pointer;letter-spacing:.03em;transition:all .25s ease}
-.tab-btn.active{background:#00eaff;color:#0a0e17;box-shadow:0 0 14px rgba(0,234,255,.3)}
-.tab-btn:not(.active){background:transparent;color:rgba(255,255,255,.45)}
-
-/* ===== CHAT AREA ===== */
-.chat-messages{flex:1;overflow-y:auto;padding:16px 18px}
-.chat-empty{display:flex;align-items:center;justify-content:center;height:100%;animation:fadeUp .4s ease-out}
-.chat-empty-inner{max-width:560px;text-align:center}
-.chat-empty h2{font-family:Sora,sans-serif;font-size:18px;font-weight:700;margin-bottom:6px}
-.chat-empty p{font-size:12.5px;color:rgba(255,255,255,.35);line-height:1.65;max-width:480px;margin:0 auto}
-
-/* ===== MESSAGES ===== */
-.msg-row{display:flex;margin-bottom:10px;animation:fadeUp .2s ease-out}
-.msg-row.user{justify-content:flex-end}
-.msg-bubble{max-width:72%;padding:10px 14px;border-radius:12px;font-size:13.5px;line-height:1.6;white-space:pre-wrap}
-.msg-bubble.user{background:linear-gradient(135deg,rgba(0,234,255,.09),rgba(0,100,200,.05));border:1px solid rgba(0,234,255,.12);color:#fff}
-.msg-bubble.assistant{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.78)}
-
-/* ===== LOADING ===== */
-.loading-dots{display:flex;gap:5px;align-items:center;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.04)}
-.loading-dots div{width:4px;height:4px;border-radius:50%;background:rgba(0,234,255,.35);animation:typing 1s ease-in-out infinite}
-.loading-dots div:nth-child(2){animation-delay:.2s}
-.loading-dots div:nth-child(3){animation-delay:.4s}
-
-/* ===== INPUT ===== */
-.chat-input-bar{padding:8px 16px 12px;border-top:1px solid rgba(0,234,255,.04);background:rgba(10,14,23,.88);flex-shrink:0}
-.input-wrap{display:flex;gap:5px;align-items:flex-end;background:rgba(255,255,255,.02);border:1px solid rgba(0,234,255,.06);border-radius:10px;padding:3px 3px 3px 10px}
-.input-wrap textarea{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:13px;font-family:'DM Sans',sans-serif;resize:none;padding:7px 0;line-height:1.5;max-height:80px}
-.input-wrap textarea::placeholder{color:rgba(255,255,255,.28)}
-.send-btn{width:32px;height:32px;border-radius:7px;flex-shrink:0;border:1px solid rgba(0,234,255,.25);background:rgba(0,234,255,.12);color:#00eaff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.send-btn:disabled{background:rgba(255,255,255,.015);border-color:rgba(255,255,255,.03);color:rgba(255,255,255,.1);cursor:default}
-
-/* ===== BRIEF PANEL ===== */
-.brief-content{max-width:680px;margin:0 auto;padding:22px 28px;animation:fadeUp .3s ease-out}
-.brief-content .photo-wrap{width:140px;height:140px;border-radius:50%;overflow:hidden;margin:0 auto 10px;border:2.5px solid rgba(0,234,255,.15);box-shadow:0 0 24px rgba(0,234,255,.1)}
-.brief-content .photo-wrap img{width:100%;height:100%;object-fit:cover}
-.brief-content .badge{display:block;text-align:center;font-family:Sora,sans-serif;font-size:12px;font-weight:600;color:rgba(0,234,255,.5);letter-spacing:.05em;margin-bottom:14px}
-.brief-content h2{font-family:Sora,sans-serif;font-size:20px;font-weight:800;margin-bottom:4px;text-align:center}
-.brief-content h2 em{color:#00eaff;font-style:normal}
-.brief-content .tagline{font-size:12.5px;color:rgba(255,255,255,.45);line-height:1.7;text-align:center;max-width:600px;margin:0 auto 16px}
-
-/* ===== CONTACT LINKS ===== */
-.contact-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
-.contact-chip{display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:10px;border:1px solid;text-decoration:none;cursor:pointer;font-size:11.5px;font-weight:700;font-family:Sora,sans-serif;min-width:94px;flex:1 1 120px;justify-content:flex-start;transition:all .2s}
-.contact-chip:hover{filter:brightness(1.2)}
-
-/* ===== SNAPSHOT ===== */
-.snapshot{padding:14px;border-radius:14px;background:linear-gradient(135deg,rgba(0,234,255,.04),rgba(0,100,200,.02));border:1px solid rgba(0,234,255,.08);margin-bottom:16px}
-.snapshot h3{font-family:Sora,sans-serif;font-size:13px;font-weight:700;color:#00eaff;margin-bottom:8px}
-.snapshot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.snapshot-card{padding:9px 11px;border-radius:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}
-.snapshot-card .label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,234,255,.5);font-family:Sora,sans-serif;margin-bottom:3px}
-.snapshot-card .value{font-size:12px;color:rgba(255,255,255,.84);line-height:1.5}
-
-/* ===== BEST-FIT TAGS ===== */
-.section{margin-bottom:16px}
-.section h3{font-family:Sora,sans-serif;font-size:13px;font-weight:700;color:#00eaff;margin-bottom:8px}
-.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
-.tag{padding:9px 11px;border-radius:999px;border:1px solid rgba(0,234,255,.11);background:rgba(0,234,255,.03);font-size:11.5px;color:rgba(255,255,255,.8)}
-
-/* ===== TIMELINE ===== */
-.tl-row{display:flex;gap:9px;align-items:flex-start}
-.tl-dot-col{display:flex;flex-direction:column;align-items:center;min-width:8px}
-.tl-dot{width:5px;height:5px;border-radius:50%;background:#00eaff;box-shadow:0 0 4px rgba(0,234,255,.3);margin-top:5px}
-.tl-line{width:1px;flex:1;background:rgba(0,234,255,.06);margin-top:2px}
-.tl-body{padding-bottom:12px}
-.tl-year{font-size:10px;color:rgba(0,234,255,.45);font-family:Sora,sans-serif;font-weight:600}
-.tl-title{font-size:11.5px;color:#fff;font-family:Sora,sans-serif;font-weight:600;margin-top:1px}
-.tl-company{font-size:10.5px;color:rgba(255,255,255,.3);margin-top:1px}
-.tl-highlight{font-size:10.5px;color:rgba(0,234,255,.38);margin-top:2px;line-height:1.3}
-
-/* ===== VALUE CARDS ===== */
-.val-card{padding:11px 14px;margin-bottom:6px;border-radius:10px;background:rgba(0,234,255,.015);border:1px solid rgba(0,234,255,.05)}
-.val-card .val-title{font-family:Sora,sans-serif;font-size:11.5px;font-weight:700;color:#fff;margin-bottom:2px}
-.val-card .val-desc{font-size:11.5px;color:rgba(255,255,255,.46);line-height:1.55}
-
-/* ===== RECOGNITION ===== */
-.recognition-item{font-size:11.5px;color:rgba(255,255,255,.38);line-height:1.45;padding-left:10px;border-left:2px solid rgba(0,234,255,.08);margin-bottom:6px}
-
-/* ===== CV BUTTON ===== */
-.cv-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:14px 18px;border-radius:11px;margin-bottom:16px;cursor:pointer;background:rgba(0,234,255,.04);border:1px solid rgba(0,234,255,.12);color:rgba(0,234,255,.72);font-size:13px;font-weight:600;font-family:Sora,sans-serif;transition:all .2s}
-.cv-btn:hover{background:rgba(0,234,255,.08)}
-
-/* ===== DIRECT OUTREACH ===== */
-.outreach-box{padding:16px;border-radius:12px;background:linear-gradient(135deg,rgba(0,234,255,.035),rgba(0,100,200,.015));border:1px solid rgba(0,234,255,.07)}
-.outreach-box h3{font-family:Sora,sans-serif;font-size:14px;font-weight:700;margin-bottom:2px;text-align:center}
-.outreach-box .sub{font-size:11.5px;color:rgba(255,255,255,.32);margin-bottom:12px;text-align:center}
-
-/* ===== MOBILE BRIEF (tab panel) ===== */
-@media(max-width:899px){
-  .chat-panel{border-right:none}
-  .mobile-brief{display:block}
-  .hide-mob{display:none}
-}
-@media(min-width:900px){
-  .mobile-brief{display:none}
-  .hide-mob{display:block}
-}
+  /* Chat */
+  .chat-panel { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .chat-header {
+    padding: 16px 24px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+  }
+  .chat-header-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent-dim); border: 1px solid rgba(99,102,241,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .chat-header-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; }
+  .chat-header-sub { font-size: 12px; color: var(--text-dim); margin-top: 1px; }
+  .messages {
+    flex: 1; overflow-y: auto; padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .messages::-webkit-scrollbar { width: 4px; }
+  .messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .msg { display: flex; gap: 10px; max-width: 76%; animation: fadeUp 0.18s ease; }
+  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+  .msg.ai { align-self: flex-start; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .msg-avatar {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; background: var(--accent-dim);
+    border: 1px solid var(--border-light); color: var(--accent);
+  }
+  .msg.user .msg-avatar { background: rgba(99,102,241,0.2); color: var(--accent-hover); }
+  .msg-bubble {
+    padding: 10px 14px; font-size: 14px; line-height: 1.65;
+    max-width: 100%; word-break: break-word;
+  }
+  .msg.ai .msg-bubble {
+    background: var(--ai-bubble); border: 1px solid var(--border);
+    border-radius: 4px 12px 12px 12px; color: var(--text);
+  }
+  .msg.user .msg-bubble {
+    background: var(--user-bubble); border: 1px solid var(--border-light);
+    border-radius: 12px 4px 12px 12px; color: var(--text);
+  }
+  .typing-dots { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
+  .typing-dots span {
+    width: 5px; height: 5px; border-radius: 50%; background: var(--text-dim);
+    animation: dot-pulse 1.2s infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot-pulse { 0%,60%,100% { opacity: 0.3; transform: scale(1); } 30% { opacity: 1; transform: scale(1.2); } }
+  .welcome-msg {
+    align-self: center; max-width: 480px; width: 100%; text-align: center;
+    padding: 40px 24px; color: var(--text-dim); font-size: 14px; line-height: 1.7;
+    animation: fadeUp 0.3s ease;
+  }
+  .welcome-msg h3 { font-size: 16px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+  .suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 20px; }
+  .suggestion {
+    padding: 9px 14px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; color: var(--text-muted);
+    cursor: pointer; text-align: left; transition: all 0.15s;
+  }
+  .suggestion:hover { border-color: var(--accent); color: var(--text); background: var(--accent-dim); }
+  .input-area { padding: 16px 24px 20px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  .input-row {
+    display: flex; gap: 10px; align-items: flex-end;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 12px; transition: border-color 0.15s;
+  }
+  .input-row:focus-within { border-color: var(--accent); }
+  #msg-input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--text); font-size: 14px; line-height: 1.5;
+    resize: none; max-height: 140px; font-family: var(--font); scrollbar-width: thin;
+  }
+  #msg-input::placeholder { color: var(--text-dim); }
+  #send-btn {
+    width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+    background: var(--accent); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, opacity 0.15s; color: white;
+  }
+  #send-btn:hover { background: var(--accent-hover); }
+  #send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  #send-btn svg { width: 16px; height: 16px; }
+  .disclaimer { text-align: center; font-size: 11px; color: var(--text-dim); margin-top: 8px; }
+  @media (max-width: 720px) { .sidebar { display: none; } }
 </style>
 </head>
 <body>
-<div id="root"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<div class="app">
+  <aside class="sidebar">
+    <div class="profile-top">
+      <div class="avatar-wrap">
+        <img src="/utku-profile.jpeg" alt="Utku Bozkurt"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="avatar-fallback" style="display:none">UB</div>
+      </div>
+      <div class="profile-name">Utku Bozkurt</div>
+      <div class="profile-title">CSO &amp; Head of BD &middot; SaaS &amp; AdTech Strategist</div>
+      <div class="status-row">
+        <span class="status-dot"></span>
+        <span>Available for new opportunities</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Overview</div>
+      <div class="fact-list">
+        <div class="fact-item">
+          <span class="fact-icon">📍</span>
+          <span class="fact-text">Reading, UK &middot; <strong>UK Global Talent Visa</strong></span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🏢</span>
+          <span class="fact-text">CSO at <strong>WASK</strong> — B2B ad automation, 7K+ subscribers, 130+ countries</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🚀</span>
+          <span class="fact-text">Founded <strong>njoyKidz</strong> — 500K+ downloads, $5M valuation</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🎓</span>
+          <span class="fact-text">MSc MIS · GPA 3.81 · Published researcher</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Impact</div>
+      <div class="metric-grid">
+        <div class="metric-card"><div class="metric-val">7K+</div><div class="metric-lbl">Subscribers at WASK</div></div>
+        <div class="metric-card"><div class="metric-val">130+</div><div class="metric-lbl">Countries reached</div></div>
+        <div class="metric-card"><div class="metric-val">−42%</div><div class="metric-lbl">Churned revenue</div></div>
+        <div class="metric-card"><div class="metric-val">500K+</div><div class="metric-lbl">App downloads</div></div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Strengths</div>
+      <div class="tag-list">
+        <span class="tag">GTM Strategy</span><span class="tag">Business Development</span>
+        <span class="tag">Product Strategy</span><span class="tag">Fundraising</span>
+        <span class="tag">B2B SaaS</span><span class="tag">AdTech</span>
+        <span class="tag">AI Products</span><span class="tag">Partnerships</span>
+        <span class="tag">Pricing</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Best fit for</div>
+      <div class="tag-list">
+        <span class="tag">GM / COO</span><span class="tag">Head of Strategy</span>
+        <span class="tag">Head of BD</span><span class="tag">VP Growth</span>
+        <span class="tag">Technical Co-founder</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Get in touch</div>
+      <div class="contact-list">
+        <a class="contact-btn" href="https://www.linkedin.com/in/utkubozkurt/" target="_blank" rel="noopener">
+          <span class="contact-icon">💼</span>
+          <div><div>LinkedIn</div><div class="contact-label">linkedin.com/in/utkubozkurt</div></div>
+        </a>
+        <a class="contact-btn" href="mailto:utku.bozkurt96@gmail.com">
+          <span class="contact-icon">✉️</span>
+          <div><div>Email</div><div class="contact-label">utku.bozkurt96@gmail.com</div></div>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="chat-panel">
+    <header class="chat-header">
+      <div class="chat-header-icon">🤖</div>
+      <div>
+        <div class="chat-header-name">Chat with Utku's Twin</div>
+        <div class="chat-header-sub">Ask about experience, background, or fit — I'll answer as Utku</div>
+      </div>
+    </header>
+
+    <div class="messages" id="messages">
+      <div class="welcome-msg" id="welcome">
+        <h3>Hi, I'm Utku's professional digital twin.</h3>
+        Ask me anything about his background, experience, and fit. I'm here for recruiters and teams exploring a potential opportunity.
+        <div class="suggestions">
+          <button class="suggestion" onclick="sendSuggestion(this)">What is Utku's current role and scope?</button>
+          <button class="suggestion" onclick="sendSuggestion(this)">What kinds of roles is he a strong fit for?</button>
+          <button class="suggestion" onclick="sendSuggestion(this)">Tell me about his leadership experience.</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-row">
+        <textarea id="msg-input" rows="1" maxlength="2400"
+          placeholder="Ask about Utku's background, experience, or fit…"
+          onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button id="send-btn" onclick="sendMessage()" disabled title="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="disclaimer">Responses come from Utku's AI twin — for confidential details, contact Utku directly.</div>
+    </div>
+  </main>
+</div>
+
 <script>
-window.__UTKU_TWIN_API__=window.__UTKU_TWIN_API__||((window.location&&/(^|\.)greyworks\.org$/i.test(window.location.hostname||""))?"https://twin.greyworks.org":(window.location?window.location.origin:""));
-window.__UTKU_TWIN_FALLBACKS__=window.__UTKU_TWIN_FALLBACKS__||["https://shell-jewel-victory-intervention.trycloudflare.com"];
-</script>
-<script>
-var ce=React.createElement,us=React.useState,ur=React.useRef,ue=React.useEffect,uc=React.useCallback;
+const messagesEl = document.getElementById('messages');
+const inputEl = document.getElementById('msg-input');
+const sendBtn = document.getElementById('send-btn');
+let history = [];
+let busy = false;
 
-function normApiBase(v){return String(v||"").trim().replace(/\/$/,"")}
-function uniqueBases(l){return l.filter(Boolean).filter(function(b,i,a){return a.indexOf(b)===i})}
-var INJECTED_API_BASE=normApiBase(window.__UTKU_TWIN_API__||"");
-var SAME_ORIGIN_API_BASE=normApiBase(window.location.origin||"");
-var EXTRA_API_BASES=Array.isArray(window.__UTKU_TWIN_FALLBACKS__)?window.__UTKU_TWIN_FALLBACKS__.map(normApiBase):[];
-var API_BASE_CANDIDATES=uniqueBases([INJECTED_API_BASE].concat(EXTRA_API_BASES).concat([SAME_ORIGIN_API_BASE]));
-var PHOTO="/utku-profile.jpeg";
-function apiUrlFor(base,p){return(base||"")+p}
+inputEl.addEventListener('input', () => { sendBtn.disabled = !inputEl.value.trim() || busy; });
 
-var liSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
-var emSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#EA4335"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>';
-var phSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="rgba(0,234,255,.55)"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>';
-var cvSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(0,234,255,.72)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>';
-
-function dlCV(){
-var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Utku Bozkurt CV</title><style>body{font-family:Segoe UI,Arial,sans-serif;max-width:780px;margin:30px auto;padding:0 24px;color:#1a1a1a;line-height:1.55;font-size:13.5px}h1{font-size:22px;margin-bottom:2px}h2{color:#0a5c8a;border-bottom:1.5px solid #ddd;padding-bottom:3px;margin-top:22px;font-size:15px}h3{font-size:14px;margin-bottom:1px;margin-top:14px}.m{color:#555;font-size:12.5px}.c{color:#444;font-size:13px;margin-bottom:6px}ul{padding-left:18px;margin:4px 0}li{margin-bottom:3px;color:#333}.s{margin:4px 0;color:#333}</style></head><body><h1>UTKU BOZKURT</h1><div class="c">Reading, UK | +44 7435 583 335 | utku.bozkurt3@gmail.com | linkedin.com/in/utku-bozkurtt</div><h2>PROFESSIONAL SUMMARY</h2><p>SaaS and AdTech strategist with 6+ years across BD, product strategy, fundraising, and growth. Leading strategy and BD at a B2B ad automation platform serving 7,000+ subscribers in 130+ countries. Founded and scaled a consumer gaming platform to $5M valuation. UK Global Talent Visa holder.</p><h2>EXPERIENCE</h2><h3>Chief Strategy Officer & Head of BD</h3><div class="m">WASK Inc. · Delaware/Reading, UK · May 2024 - Present</div><ul><li>Business strategy for AI-powered ad platform with $2.1M ARR, 85% gross margins, 4.8x LTV/CAC across 130+ countries</li><li>BD team of 6, 20.2% YoY subscriber growth</li><li>Major product launch: churn rate -7%, churned revenue -42% in 12 months</li><li>10+ strategic partnerships, $1M+ fundraise, Series A: $1.9M via SAFEs</li></ul><h3>Founder & CEO</h3><div class="m">njoyKidz · Istanbul · Jun 2021 - May 2024</div><ul><li>Ad-free child-safe gaming, 500K+ organic downloads, 30+ apps</li><li>$525K raised, $5M peak valuation, team of 20</li></ul><h3>BD Specialist</h3><div class="m">Uraz Patent · Izmir · Feb 2020 - Jan 2021</div><ul><li>Trademark/patent services, market analysis, international clients</li></ul><h2>EDUCATION</h2><p class="s"><b>MSc MIS</b> Dokuz Eylul (3.81/4.0) | <b>BA Economics</b> Dokuz Eylul (3.58/4.0)</p><h2>LANGUAGES</h2><p class="s">Turkish (native), English (C2), Spanish (B1)</p></body></html>';
-var b=new Blob([h],{type:"text/html"});var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="Utku_Bozkurt_CV.html";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
 }
 
-function TL(p){
-return ce("div",{className:"tl-row"},
-  ce("div",{className:"tl-dot-col"},
-    ce("div",{className:"tl-dot"}),
-    ce("div",{className:"tl-line"})
-  ),
-  ce("div",{className:"tl-body"},
-    ce("div",{className:"tl-year"},p.y),
-    ce("div",{className:"tl-title"},p.t),
-    ce("div",{className:"tl-company"},p.c),
-    p.h&&ce("div",{className:"tl-highlight"},p.h)
-  )
-);
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (!sendBtn.disabled) sendMessage(); }
 }
 
-function App(){
-var _m=us([]),msgs=_m[0],setMsgs=_m[1];
-var _i=us(""),input=_i[0],setInput=_i[1];
-var _l=us(false),loading=_l[0],setLoading=_l[1];
-var _t=us("chat"),tab=_t[0],setTab=_t[1];
-var _mb=us(false),isMob=_mb[0],setIsMob=_mb[1];
-var _ab=us(INJECTED_API_BASE),apiBase=_ab[0],setApiBase=_ab[1];
-var _ok=us(false),apiOk=_ok[0],setApiOk=_ok[1];
-var endRef=ur(null);
+function sendSuggestion(btn) { inputEl.value = btn.textContent; sendMessage(); }
 
-var contactItems=[
-  {icon:liSvg,label:"LinkedIn",href:"https://www.linkedin.com/in/utku-bozkurtt/",color:"#0077B5",rgb:"0,119,181",external:true},
-  {icon:emSvg,label:"Email",href:"mailto:utku.bozkurt3@gmail.com",color:"#EA4335",rgb:"234,67,53"},
-  {icon:phSvg,label:"Call",href:"tel:+447435583335",color:"rgba(0,234,255,.72)",rgb:"0,234,255"},
-  {icon:cvSvg,label:"Quick CV",action:dlCV,color:"rgba(0,234,255,.72)",rgb:"0,234,255"}
-];
-
-var recruiterSnapshot=[
-  ["Current scope","CSO & Head of BD at WASK"],
-  ["Core lanes","Strategy, GTM, partnerships, AI product work"],
-  ["Track record","6+ years across SaaS, AdTech, growth, and fundraising"],
-  ["Founder history","Built njoyKidz to 500K+ downloads and $5M valuation"],
-  ["Location","Reading, UK"],
-  ["Availability","Rolling 6-week notice"],
-  ["Work authorization","UK Global Talent Visa"]
-];
-
-var bestFitRoles=["Chief of Staff / strategy leadership","Business development & partnerships leadership","GM / growth leadership","AI product-commercial bridge roles"];
-
-ue(function(){var c=function(){setIsMob(window.innerWidth<900)};c();window.addEventListener("resize",c);return function(){window.removeEventListener("resize",c)}},[]);
-ue(function(){endRef.current&&endRef.current.scrollIntoView({behavior:"smooth"})},[msgs,loading]);
-
-// Health check (silent — no status text shown to user)
-ue(function(){
-  var cancelled=false;
-  if(!API_BASE_CANDIDATES.length){setApiOk(false);setApiBase("");return function(){cancelled=true}}
-  (function tryBase(idx){
-    var c=API_BASE_CANDIDATES[idx];
-    if(!c){if(!cancelled){setApiOk(false);setApiBase(API_BASE_CANDIDATES[0]||"")}return}
-    setApiBase(c);
-    fetch(apiUrlFor(c,"/healthz"),{headers:{accept:"application/json"}}).then(function(r){
-      if(!r.ok)throw new Error("health "+r.status);
-      return r.json().catch(function(){return {}})
-    }).then(function(d){
-      if(cancelled)return;
-      if(d&&d.ok&&(d.chat_configured||d.gemini_configured)){setApiOk(true);setApiBase(c);return}
-      tryBase(idx+1);
-    }).catch(function(){if(!cancelled)tryBase(idx+1)});
-  })(0);
-  return function(){cancelled=true}
-},[]);
-
-var send=uc(function(text){
-  if(!text.trim())return;
-  var u={role:"user",content:text.trim()};
-  var all=msgs.concat([u]);
-  setMsgs(all);setInput("");setLoading(true);
-  var h=all.map(function(m){return{role:m.role,text:m.content}});
-  fetch(apiUrlFor(apiBase,"/v1/digital-twin/chat"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:text.trim(),history:h})}).then(function(r){
-    return r.json().catch(function(){return {}}).then(function(d){
-      if(!r.ok||!d.answer){throw new Error(d.message||"Chat unavailable")}
-      return d;
-    })
-  }).then(function(d){
-    setMsgs(function(p){return p.concat([{role:"assistant",content:d.answer||"Could you rephrase that?"}])});
-    setLoading(false);
-  }).catch(function(){
-    setMsgs(function(p){return p.concat([{role:"assistant",content:"I'm having trouble connecting right now. Please try again or use the contact links on the right."}])});
-    setLoading(false);
-  });
-},[apiBase,msgs]);
-
-function renderContact(item,key,block){
-  var style={display:"flex",alignItems:"center",justifyContent:block?"center":"flex-start",gap:9,padding:block?"12px 14px":"10px 14px",borderRadius:10,background:"rgba("+item.rgb+",.04)",border:"1px solid rgba("+item.rgb+",.12)",textDecoration:"none",cursor:"pointer",minWidth:block?0:94,flex:block?"1 1 170px":"1 1 120px"};
-  var children=[ce("span",{key:"icon",dangerouslySetInnerHTML:{__html:item.icon}}),ce("span",{key:"label",style:{fontSize:block?12.5:11.5,color:item.color,fontWeight:700,fontFamily:"Sora,sans-serif"}},item.label)];
-  if(item.action)return ce("button",{key:key,onClick:item.action,style:style},children);
-  return ce("a",{key:key,href:item.href,target:item.external?"_blank":undefined,rel:item.external?"noopener noreferrer":undefined,style:style},children);
+function buildTypingDots() {
+  const wrap = document.createElement('div');
+  wrap.className = 'typing-dots';
+  for (let i = 0; i < 3; i++) wrap.appendChild(document.createElement('span'));
+  return wrap;
 }
 
-// ===== CHAT PANEL =====
-var chatPanel=ce("div",{className:"chat-panel"},
-  ce("div",{className:"panel-header"},
-    ce("div",{className:"brand"},
-      ce("div",{className:"dot"}),
-      ce("span",null,"Utku recruiter ",ce("em",null,"chat"))
-    ),
-    ce("div",{className:"mobile-tabs"},
-      ce("button",{className:"tab-btn"+(tab==="chat"?" active":""),onClick:function(){setTab("chat")}},"Chat"),
-      ce("button",{className:"tab-btn"+(tab==="about"?" active":""),onClick:function(){setTab("about")}},"Brief")
-    )
-  ),
+function addMsg(role, text) {
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.remove();
 
-  // Messages
-  ce("div",{className:"chat-messages"},
-    msgs.length===0?
-    ce("div",{className:"chat-empty"},
-      ce("div",{className:"chat-empty-inner"},
-        ce("h2",null,"Ask Utku about strategy, GTM, or role fit"),
-        ce("p",null,"CSO & Head of BD at WASK. Previously founded and scaled njoyKidz to 500K+ downloads and $5M valuation. SaaS, AdTech, AI product strategy.")
-      )
-    )
-    :
-    ce(React.Fragment,null,
-      msgs.map(function(m,i){
-        return ce("div",{key:i,className:"msg-row"+(m.role==="user"?" user":"")},
-          ce("div",{className:"msg-bubble "+(m.role==="user"?"user":"assistant")},m.content)
-        );
-      }),
-      loading&&ce("div",{className:"msg-row"},
-        ce("div",{className:"loading-dots"},
-          ce("div",null),ce("div",null),ce("div",null)
-        )
-      ),
-      ce("div",{ref:endRef})
-    )
-  ),
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
 
-  // Input
-  ce("div",{className:"chat-input-bar"},
-    ce("div",{className:"input-wrap"},
-      ce("textarea",{value:input,onChange:function(e){setInput(e.target.value)},onKeyDown:function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(input)}},placeholder:"Ask about strategy, leadership, or role fit...",disabled:!apiOk,rows:1,onInput:function(e){e.target.style.height="auto";e.target.style.height=Math.min(e.target.scrollHeight,80)+"px"}}),
-      ce("button",{className:"send-btn",onClick:function(){send(input)},disabled:loading||!input.trim()||!apiOk},"\u2191")
-    )
-  )
-);
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = role === 'user' ? 'You' : 'UB';
 
-// ===== BRIEF CONTENT (shared between desktop panel and mobile tab) =====
-function BriefContent(){
-  return ce("div",{className:"brief-content"},
-    ce("div",{className:"photo-wrap"},
-      ce("img",{src:PHOTO,alt:"Utku Bozkurt"})
-    ),
-    ce("span",{className:"badge"},"Recruiter brief"),
-    ce("h2",null,"Utku ",ce("em",null,"Bozkurt")),
-    ce("p",{className:"tagline"},"SaaS and AdTech strategist with 6+ years across business development, product strategy, fundraising, and growth. Currently leading strategy and BD at WASK serving 7,000+ subscribers in 130+ countries. Previously founded and scaled a consumer gaming platform to $5M valuation."),
-    ce("div",{className:"contact-row"},contactItems.map(function(item,idx){return renderContact(item,"brief-cta-"+idx,false)})),
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.textContent = text;
 
-    // Snapshot
-    ce("div",{className:"snapshot"},
-      ce("h3",null,"Quick recruiter snapshot"),
-      ce("div",{className:"snapshot-grid"},recruiterSnapshot.map(function(item,idx){
-        return ce("div",{key:idx,className:"snapshot-card"},
-          ce("div",{className:"label"},item[0]),
-          ce("div",{className:"value"},item[1])
-        );
-      }))
-    ),
-
-    // Best-fit
-    ce("div",{className:"section"},
-      ce("h3",null,"Best-fit conversations"),
-      ce("div",{className:"tag-cloud"},bestFitRoles.map(function(role,idx){
-        return ce("div",{key:idx,className:"tag"},role);
-      }))
-    ),
-
-    // Career path
-    ce("div",{className:"section"},
-      ce("h3",null,"Career path"),
-      ce(TL,{y:"2024 \u2013 Present",t:"CSO & Head of BD",c:"WASK Inc.",h:"Strategic turnaround, AI products, Series A"}),
-      ce(TL,{y:"2021 \u2013 2024",t:"Founder & CEO",c:"njoyKidz",h:"500K+ downloads, $5M valuation"}),
-      ce(TL,{y:"2020 \u2013 2023",t:"MSc MIS",c:"Dokuz Eylul University",h:"3.81 GPA, published research"}),
-      ce(TL,{y:"2020 \u2013 2021",t:"Business Development",c:"Uraz Patent"})
-    ),
-
-    // What he brings
-    ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"What he brings"),
-    [
-      {t:"Strategic turnarounds",d:"Joined WASK when metrics were declining. Restructured pricing, launched an AI product suite, and realigned GTM. Churned revenue dropped 42% and subscriber growth reached 20% YoY within 12 months."},
-      {t:"GTM and growth execution",d:"Built go-to-market strategies across 130+ countries, covering positioning, pricing, demand capture, pipeline management, and commercial execution."},
-      {t:"AI product and CRM operations",d:"Scoped and launched WASK's AI suite. Strong operating range across HubSpot, pipeline design, marketing automation, and business-to-technical translation."},
-      {t:"Founder perspective",d:"Built njoyKidz from thesis idea to 500K+ users, $525K raised, and a 20-person team. Brings founder empathy with operator discipline."}
-    ].map(function(x,i){
-      return ce("div",{key:i,className:"val-card"},
-        ce("div",{className:"val-title"},x.t),
-        ce("div",{className:"val-desc"},x.d)
-      );
-    }),
-
-    // Recognition
-    ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8,marginTop:20}},"Recognition"),
-    ce("div",{style:{marginBottom:20}},
-      ["Google Jury Member, Game & App Academy (2023 & 2024)","Published researcher, International MIS Conference (2023)","Quoted as industry expert in Bloomberg Businessweek","Panelist, Private Equity & Advisors Academy, Bogazici University","Speaker at HIT Games Conference and Show Turk TV","Mentored 60+ students across two cohorts"]
-      .map(function(r,i){return ce("div",{key:i,className:"recognition-item"},r)})
-    ),
-
-    // CV download
-    ce("button",{onClick:dlCV,className:"cv-btn"},
-      ce("span",{dangerouslySetInnerHTML:{__html:cvSvg}}),
-      ce("span",null,"Download quick CV")
-    ),
-
-    // Direct outreach
-    ce("div",{className:"outreach-box"},
-      ce("h3",null,"Direct outreach"),
-      ce("div",{className:"sub"},"Best for live recruiter conversations, scheduling, and fit discussions."),
-      ce("div",{className:"contact-row"},contactItems.map(function(item,idx){return renderContact(item,"footer-cta-"+idx,true)}))
-    )
-  );
+  wrap.appendChild(av);
+  wrap.appendChild(bubble);
+  messagesEl.appendChild(wrap);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return { wrap, bubble };
 }
 
-// ===== LAYOUT =====
-if(isMob){
-  // Mobile: tab-based switching
-  return ce("div",{style:{height:"100vh",display:"flex",flexDirection:"column"}},
-    tab==="chat"?chatPanel:ce("div",{style:{flex:1,overflowY:"auto"}},ce(BriefContent))
-  );
+function addTyping() {
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.remove();
+
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ai';
+  wrap.id = 'typing';
+
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = 'UB';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.appendChild(buildTypingDots());
+
+  wrap.appendChild(av);
+  wrap.appendChild(bubble);
+  messagesEl.appendChild(wrap);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return wrap;
 }
 
-// Desktop: side-by-side
-return ce("div",{className:"desktop-layout"},
-  chatPanel,
-  ce("div",{className:"brief-panel"},ce(BriefContent))
-);
-}
+async function sendMessage() {
+  const text = inputEl.value.trim();
+  if (!text || busy) return;
 
-ReactDOM.render(ce(App),document.getElementById("root"));
+  busy = true;
+  sendBtn.disabled = true;
+  inputEl.value = '';
+  inputEl.style.height = 'auto';
+
+  addMsg('user', text);
+  const typing = addTyping();
+
+  try {
+    const res = await fetch('/v1/digital-twin/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, history }),
+    });
+    const data = await res.json();
+    typing.remove();
+
+    const answer = data.answer || data.message || 'Something went wrong — please try again.';
+    addMsg('ai', answer);
+
+    history.push({ role: 'user', text });
+    history.push({ role: 'assistant', text: answer });
+    if (history.length > 24) history = history.slice(-24);
+  } catch (_) {
+    typing.remove();
+    addMsg('ai', 'The twin is temporarily unavailable. Please try again or reach out via LinkedIn.');
+  }
+
+  busy = false;
+  sendBtn.disabled = !inputEl.value.trim();
+  inputEl.focus();
+}
 </script>
 </body>
 </html>
