@@ -2,11 +2,32 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readFileSync } from 'node:fs';
 
 import { createRequestHandler, getEnv } from './server.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
+
+// Load .env file from repo root
+function loadEnvFile() {
+  try {
+    const envPath = path.resolve(REPO_ROOT, '.env');
+    const content = readFileSync(envPath, 'utf-8');
+    for (const line of content.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eqIdx = trimmed.indexOf('=');
+      if (eqIdx === -1) continue;
+      const key = trimmed.slice(0, eqIdx).trim();
+      const value = trimmed.slice(eqIdx + 1).trim();
+      if (!process.env[key]) {
+        process.env[key] = value;
+      }
+    }
+  } catch { /* .env file optional */ }
+}
+loadEnvFile();
 
 const DEFAULT_STATIC_FILES = new Map([
   ['/utku-bozkurt/', path.join(REPO_ROOT, 'utku-bozkurt', 'index.html')],
