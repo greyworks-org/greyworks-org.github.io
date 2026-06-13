@@ -2090,6 +2090,171 @@ button.button {
   }
 }
 
+/* ==============================================
+   Showcase Cards (Homepage)
+   ============================================== */
+.home-section-showcase {
+  padding-top: 28px;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.showcase-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px;
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  cursor: pointer;
+}
+
+.showcase-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 50px rgba(17, 18, 21, 0.12);
+  border-color: var(--line-strong);
+}
+
+.showcase-card-featured {
+  background: var(--slate);
+  color: #fff;
+  border-color: transparent;
+}
+
+.showcase-card-featured:hover {
+  box-shadow: 0 22px 60px rgba(17, 18, 21, 0.24);
+}
+
+.showcase-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.showcase-card-label {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+.showcase-card-featured .showcase-card-label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.showcase-card-arrow {
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--muted);
+  transition: transform 200ms ease;
+}
+
+.showcase-card-featured .showcase-card-arrow {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.showcase-card:hover .showcase-card-arrow {
+  transform: translateX(4px);
+}
+
+.showcase-card h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.showcase-card p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+  flex: 1;
+}
+
+.showcase-card-featured p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.showcase-card-tag {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  opacity: 0.55;
+  margin-top: 4px;
+}
+
+.showcase-card-featured .showcase-card-tag {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==============================================
+   Project Page (LullyTale)
+   ============================================== */
+.content-page-project {
+  max-width: 800px;
+}
+
+.page-hero-project {
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.page-hero-project h1 {
+  font-size: clamp(2.4rem, 7vw, 3.4rem);
+}
+
+.project-tagline {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.project-features {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .showcase-card {
+    padding: 24px;
+  }
+
+  .showcase-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .project-features {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero-project h1 {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
