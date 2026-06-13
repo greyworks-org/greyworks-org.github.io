@@ -180,6 +180,64 @@ main {
   text-transform: uppercase;
 }
 
+/* ── Glassmorphism utilities ─────────────────────────────────── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  box-shadow:
+    0 8px 32px rgba(20, 22, 25, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(14px) saturate(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  box-shadow:
+    0 4px 24px rgba(20, 22, 25, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.36);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 40px rgba(20, 22, 25, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.54);
+  border-color: rgba(255, 255, 255, 0.62);
+}
+
+.glass-glow {
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 4px 24px rgba(20, 22, 25, 0.04),
+    0 0 40px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.44);
+}
+
+.glass-dark {
+  background: rgba(23, 25, 28, 0.72);
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 12px 40px rgba(17, 18, 21, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-dark.glass-glow {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 32px rgba(17, 18, 21, 0.28),
+    0 0 50px rgba(200, 210, 220, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
 .home-hero {
   position: relative;
   padding: 34px;
@@ -187,7 +245,13 @@ main {
   border-radius: 42px;
   background:
     linear-gradient(120deg, rgba(247, 244, 238, 0.78) 0%, rgba(243, 239, 232, 0.56) 54%, rgba(226, 223, 217, 0.42) 100%);
-  box-shadow: 0 34px 110px rgba(20, 22, 25, 0.08);
+  backdrop-filter: blur(26px) saturate(1.12);
+  -webkit-backdrop-filter: blur(26px) saturate(1.12);
+  box-shadow:
+    0 34px 110px rgba(20, 22, 25, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 60px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.44);
   border-bottom: 1px solid var(--line);
 }
 
@@ -730,7 +794,11 @@ button.button {
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.44);
   background: rgba(247, 244, 238, 0.68);
-  box-shadow: 0 22px 70px rgba(20, 22, 25, 0.08);
+  backdrop-filter: blur(12px) saturate(1.06);
+  -webkit-backdrop-filter: blur(12px) saturate(1.06);
+  box-shadow:
+    0 22px 70px rgba(20, 22, 25, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
 }
 
 .standard-card h3 {
@@ -785,7 +853,11 @@ button.button {
 .product-card:not(.product-card-feature),
 .capability-card:not(.capability-card-feature) {
   background: rgba(247, 244, 238, 0.72);
-  box-shadow: 0 24px 70px rgba(20, 22, 25, 0.08);
+  backdrop-filter: blur(14px) saturate(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(1.08);
+  box-shadow:
+    0 24px 70px rgba(20, 22, 25, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
 }
 
 .product-card:hover,
@@ -910,6 +982,122 @@ button.button {
 
 .capability-card-feature .marketplace-link span {
   color: #f6f4ef !important;
+}
+
+/* ── Portfolio 3D Showcase ───────────────────────────────────── */
+.portfolio-showcase {
+  display: grid;
+  gap: 28px;
+  padding-top: 14px;
+}
+
+.portfolio-showcase-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 30%),
+    linear-gradient(140deg, #181b1f 0%, #20242a 42%, #101216 100%);
+  box-shadow: 0 46px 140px rgba(19, 20, 24, 0.22);
+  min-height: 500px;
+  cursor: grab;
+}
+
+.portfolio-showcase-stage:active {
+  cursor: grabbing;
+}
+
+.portfolio-showcase-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.portfolio-showcase-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-showcase-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(173, 181, 189, 0.12), transparent 28%),
+    radial-gradient(circle at 28% 78%, rgba(133, 143, 156, 0.1), transparent 32%),
+    linear-gradient(180deg, rgba(16, 18, 22, 0.05), rgba(16, 18, 22, 0.18));
+  pointer-events: none;
+}
+
+.portfolio-showcase-brand {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  display: grid;
+  gap: 5px;
+}
+
+.portfolio-showcase-brand p {
+  margin: 0;
+  color: rgba(246, 244, 239, 0.86);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.portfolio-showcase-brand span {
+  color: rgba(246, 244, 239, 0.48);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.portfolio-showcase-labels {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  right: 28px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.portfolio-showcase-labels .showcase-label {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(246, 244, 239, 0.72);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.portfolio-showcase-labels .showcase-label.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-showcase-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  margin: 0;
+  color: rgba(246, 244, 239, 0.46);
+  font-size: 0.78rem;
+  transition: opacity 300ms ease;
 }
 
 .product-media img {
@@ -1612,6 +1800,293 @@ button.button {
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .portfolio-showcase-stage {
+    min-height: 380px;
+  }
+
+  .portfolio-showcase-brand {
+    top: 16px;
+    left: 16px;
+  }
+
+  .portfolio-showcase-labels {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .portfolio-showcase-hint {
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-shell {
+    width: min(var(--max-width), calc(100% - 16px));
+    padding: 12px 0 36px;
+  }
+
+  .site-header {
+    border-radius: 26px;
+    padding: 12px 16px;
+  }
+
+  .brand {
+    gap: 12px;
+  }
+
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .brand-copy strong {
+    font-size: 0.92rem;
+  }
+
+  .brand-copy span {
+    font-size: 0.68rem;
+  }
+
+  .top-nav {
+    gap: 12px;
+  }
+
+  .top-nav a {
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+  }
+
+  main {
+    gap: 48px;
+    padding-top: 24px;
+  }
+
+  .home-hero {
+    padding: 16px 12px;
+    border-radius: 26px;
+  }
+
+  .home-hero-stack {
+    gap: 22px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.2rem, 11vw, 3.2rem);
+    max-width: 10ch;
+  }
+
+  .hero-lead {
+    font-size: 1.08rem;
+  }
+
+  .hero-context-note {
+    font-size: 0.9rem;
+    max-width: 40ch;
+  }
+
+  .hero-context {
+    gap: 14px;
+    padding: 14px 0 0;
+  }
+
+  .hero-stage {
+    min-height: 340px;
+  }
+
+  .landing-game-stage,
+  .transmission-panel {
+    min-height: 380px;
+  }
+
+  .transmission-panel-primary {
+    min-height: 480px;
+  }
+
+  .hero-summary {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .hero-summary h2,
+  .hero-panel-copy h2 {
+    font-size: 1.56rem;
+  }
+
+  .hero-summary p,
+  .hero-panel-copy p {
+    font-size: 0.88rem;
+  }
+
+  .stat-list div {
+    padding: 12px 14px;
+  }
+
+  .stat-list strong {
+    font-size: 0.82rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .section-heading {
+    max-width: 100%;
+  }
+
+  .section-lead {
+    font-size: 0.9rem;
+  }
+
+  .standard-card,
+  .capability-card,
+  .product-card {
+    padding: 20px 18px;
+    min-height: 0;
+  }
+
+  .standard-card h3,
+  .capability-copy h3,
+  .product-copy h3 {
+    font-size: 1.3rem;
+  }
+
+  .standard-card p:last-child,
+  .capability-copy span,
+  .product-copy span {
+    font-size: 0.84rem;
+  }
+
+  .hero-notes {
+    gap: 8px;
+  }
+
+  .hero-notes span {
+    font-size: 0.66rem;
+    min-height: 26px;
+    padding: 0 10px;
+  }
+
+  .button {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+
+  .portfolio-showcase-stage {
+    min-height: 300px;
+    border-radius: 28px;
+  }
+
+  .portfolio-showcase-brand {
+    top: 14px;
+    left: 14px;
+  }
+
+  .portfolio-showcase-brand p {
+    font-size: 0.68rem;
+  }
+
+  .portfolio-showcase-brand span {
+    font-size: 0.6rem;
+  }
+
+  .portfolio-showcase-labels {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    gap: 6px;
+  }
+
+  .portfolio-showcase-labels .showcase-label {
+    padding: 4px 10px;
+    font-size: 0.6rem;
+  }
+
+  .portfolio-showcase-hint {
+    bottom: 12px;
+    font-size: 0.7rem;
+  }
+
+  .landing-game-brand,
+  .transmission-brand,
+  .landing-game-score-panel {
+    top: 14px;
+  }
+
+  .landing-game-brand,
+  .transmission-brand {
+    left: 14px;
+  }
+
+  .landing-game-score-panel {
+    right: 14px;
+  }
+
+  .landing-game-instructions,
+  .transmission-instructions {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    font-size: 0.74rem;
+  }
+
+  .landing-game-score-panel strong {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .landing-game-popup,
+  .transmission-success {
+    width: min(280px, calc(100% - 32px));
+    padding: 20px 18px;
+  }
+
+  .site-footer {
+    font-size: 0.68rem;
+    gap: 14px;
+    margin-top: 12px;
+    padding-top: 22px;
+  }
+
+  .footer-links {
+    gap: 12px;
+  }
+
+  .footer-links a {
+    font-size: 0.7rem;
+  }
+
+  .content-page {
+    padding: 18px 14px;
+    border-radius: 26px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .support-card {
+    padding: 18px 16px;
+  }
+
+  .contact-compose-grid,
+  .support-grid-contact {
+    gap: 16px;
+  }
+
+  .marketplace-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .marketplace-link {
+    width: 100%;
+    justify-content: center;
   }
 }
 
