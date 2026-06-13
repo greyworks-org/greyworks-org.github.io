@@ -31,9 +31,9 @@ check_code "/healthz"
 check_code "/utku-bozkurt/"
 check_code "/utku-profile.jpeg"
 check_contains "/healthz" '"chat_configured":true'
-check_contains "/utku-bozkurt/" "Strategy & Business Development Leader"
+check_contains "/utku-bozkurt/" "Strategy &amp; Business Development Leader"
 check_contains "/utku-bozkurt/" "Recruiter FAQ"
-check_contains "/utku-bozkurt/" "Quick recruiter snapshot"
+check_contains "/utku-bozkurt/" "Available for new opportunities"
 
 chat_code="$($CURL_BIN -sSL -o /tmp/greyworks-twin-chat.json -w "%{http_code}" -H 'content-type: application/json' --data '{"text":"Summarize Utku for a recruiter in two lines."}' "${BASE_URL}/v1/digital-twin/chat")"
 if [[ "$chat_code" != "200" ]]; then

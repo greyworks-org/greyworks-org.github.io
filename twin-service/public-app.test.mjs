@@ -32,10 +32,10 @@ test('GET /utku-bozkurt/ serves the public recruiter page shell', async () => {
   const html = await response.text();
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-type') || '', /text\/html/);
-  assert.match(html, /Strategy & business development leader for SaaS, AdTech, and AI product growth/);
-  assert.match(html, /Quick recruiter snapshot/);
+  assert.match(html, /Strategy &amp; business development leader for SaaS, AdTech, and AI product growth/);
+  assert.match(html, /Available for new opportunities/);
   assert.match(html, /Recruiter FAQ/);
-  assert.match(html, /Rolling 6-week notice/);
+  assert.match(html, /Reading, UK/);
 
   await app.close();
 });
