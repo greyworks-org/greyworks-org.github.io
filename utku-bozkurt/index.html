@@ -2,328 +2,397 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Utku Bozkurt | AI Digital Twin</title>
-<meta name="description" content="Chat with Utku Bozkurt's AI digital twin. Strategy & Business Development Leader.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strategy &amp; business development leader for SaaS, AdTech, and AI product growth. CSO at WASK, founded njoyKidz ($5M valuation, 500K+ downloads). Open to opportunities.">
+<title>Utku Bozkurt — Strategy &amp; Business Development Leader</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#0a0e17;font-family:'DM Sans',sans-serif;color:#fff;overflow:hidden}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(0,234,255,.12);border-radius:3px}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes typing{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}
-@keyframes glow{0%,100%{opacity:.5}50%{opacity:1}}
-@keyframes breathe{0%,100%{box-shadow:0 0 8px rgba(0,234,255,.08)}50%{box-shadow:0 0 16px rgba(0,234,255,.15)}}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #09090b; --surface: #111113; --border: #27272a; --border-light: #3f3f46;
+    --text: #fafafa; --text-muted: #a1a1aa; --text-dim: #71717a;
+    --accent: #6366f1; --accent-hover: #818cf8; --accent-dim: rgba(99,102,241,0.12);
+    --user-bubble: #1e1e2a; --ai-bubble: #161618;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  html, body { height: 100%; overflow: hidden; font-family: var(--font); background: var(--bg); color: var(--text); }
+  .app { display: flex; height: 100vh; }
+
+  /* Sidebar */
+  .sidebar {
+    width: 320px; flex-shrink: 0;
+    background: var(--surface); border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 2px; }
+  .profile-top { padding: 28px 24px 20px; border-bottom: 1px solid var(--border); }
+  .avatar-wrap {
+    width: 72px; height: 72px; border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--border-light); margin-bottom: 16px;
+    background: var(--accent-dim); display: flex; align-items: center; justify-content: center;
+  }
+  .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .avatar-fallback {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 700; color: var(--accent);
+  }
+  .profile-name { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 2px; }
+  .profile-title { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .status-row { display: flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.5); flex-shrink: 0; }
+  .sidebar-section { padding: 20px 24px; border-bottom: 1px solid var(--border); }
+  .sidebar-section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+  .fact-list { display: flex; flex-direction: column; gap: 10px; }
+  .fact-item { display: flex; gap: 10px; align-items: flex-start; }
+  .fact-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; opacity: 0.8; }
+  .fact-text { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .fact-text strong { color: var(--text); font-weight: 500; }
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .metric-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 10px; }
+  .metric-val { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; }
+  .metric-lbl { font-size: 11px; color: var(--text-dim); margin-top: 2px; line-height: 1.3; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 99px;
+    font-size: 11.5px; font-weight: 500; background: var(--accent-dim);
+    color: var(--accent-hover); border: 1px solid rgba(99,102,241,0.2);
+  }
+  .contact-list { display: flex; flex-direction: column; gap: 8px; }
+  .contact-btn {
+    display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px;
+    background: var(--bg); border: 1px solid var(--border); color: var(--text-muted);
+    text-decoration: none; font-size: 13px; transition: all 0.15s;
+  }
+  .contact-btn:hover { border-color: var(--accent); color: var(--text); background: var(--accent-dim); }
+  .contact-icon { font-size: 15px; flex-shrink: 0; }
+  .contact-label { font-size: 12px; color: var(--text-dim); }
+
+  /* Chat */
+  .chat-panel { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .chat-header {
+    padding: 16px 24px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+  }
+  .chat-header-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent-dim); border: 1px solid rgba(99,102,241,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .chat-header-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; }
+  .chat-header-sub { font-size: 12px; color: var(--text-dim); margin-top: 1px; }
+  .messages {
+    flex: 1; overflow-y: auto; padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .messages::-webkit-scrollbar { width: 4px; }
+  .messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .msg { display: flex; gap: 10px; max-width: 76%; animation: fadeUp 0.18s ease; }
+  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+  .msg.ai { align-self: flex-start; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .msg-avatar {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; background: var(--accent-dim);
+    border: 1px solid var(--border-light); color: var(--accent);
+  }
+  .msg.user .msg-avatar { background: rgba(99,102,241,0.2); color: var(--accent-hover); }
+  .msg-bubble {
+    padding: 10px 14px; font-size: 14px; line-height: 1.65;
+    max-width: 100%; word-break: break-word;
+  }
+  .msg.ai .msg-bubble {
+    background: var(--ai-bubble); border: 1px solid var(--border);
+    border-radius: 4px 12px 12px 12px; color: var(--text);
+  }
+  .msg.user .msg-bubble {
+    background: var(--user-bubble); border: 1px solid var(--border-light);
+    border-radius: 12px 4px 12px 12px; color: var(--text);
+  }
+  .typing-dots { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
+  .typing-dots span {
+    width: 5px; height: 5px; border-radius: 50%; background: var(--text-dim);
+    animation: dot-pulse 1.2s infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot-pulse { 0%,60%,100% { opacity: 0.3; transform: scale(1); } 30% { opacity: 1; transform: scale(1.2); } }
+  .welcome-msg {
+    align-self: center; max-width: 480px; width: 100%; text-align: center;
+    padding: 40px 24px; color: var(--text-dim); font-size: 14px; line-height: 1.7;
+    animation: fadeUp 0.3s ease;
+  }
+  .welcome-msg h3 { font-size: 16px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+  .suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 20px; }
+  .suggestion {
+    padding: 9px 14px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; color: var(--text-muted);
+    cursor: pointer; text-align: left; transition: all 0.15s;
+  }
+  .suggestion:hover { border-color: var(--accent); color: var(--text); background: var(--accent-dim); }
+  .input-area { padding: 16px 24px 20px; border-top: 1px solid var(--border); flex-shrink: 0; }
+  .input-row {
+    display: flex; gap: 10px; align-items: flex-end;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 12px; transition: border-color 0.15s;
+  }
+  .input-row:focus-within { border-color: var(--accent); }
+  #msg-input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--text); font-size: 14px; line-height: 1.5;
+    resize: none; max-height: 140px; font-family: var(--font); scrollbar-width: thin;
+  }
+  #msg-input::placeholder { color: var(--text-dim); }
+  #send-btn {
+    width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+    background: var(--accent); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, opacity 0.15s; color: white;
+  }
+  #send-btn:hover { background: var(--accent-hover); }
+  #send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  #send-btn svg { width: 16px; height: 16px; }
+  .disclaimer { text-align: center; font-size: 11px; color: var(--text-dim); margin-top: 8px; }
+  @media (max-width: 720px) { .sidebar { display: none; } }
 </style>
 </head>
 <body>
-<div id="root"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script>window.__UTKU_TWIN_API__ = "https://twin.greyworks.org";</script>
+<div class="app">
+  <aside class="sidebar">
+    <div class="profile-top">
+      <div class="avatar-wrap">
+        <img src="/utku-profile.jpeg" alt="Utku Bozkurt"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="avatar-fallback" style="display:none">UB</div>
+      </div>
+      <div class="profile-name">Utku Bozkurt</div>
+      <div class="profile-title">Strategy &amp; Business Development Leader &middot; SaaS &amp; AdTech</div>
+      <div class="status-row">
+        <span class="status-dot"></span>
+        <span>Available for new opportunities</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Overview</div>
+      <div class="fact-list">
+        <div class="fact-item">
+          <span class="fact-icon">📍</span>
+          <span class="fact-text">Reading, UK &middot; <strong>UK Global Talent Visa</strong></span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🏢</span>
+          <span class="fact-text">CSO at <strong>WASK</strong> — B2B ad automation, 7K+ subscribers, 130+ countries</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🚀</span>
+          <span class="fact-text">Founded <strong>njoyKidz</strong> — 500K+ downloads, $5M valuation</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-icon">🎓</span>
+          <span class="fact-text">MSc MIS · GPA 3.81 · Published researcher</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Impact</div>
+      <div class="metric-grid">
+        <div class="metric-card"><div class="metric-val">7K+</div><div class="metric-lbl">Subscribers at WASK</div></div>
+        <div class="metric-card"><div class="metric-val">130+</div><div class="metric-lbl">Countries reached</div></div>
+        <div class="metric-card"><div class="metric-val">−42%</div><div class="metric-lbl">Churned revenue</div></div>
+        <div class="metric-card"><div class="metric-val">500K+</div><div class="metric-lbl">App downloads</div></div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Strengths</div>
+      <div class="tag-list">
+        <span class="tag">GTM Strategy</span><span class="tag">Business Development</span>
+        <span class="tag">Product Strategy</span><span class="tag">Fundraising</span>
+        <span class="tag">B2B SaaS</span><span class="tag">AdTech</span>
+        <span class="tag">AI Products</span><span class="tag">Partnerships</span>
+        <span class="tag">Pricing</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Best fit for</div>
+      <div class="tag-list">
+        <span class="tag">GM / COO</span><span class="tag">Head of Strategy</span>
+        <span class="tag">Head of BD</span><span class="tag">VP Growth</span>
+        <span class="tag">Technical Co-founder</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-label">Get in touch</div>
+      <div class="contact-list">
+        <a class="contact-btn" href="https://www.linkedin.com/in/utkubozkurt/" target="_blank" rel="noopener">
+          <span class="contact-icon">💼</span>
+          <div><div>LinkedIn</div><div class="contact-label">linkedin.com/in/utkubozkurt</div></div>
+        </a>
+        <a class="contact-btn" href="mailto:utku.bozkurt96@gmail.com">
+          <span class="contact-icon">✉️</span>
+          <div><div>Email</div><div class="contact-label">utku.bozkurt96@gmail.com</div></div>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="chat-panel">
+    <header class="chat-header">
+      <div class="chat-header-icon">🤖</div>
+      <div>
+        <div class="chat-header-name">Chat with Utku's Twin</div>
+        <div class="chat-header-sub">Ask about experience, background, or fit — I'll answer as Utku</div>
+      </div>
+    </header>
+
+    <div class="messages" id="messages">
+      <div class="welcome-msg" id="welcome">
+        <h3>Utku Bozkurt — Recruiter FAQ</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;line-height:1.6">
+          Strategy &amp; business development leader for SaaS, AdTech, and AI product growth.
+          Currently CSO at WASK. Previously founded njoyKidz to 500K+ downloads and a $5M valuation.
+          Open to PM, Program Manager, Engagement Manager, and senior IC roles.
+        </p>
+        <div class="suggestions">
+          <button class="suggestion" onclick="sendSuggestion(this)">What is Utku's current role and scope?</button>
+          <button class="suggestion" onclick="sendSuggestion(this)">What kinds of roles is he a strong fit for?</button>
+          <button class="suggestion" onclick="sendSuggestion(this)">Tell me about his leadership experience.</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-row">
+        <textarea id="msg-input" rows="1" maxlength="2400"
+          placeholder="Ask about Utku's background, experience, or fit…"
+          onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button id="send-btn" onclick="sendMessage()" disabled title="Send">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="disclaimer">Responses come from Utku's AI twin — for confidential details, contact Utku directly.</div>
+    </div>
+  </main>
+</div>
+
 <script>
-var ce=React.createElement,us=React.useState,ur=React.useRef,ue=React.useEffect,uc=React.useCallback;
+const messagesEl = document.getElementById('messages');
+const inputEl = document.getElementById('msg-input');
+const sendBtn = document.getElementById('send-btn');
+let history = [];
+let busy = false;
 
-function normApiBase(value){return String(value||"").trim().replace(/\/$/,"")}
-var INJECTED_API_BASE=normApiBase(window.__UTKU_TWIN_API__||"");
-var SAME_ORIGIN_API_BASE=normApiBase(window.location.origin||"");
-var PHOTO="/utku-profile.jpeg";
-function apiUrlFor(base,path){return(base||"")+path}
+inputEl.addEventListener('input', () => { sendBtn.disabled = !inputEl.value.trim() || busy; });
 
-var liSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
-var emSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="#EA4335"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>';
-var phSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="rgba(0,234,255,.55)"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>';
-
-function dlCV(){
-var h='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Utku Bozkurt CV</title><style>body{font-family:Segoe UI,Arial,sans-serif;max-width:780px;margin:30px auto;padding:0 24px;color:#1a1a1a;line-height:1.55;font-size:13.5px}h1{font-size:22px;margin-bottom:2px}h2{color:#0a5c8a;border-bottom:1.5px solid #ddd;padding-bottom:3px;margin-top:22px;font-size:15px}h3{font-size:14px;margin-bottom:1px;margin-top:14px}.m{color:#555;font-size:12.5px}.c{color:#444;font-size:13px;margin-bottom:6px}ul{padding-left:18px;margin:4px 0}li{margin-bottom:3px;color:#333}.s{margin:4px 0;color:#333}</style></head><body><h1>UTKU BOZKURT</h1><div class="c">Reading, UK | +44 7435 583 335 | utku.bozkurt3@gmail.com | linkedin.com/in/utku-bozkurtt</div><h2>PROFESSIONAL SUMMARY</h2><p>SaaS and AdTech strategist with 6+ years across BD, product strategy, fundraising, and growth. Leading strategy and BD at a B2B ad automation platform serving 7,000+ subscribers in 130+ countries. Founded and scaled a consumer gaming platform to $5M valuation. UK Global Talent Visa holder.</p><h2>EXPERIENCE</h2><h3>Chief Strategy Officer & Head of BD</h3><div class="m">WASK Inc. · Delaware/Reading, UK · May 2024 - Present</div><ul><li>Business strategy for AI-powered ad platform with $2.1M ARR, 85% gross margins, 4.8x LTV/CAC across 130+ countries</li><li>BD team of 6, 20.2% YoY subscriber growth</li><li>Major product launch: churn rate -7%, churned revenue -42% in 12 months</li><li>10+ strategic partnerships, $1M+ fundraise, Series A: $1.9M via SAFEs</li></ul><h3>Founder & CEO</h3><div class="m">njoyKidz · Istanbul · Jun 2021 - May 2024</div><ul><li>Ad-free child-safe gaming, 500K+ organic downloads, 30+ apps</li><li>$525K raised, $5M peak valuation, team of 20</li></ul><h3>BD Specialist</h3><div class="m">Uraz Patent · Izmir · Feb 2020 - Jan 2021</div><ul><li>Trademark/patent services, market analysis, international clients</li></ul><h2>EDUCATION</h2><p class="s"><b>MSc MIS</b> Dokuz Eylul (3.81/4.0) | <b>BSc Business Admin</b> Ege (3.20/4.0), Erasmus+ Spain</p><h2>SKILLS</h2><p class="s">Google/Meta/Apple Ads · HubSpot, Apollo.io, Zapier · GA, Firebase · Jira, ClickUp · MySQL, REST APIs, n8n</p><h2>CERTIFICATIONS</h2><p class="s">HubSpot Sales (2024) · Apple Search Ads (2022) · HubSpot Inbound (2020) · IELTS C1 · Google Digital Workshop (2018)</p><h2>RECOGNITION</h2><ul><li>UK Global Talent Visa (2025)</li><li>Google Jury Member (2023, 2024)</li><li>Published researcher IMISC2023</li><li>Bloomberg Businessweek expert</li><li>Bogazici University panelist</li></ul><h2>LANGUAGES</h2><p>Turkish (Native) | English (C1) | Spanish (Intermediate)</p></body></html>';
-var b=new Blob([h],{type:"text/html"});var u=URL.createObjectURL(b);var a=document.createElement("a");a.href=u;a.download="Utku_Bozkurt_CV.html";document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
 }
 
-// ━━━ AVATAR ━━━
-function Av(props){
-var mo=props.mo||0,sp=props.speaking,sz=props.sz||150;
-// Smooth mouth with multiple shapes
-var mOpen=Math.max(0,Math.min(mo,1));
-var jawDrop=mOpen*12;
-var lipW=14+mOpen*8;
-var lipH=2+mOpen*10;
-var teethH=Math.min(mOpen*5,4);
-var tongueShow=mOpen>0.4;
-var borderGlow=sp?0.45:0.15;
-var shadowSize=sp?24:8;
-var shadowAlpha=sp?0.25:0.06;
-
-return ce("div",{style:{position:"relative",width:sz,height:sz,flexShrink:0,margin:"0 auto"}},
-  // Outer glow ring
-  sp&&ce("div",{style:{position:"absolute",inset:-6,borderRadius:"50%",border:"1px solid rgba(0,234,255,.12)",animation:"breathe 2s ease-in-out infinite"}}),
-  ce("div",{style:{width:sz,height:sz,borderRadius:"50%",overflow:"hidden",border:"2.5px solid rgba(0,234,255,"+borderGlow+")",boxShadow:"0 0 "+shadowSize+"px rgba(0,234,255,"+shadowAlpha+")",transition:"all .3s"}},
-    ce("svg",{viewBox:"0 0 200 200",style:{width:"100%",height:"100%",display:"block",background:"linear-gradient(180deg,#141420 0%,#0d0d18 100%)"}},
-      ce("defs",null,
-        ce("radialGradient",{id:"skin",cx:"50%",cy:"38%",r:"52%"},
-          ce("stop",{offset:"0%",stopColor:"#F8DFC8"}),
-          ce("stop",{offset:"100%",stopColor:"#E8C4A4"})
-        ),
-        ce("radialGradient",{id:"cheek",cx:"50%",cy:"50%",r:"50%"},
-          ce("stop",{offset:"0%",stopColor:"#F0A0A0",stopOpacity:.2}),
-          ce("stop",{offset:"100%",stopColor:"#F0A0A0",stopOpacity:0})
-        )
-      ),
-      // Body/shirt
-      ce("path",{d:"M65 172 Q100 184 135 172 L148 200 H52Z",fill:"#1e3a4f"}),
-      ce("path",{d:"M85 172 Q100 178 115 172 L115 176 Q100 181 85 176Z",fill:"#16303f"}),
-      // Neck
-      ce("rect",{x:90,y:158,width:20,height:16,rx:5,fill:"#ECC5A8"}),
-      // Head
-      ce("ellipse",{cx:100,cy:112,rx:44,ry:50,fill:"url(#skin)"}),
-      // Ears
-      ce("ellipse",{cx:57,cy:110,rx:5.5,ry:9,fill:"#E0BB9C"}),
-      ce("ellipse",{cx:57,cy:110,rx:3,ry:5,fill:"#D4A88A",opacity:.3}),
-      ce("ellipse",{cx:143,cy:110,rx:5.5,ry:9,fill:"#E0BB9C"}),
-      ce("ellipse",{cx:143,cy:110,rx:3,ry:5,fill:"#D4A88A",opacity:.3}),
-      // Hair base
-      ce("ellipse",{cx:100,cy:76,rx:48,ry:32,fill:"#222"}),
-      // Hair curls
-      ce("circle",{cx:62,cy:54,r:10,fill:"#222"}),
-      ce("circle",{cx:76,cy:46,r:11,fill:"#222"}),
-      ce("circle",{cx:92,cy:42,r:11,fill:"#222"}),
-      ce("circle",{cx:108,cy:42,r:11,fill:"#222"}),
-      ce("circle",{cx:124,cy:46,r:11,fill:"#222"}),
-      ce("circle",{cx:138,cy:54,r:10,fill:"#222"}),
-      // Side hair
-      ce("circle",{cx:53,cy:74,r:8,fill:"#222"}),
-      ce("circle",{cx:147,cy:74,r:8,fill:"#222"}),
-      ce("circle",{cx:51,cy:90,r:5.5,fill:"#222"}),
-      ce("circle",{cx:149,cy:90,r:5.5,fill:"#222"}),
-      // Eyebrows
-      ce("path",{d:"M74 98 Q82 93 92 97",stroke:"#333",strokeWidth:2.5,fill:"none",strokeLinecap:"round"}),
-      ce("path",{d:"M108 97 Q118 93 126 98",stroke:"#333",strokeWidth:2.5,fill:"none",strokeLinecap:"round"}),
-      // Eyes - white
-      ce("ellipse",{cx:84,cy:110,rx:7,ry:6.5,fill:"white"}),
-      ce("ellipse",{cx:116,cy:110,rx:7,ry:6.5,fill:"white"}),
-      // Eyes - iris
-      ce("circle",{cx:84,cy:110,r:3.8,fill:"#3B2718"}),
-      ce("circle",{cx:116,cy:110,r:3.8,fill:"#3B2718"}),
-      // Eyes - pupil
-      ce("circle",{cx:84,cy:110,r:2,fill:"#1a0f08"}),
-      ce("circle",{cx:116,cy:110,r:2,fill:"#1a0f08"}),
-      // Eyes - highlight
-      ce("circle",{cx:85.8,cy:108.5,r:1.5,fill:"white"}),
-      ce("circle",{cx:117.8,cy:108.5,r:1.5,fill:"white"}),
-      // Nose
-      ce("path",{d:"M100 116 Q97 122 95 126 Q100 128 105 126 Q103 122 100 116",fill:"#D9B498",opacity:.25}),
-      // Cheek blush
-      ce("circle",{cx:72,cy:122,r:8,fill:"url(#cheek)"}),
-      ce("circle",{cx:128,cy:122,r:8,fill:"url(#cheek)"}),
-      // Beard shadow
-      ce("path",{d:"M74 134 Q78 148 88 155 Q100 160 112 155 Q122 148 126 134",fill:"#222",opacity:.07}),
-      // Stubble area
-      ce("path",{d:"M78 132 Q82 144 90 150 Q100 154 110 150 Q118 144 122 132",fill:"#333",opacity:.04}),
-      // Mustache hint
-      ce("path",{d:"M88 130 Q94 128 100 129 Q106 128 112 130 L112 132 Q106 130 100 131 Q94 130 88 132Z",fill:"#333",opacity:.08}),
-      // MOUTH - dynamic
-      // Outer lips
-      ce("ellipse",{cx:100,cy:139+jawDrop*.3,rx:lipW/2,ry:lipH/2,fill:"#C45555",opacity:mOpen>0.05?1:0}),
-      // Teeth
-      teethH>0.5&&ce("rect",{x:100-lipW/2+3,y:138+jawDrop*.2,width:lipW-6,height:teethH,rx:1,fill:"white",opacity:.9}),
-      // Tongue
-      tongueShow&&ce("ellipse",{cx:100,cy:141+jawDrop*.35,rx:4,ry:2.5,fill:"#C06060",opacity:.5}),
-      // Inner mouth darkness
-      mOpen>0.15&&ce("ellipse",{cx:100,cy:139.5+jawDrop*.3,rx:lipW/2-2,ry:Math.max(lipH/2-1.5,1),fill:"#3a1515",opacity:.6}),
-      // Closed mouth smile
-      mOpen<=0.05&&ce("path",{d:"M89 138 Q95 142 100 141.5 Q105 142 111 138",stroke:"#C09080",strokeWidth:1,fill:"none",opacity:.5}),
-      // Speaking glow
-      sp&&ce("circle",{cx:100,cy:100,r:97,fill:"none",stroke:"rgba(0,234,255,.06)",strokeWidth:2})
-    )
-  )
-);
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); if (!sendBtn.disabled) sendMessage(); }
 }
 
-function TL(p){
-return ce("div",{style:{display:"flex",gap:9,alignItems:"flex-start"}},
-  ce("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",minWidth:8}},
-    ce("div",{style:{width:5,height:5,borderRadius:"50%",background:"#00eaff",boxShadow:"0 0 4px rgba(0,234,255,.3)",marginTop:5}}),
-    ce("div",{style:{width:1,flex:1,background:"rgba(0,234,255,.06)",marginTop:2}})
-  ),
-  ce("div",{style:{paddingBottom:12}},
-    ce("div",{style:{fontSize:10,color:"rgba(0,234,255,.45)",fontFamily:"Sora,sans-serif",fontWeight:600}},p.y),
-    ce("div",{style:{fontSize:11.5,color:"#fff",fontFamily:"Sora,sans-serif",fontWeight:600,marginTop:1}},p.t),
-    ce("div",{style:{fontSize:10.5,color:"rgba(255,255,255,.3)",marginTop:1}},p.c),
-    p.h&&ce("div",{style:{fontSize:10.5,color:"rgba(0,234,255,.38)",marginTop:2,lineHeight:"1.3"}},p.h)
-  )
-);
+function sendSuggestion(btn) { inputEl.value = btn.textContent; sendMessage(); }
+
+function buildTypingDots() {
+  const wrap = document.createElement('div');
+  wrap.className = 'typing-dots';
+  for (let i = 0; i < 3; i++) wrap.appendChild(document.createElement('span'));
+  return wrap;
 }
 
-function App(){
-var _m=us([]),msgs=_m[0],setMsgs=_m[1];
-var _i=us(""),input=_i[0],setInput=_i[1];
-var _l=us(false),loading=_l[0],setLoading=_l[1];
-var speaking=false;
-var mo=0;
-var _t=us("chat"),tab=_t[0],setTab=_t[1];
-var _mb=us(false),isMob=_mb[0],setIsMob=_mb[1];
-var _e=us(""),errMsg=_e[0],setErr=_e[1];
-var _ab=us(INJECTED_API_BASE),apiBase=_ab[0],setApiBase=_ab[1];
-var _as=us(INJECTED_API_BASE?"checking":"offline"),apiStatus=_as[0],setApiStatus=_as[1];
-var endRef=ur(null);
-var apiReady=apiStatus==="ready"&&!!apiBase;
+function addMsg(role, text) {
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.remove();
 
-ue(function(){var c=function(){setIsMob(window.innerWidth<768)};c();window.addEventListener("resize",c);return function(){window.removeEventListener("resize",c)}},[]);
-ue(function(){endRef.current&&endRef.current.scrollIntoView({behavior:"smooth"})},[msgs,loading]);
-ue(function(){
-  var cancelled=false;
-  var fallbackBase=INJECTED_API_BASE||SAME_ORIGIN_API_BASE;
-  if(!fallbackBase){setApiStatus("offline");setApiBase("");return function(){cancelled=true}};
-  setApiBase(fallbackBase);
-  setApiStatus("checking");
-  fetch(apiUrlFor(fallbackBase,"/healthz"),{headers:{"accept":"application/json"}}).then(function(r){
-    if(!r.ok)throw new Error("health "+r.status);
-    return r.json().catch(function(){return {}})
-  }).then(function(d){
-    if(cancelled)return;
-    if(d&&d.ok&&(d.chat_configured||d.gemini_configured)){setApiBase(fallbackBase);setApiStatus("ready");return}
-    setApiStatus("offline");
-  }).catch(function(){if(!cancelled)setApiStatus("offline")});
-  return function(){cancelled=true};
-},[]);
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
 
-var send=uc(function(text){
-  if(!text.trim())return;setErr("");
-  if(!apiReady){
-    setMsgs(function(p){return p.concat([{role:"assistant",content:"The recruiter chat is temporarily offline while the private backend is being connected. Please use LinkedIn, email, or phone in the About tab for a direct response."}])});
-    return;
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = role === 'user' ? 'You' : 'UB';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.textContent = text;
+
+  wrap.appendChild(av);
+  wrap.appendChild(bubble);
+  messagesEl.appendChild(wrap);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return { wrap, bubble };
+}
+
+function addTyping() {
+  const welcome = document.getElementById('welcome');
+  if (welcome) welcome.remove();
+
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ai';
+  wrap.id = 'typing';
+
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = 'UB';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg-bubble';
+  bubble.appendChild(buildTypingDots());
+
+  wrap.appendChild(av);
+  wrap.appendChild(bubble);
+  messagesEl.appendChild(wrap);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return wrap;
+}
+
+async function sendMessage() {
+  const text = inputEl.value.trim();
+  if (!text || busy) return;
+
+  busy = true;
+  sendBtn.disabled = true;
+  inputEl.value = '';
+  inputEl.style.height = 'auto';
+
+  addMsg('user', text);
+  const typing = addTyping();
+
+  try {
+    const res = await fetch('/v1/digital-twin/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, history }),
+    });
+    const data = await res.json();
+    typing.remove();
+
+    const answer = data.answer || data.message || 'Something went wrong — please try again.';
+    addMsg('ai', answer);
+
+    history.push({ role: 'user', text });
+    history.push({ role: 'assistant', text: answer });
+    if (history.length > 24) history = history.slice(-24);
+  } catch (_) {
+    typing.remove();
+    addMsg('ai', 'The twin is temporarily unavailable. Please try again or reach out via LinkedIn.');
   }
-  var u={role:"user",content:text.trim()};
-  var all=msgs.concat([u]);
-  setMsgs(all);setInput("");setLoading(true);
-  var h=all.map(function(m){return{role:m.role,text:m.content}});
-  fetch(apiUrlFor(apiBase,"/v1/digital-twin/chat"),{
-    method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({text:text.trim(),history:h})
-  }).then(function(r){
-    return r.json().catch(function(){return {}}).then(function(d){
-      if(!r.ok||!d.answer){setErr(d.message||"Chat is unavailable right now.");throw new Error(d.message||("Chat "+r.status))}
-      return d;
-    })
-  }).then(function(d){
-    var reply=d.answer||"Could you rephrase that?";
-    setMsgs(function(p){return p.concat([{role:"assistant",content:reply}])});
-    setLoading(false);
-  }).catch(function(x){
-    setApiStatus("offline");
-    setMsgs(function(p){return p.concat([{role:"assistant",content:"The recruiter chat is temporarily offline. Please try again later or use LinkedIn, email, or phone in the About tab if you need a direct response."}])});
-    setLoading(false);
-    setErr(x.message||"Unknown error");
-  });
-},[apiBase,apiReady,msgs]);
 
-var statusLabel=apiStatus==="ready"?"Text chat connected":apiStatus==="checking"?"Checking secure backend":"Text chat temporarily offline";
-var statusBackground=apiStatus==="ready"?"rgba(0,234,255,.08)":apiStatus==="checking"?"rgba(120,190,255,.08)":"rgba(255,180,120,.08)";
-var statusBorder=apiStatus==="ready"?"rgba(0,234,255,.18)":apiStatus==="checking"?"rgba(120,190,255,.18)":"rgba(255,180,120,.16)";
-var statusColor=apiStatus==="ready"?"#00eaff":apiStatus==="checking"?"rgba(170,220,255,.88)":"rgba(255,205,160,.82)";
-var introBody=apiReady?"I'm Utku's AI twin for recruiter-style conversations. Ask about experience, leadership, GTM, fundraising, or product work.":apiStatus==="checking"?"The page is checking whether the secure recruiter-chat backend is reachable.":"The public page is in secure mode until the private text backend is live. For now, use the About tab for LinkedIn, email, and phone.";
-var inputPlaceholder=apiReady?"Ask about experience, leadership, or product work...":apiStatus==="checking"?"Checking secure backend...":"Recruiter chat temporarily offline";
-
-// ━━━ RENDER ━━━
-return ce("div",{style:{minHeight:"100vh",background:"#0a0e17",fontFamily:"'DM Sans',sans-serif",color:"#fff"}},
-
-  // NAV
-  ce("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"11px 18px",borderBottom:"1px solid rgba(0,234,255,.05)",background:"rgba(10,14,23,.93)",backdropFilter:"blur(20px)",position:"sticky",top:0,zIndex:100}},
-    ce("div",{style:{display:"flex",alignItems:"center",gap:7}},
-      ce("div",{style:{width:5,height:5,borderRadius:"50%",background:"#00eaff",boxShadow:"0 0 5px rgba(0,234,255,.45)",animation:"glow 3s ease-in-out infinite"}}),
-      ce("span",{style:{fontFamily:"Sora,sans-serif",fontSize:12.5,fontWeight:700}},"Utku's ",ce("span",{style:{color:"#00eaff"}},"Twin"))
-    ),
-    ce("div",{style:{display:"flex",gap:3}},
-      ["chat","about"].map(function(id){
-        return ce("button",{key:id,onClick:function(){setTab(id)},style:{background:tab===id?"rgba(0,234,255,.1)":"transparent",border:"1px solid "+(tab===id?"rgba(0,234,255,.2)":"rgba(255,255,255,.04)"),color:tab===id?"#00eaff":"rgba(255,255,255,.35)",padding:"4px 12px",borderRadius:16,fontSize:10,fontWeight:600,fontFamily:"Sora,sans-serif",cursor:"pointer",textTransform:"uppercase",letterSpacing:".06em"}},id==="chat"?"Chat":"About");
-      })
-    )
-  ),
-
-  ce("div",{style:{display:"flex",flexDirection:"column",height:"calc(100vh - 45px)"}},
-    tab==="chat"?
-    // ━━━ CHAT TAB ━━━
-    ce(React.Fragment,null,
-      // Header with large centered avatar
-      ce("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",padding:"20px 18px 16px",borderBottom:"1px solid rgba(0,234,255,.04)",background:"rgba(10,14,23,.5)"}},
-        ce(Av,{mo:mo,speaking:speaking,sz:150}),
-        ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:600,color:"rgba(0,234,255,.5)",marginTop:10,letterSpacing:".05em"}},"Utku's Twin"),
-        ce("div",{style:{marginTop:8,padding:"6px 14px",borderRadius:16,fontSize:10,fontWeight:600,fontFamily:"Sora,sans-serif",background:statusBackground,border:"1px solid "+statusBorder,color:statusColor,letterSpacing:".04em",textTransform:"uppercase"}},statusLabel)
-      ),
-      // Messages
-      ce("div",{style:{flex:1,overflowY:"auto",padding:isMob?"12px":"16px 20px"}},
-        msgs.length===0&&ce("div",{style:{display:"flex",alignItems:"center",justifyContent:"center",height:"100%",animation:"fadeUp .4s ease-out"}},
-        ce("div",{style:{textAlign:"center",padding:"20px 16px",maxWidth:380}},
-          ce("h2",{style:{fontFamily:"Sora,sans-serif",fontSize:15,fontWeight:700,marginBottom:4}},"Ask about experience, leadership, or what I've built."),
-          ce("p",{style:{fontSize:12,color:"rgba(255,255,255,.3)",lineHeight:1.55}},introBody)
-        )
-      ),
-        msgs.map(function(m,i){
-          return ce("div",{key:i,style:{display:"flex",justifyContent:m.role==="user"?"flex-end":"flex-start",marginBottom:10,animation:"fadeUp .2s ease-out"}},
-            ce("div",{style:{maxWidth:isMob?"88%":"70%",padding:"10px 14px",borderRadius:12,fontSize:13.5,lineHeight:1.6,whiteSpace:"pre-wrap",background:m.role==="user"?"linear-gradient(135deg,rgba(0,234,255,.09),rgba(0,100,200,.05))":"rgba(255,255,255,.025)",border:"1px solid "+(m.role==="user"?"rgba(0,234,255,.12)":"rgba(255,255,255,.04)"),color:m.role==="user"?"#fff":"rgba(255,255,255,.78)"}},
-              m.role==="assistant"&&ce("div",{style:{fontSize:8.5,color:"rgba(0,234,255,.35)",fontWeight:700,fontFamily:"Sora,sans-serif",marginBottom:3,textTransform:"uppercase",letterSpacing:".1em"}},"UTKU.twin"),
-              m.content
-            )
-          );
-        }),
-        loading&&ce("div",{style:{display:"flex",marginBottom:10}},ce("div",{style:{padding:"10px 14px",borderRadius:12,background:"rgba(255,255,255,.025)",border:"1px solid rgba(255,255,255,.04)"}},ce("div",{style:{display:"flex",gap:5,alignItems:"center"}},ce("div",{style:{width:4,height:4,borderRadius:"50%",background:"rgba(0,234,255,.35)",animation:"typing 1s ease-in-out 0s infinite"}}),ce("div",{style:{width:4,height:4,borderRadius:"50%",background:"rgba(0,234,255,.35)",animation:"typing 1s ease-in-out .2s infinite"}}),ce("div",{style:{width:4,height:4,borderRadius:"50%",background:"rgba(0,234,255,.35)",animation:"typing 1s ease-in-out .4s infinite"}}),ce("span",{style:{fontSize:10,color:"rgba(255,255,255,.15)",marginLeft:4,fontStyle:"italic"}},"thinking...")))),
-        errMsg&&ce("div",{style:{fontSize:10,color:"rgba(255,150,150,.4)",textAlign:"center",marginTop:4}},errMsg),
-        ce("div",{ref:endRef})
-      ),
-      // Input
-      ce("div",{style:{padding:"8px 16px 12px",borderTop:"1px solid rgba(0,234,255,.04)",background:"rgba(10,14,23,.88)"}},
-        ce("div",{style:{display:"flex",gap:5,alignItems:"flex-end",background:"rgba(255,255,255,.02)",border:"1px solid rgba(0,234,255,.06)",borderRadius:10,padding:"3px 3px 3px 10px"}},
-          ce("textarea",{value:input,onChange:function(e){setInput(e.target.value)},onKeyDown:function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send(input)}},placeholder:inputPlaceholder,disabled:!apiReady,rows:1,style:{flex:1,background:"transparent",border:"none",outline:"none",color:apiReady?"#fff":"rgba(255,255,255,.3)",fontSize:13,fontFamily:"'DM Sans',sans-serif",resize:"none",padding:"7px 0",lineHeight:1.5,maxHeight:80},onInput:function(e){e.target.style.height="auto";e.target.style.height=Math.min(e.target.scrollHeight,80)+"px"}}),
-          ce("button",{onClick:function(){send(input)},disabled:loading||!input.trim()||!apiReady,style:{width:32,height:32,borderRadius:7,flexShrink:0,background:input.trim()&&apiReady?"rgba(0,234,255,.12)":"rgba(255,255,255,.015)",border:"1px solid "+(input.trim()&&apiReady?"rgba(0,234,255,.25)":"rgba(255,255,255,.03)"),color:input.trim()&&apiReady?"#00eaff":"rgba(255,255,255,.1)",cursor:input.trim()&&apiReady?"pointer":"default",fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}},"\u2191")
-        )
-      )
-    )
-    :
-    // ━━━ ABOUT TAB ━━━
-    ce("div",{style:{flex:1,overflowY:"auto",padding:isMob?"16px 12px":"22px 28px"}},
-      ce("div",{style:{maxWidth:600,margin:"0 auto",animation:"fadeUp .3s ease-out"}},
-        ce("div",{style:{width:160,height:160,borderRadius:"50%",overflow:"hidden",margin:"0 auto 10px",border:"2.5px solid rgba(0,234,255,.15)",boxShadow:"0 0 24px rgba(0,234,255,.1)"}},
-          ce("img",{src:PHOTO,alt:"Utku Bozkurt",style:{width:"100%",height:"100%",objectFit:"cover"}})
-        ),
-        ce("div",{style:{textAlign:"center",marginBottom:16}},ce("span",{style:{fontFamily:"Sora,sans-serif",fontSize:12,fontWeight:600,color:"rgba(0,234,255,.5)",letterSpacing:".05em"}},"Utku's Twin")),
-        ce("h2",{style:{fontFamily:"Sora,sans-serif",fontSize:20,fontWeight:800,marginBottom:5,textAlign:"center"}},"About ",ce("span",{style:{color:"#00eaff"}},"Me")),
-        ce("p",{style:{fontSize:13,color:"rgba(255,255,255,.45)",lineHeight:1.7,textAlign:"center",maxWidth:520,margin:"0 auto 20px"}},"SaaS and AdTech strategist with 6+ years across business development, product strategy, fundraising, and growth. Currently leading strategy and BD at a B2B advertising automation platform serving 7,000+ subscribers in 130+ countries. Previously founded and scaled a consumer gaming platform to $5M valuation. UK Global Talent Visa holder based in Reading, UK."),
-        ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"Career Path"),
-        ce("div",{style:{marginBottom:20}},
-          ce(TL,{y:"2024 \u2013 Present",t:"CSO & Head of BD",c:"WASK Inc.",h:"Strategic turnaround, AI products, Series A"}),
-          ce(TL,{y:"2021 \u2013 2024",t:"Founder & CEO",c:"njoyKidz",h:"500K+ downloads, $5M valuation"}),
-          ce(TL,{y:"2020 \u2013 2023",t:"MSc MIS",c:"Dokuz Eylul University",h:"3.81 GPA, published research"}),
-          ce(TL,{y:"2020 \u2013 2021",t:"Business Development",c:"Uraz Patent"})
-        ),
-        ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8}},"What I Bring"),
-        [{t:"Strategic Turnarounds",d:"Joined WASK when metrics were declining. Restructured pricing, launched an AI product suite, realigned GTM. Churned revenue dropped 42% and subscriber growth hit 20% YoY within 12 months."},{t:"GTM & Growth Execution",d:"Built go-to-market strategies across 130+ countries. From positioning and pricing to pipeline management in HubSpot and Apollo, I operate across the full funnel."},{t:"AI Product & CRM Operations",d:"Scoped and launched WASK\u2019s AI suite. Daily HubSpot power user for CRM, pipeline, and marketing automation. I bridge business strategy and technical execution."},{t:"Founder Perspective",d:"Built njoyKidz from thesis idea to 500K+ users, $525K raised, team of 20. That shapes how I prioritize, ship, and think about the full picture."}].map(function(x,i){return ce("div",{key:i,style:{padding:"11px 14px",marginBottom:5,borderRadius:9,background:"rgba(0,234,255,.015)",border:"1px solid rgba(0,234,255,.05)"}},ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:11.5,fontWeight:700,color:"#fff",marginBottom:2}},x.t),ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.42)",lineHeight:1.55}},x.d))}),
-        ce("h3",{style:{fontFamily:"Sora,sans-serif",fontSize:13,fontWeight:700,color:"#00eaff",marginBottom:8,marginTop:20}},"Recognition"),
-        ce("div",{style:{display:"flex",flexDirection:"column",gap:4,marginBottom:20}},
-          ["Google Jury Member, Game & App Academy (2023 & 2024)","Published researcher, International MIS Conference (2023)","Quoted as industry expert in Bloomberg Businessweek","Panelist, Private Equity & Advisors Academy, Bogazici University","Speaker at HIT Games Conference and Show Turk TV","Mentored 60+ students across two cohorts"].map(function(r,i){return ce("div",{key:i,style:{fontSize:11.5,color:"rgba(255,255,255,.38)",lineHeight:1.45,paddingLeft:10,borderLeft:"2px solid rgba(0,234,255,.08)"}},r)})
-        ),
-        ce("button",{onClick:dlCV,style:{display:"flex",alignItems:"center",justifyContent:"center",gap:9,width:"100%",padding:"14px 18px",borderRadius:11,marginBottom:18,cursor:"pointer",background:"rgba(0,234,255,.04)",border:"1px solid rgba(0,234,255,.12)",color:"rgba(0,234,255,.6)"},onMouseEnter:function(e){e.currentTarget.style.background="rgba(0,234,255,.1)"},onMouseLeave:function(e){e.currentTarget.style.background="rgba(0,234,255,.04)"}},
-          ce("span",{dangerouslySetInnerHTML:{__html:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,234,255,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>'}}),
-          ce("span",{style:{fontSize:13,fontWeight:600,fontFamily:"Sora,sans-serif"}},"Download Full CV")
-        ),
-        ce("div",{style:{padding:18,borderRadius:12,background:"linear-gradient(135deg,rgba(0,234,255,.035),rgba(0,100,200,.015))",border:"1px solid rgba(0,234,255,.07)"}},
-          ce("div",{style:{fontFamily:"Sora,sans-serif",fontSize:14.5,fontWeight:700,marginBottom:2,textAlign:"center"}},"Let\u2019s talk."),
-          ce("div",{style:{fontSize:11.5,color:"rgba(255,255,255,.32)",marginBottom:12,textAlign:"center"}},"Always open to the right conversation."),
-          ce("div",{style:{display:"flex",flexDirection:"column",gap:5,maxWidth:340,margin:"0 auto"}},
-            [[liSvg,"Connect on LinkedIn","https://www.linkedin.com/in/utku-bozkurtt/","#0077B5","0,119,181",true],[emSvg,"utku.bozkurt3@gmail.com","mailto:utku.bozkurt3@gmail.com","#EA4335","234,67,53",false],[phSvg,"+44 7435 583 335","tel:+447435583335","rgba(0,234,255,.55)","0,234,255",false]].map(function(it,i){
-              return ce("a",{key:i,href:it[2],target:it[5]?"_blank":undefined,rel:it[5]?"noopener noreferrer":undefined,style:{display:"flex",alignItems:"center",gap:9,padding:"10px 14px",borderRadius:9,background:"rgba("+it[4]+",.04)",border:"1px solid rgba("+it[4]+",.1)",textDecoration:"none",transition:"all .2s"},onMouseEnter:function(e){e.currentTarget.style.background="rgba("+it[4]+",.1)"},onMouseLeave:function(e){e.currentTarget.style.background="rgba("+it[4]+",.04)"}},
-                ce("span",{dangerouslySetInnerHTML:{__html:it[0]}}),
-                ce("span",{style:{fontSize:12.5,color:it[3],fontWeight:600,fontFamily:"Sora,sans-serif"}},it[1])
-              );
-            })
-          )
-        )
-      )
-    )
-  )
-);
+  busy = false;
+  sendBtn.disabled = !inputEl.value.trim();
+  inputEl.focus();
 }
-
-ReactDOM.render(ce(App),document.getElementById("root"));
 </script>
 </body>
 </html>

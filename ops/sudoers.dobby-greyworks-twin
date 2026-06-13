@@ -1,0 +1,1 @@
+dobby ALL=(root) NOPASSWD: /bin/systemctl start dobby-greyworks-twin, /bin/systemctl stop dobby-greyworks-twin, /bin/systemctl restart dobby-greyworks-twin, /bin/systemctl status dobby-greyworks-twin, /bin/systemctl is-active dobby-greyworks-twin

@@ -1,0 +1,11 @@
+{
+  "name": "greyworks-redesign",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start:twin-service": "node twin-service/server.mjs",
+    "start:twin-public": "node twin-service/public-app.mjs",
+    "test:twin-service": "node --test twin-service/server.test.mjs",
+    "test:twin-public": "node --test twin-service/public-app.test.mjs"
+  }
+}

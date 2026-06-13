@@ -1,9 +1,9 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 set -eu
 
 BASE_URL="${1:-https://greyworks.org}"
 CURL_BIN="${CURL_BIN:-/usr/bin/curl}"
-RG_BIN="${RG_BIN:-/Applications/Codex.app/Contents/Resources/rg}"
+RG_BIN="${RG_BIN:-$(command -v rg || command -v grep)}"
 HOST_HEADER="${HOST_HEADER:-}"
 
 curl_run() {
@@ -66,7 +66,9 @@ check_body_absent "/privacy/" "U\\.K\\.-based"
 check_body_absent "/terms/" "U\\.K\\.-based"
 check_body_absent "/privacy/" "Painter Kid: Color Adventure"
 check_body_absent "/" "/script\\.js|/og-card\\.html"
-check_body_contains "/utku-bozkurt/" "Ask me anything\\."
-check_body_contains "/utku-bozkurt/" "Utku's Twin"
+check_body_contains "/utku-bozkurt/" "Strategy.*Business Development Leader"
+check_body_contains "/utku-bozkurt/" "recruiter-chat"
+check_body_contains "/utku-bozkurt/" "Always open to the right conversation"
+check_body_absent "/utku-bozkurt/" "digital-twin/speak|Voice On|Voice Off"
 
 printf '\nGreyworks smoke check passed for %s\n' "$BASE_URL"
