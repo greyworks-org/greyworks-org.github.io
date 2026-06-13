@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasGsap = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
 
   initHeaderState();
   initAnchorLinks(reduceMotion);
 
-  if (!reduceMotion) {
+  if (!reduceMotion && !hasGsap) {
     initReveals();
   }
 });
