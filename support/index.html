@@ -4,125 +4,148 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support | Greyworks</title>
-  <meta name="description" content="Official Greyworks support page for LullyTale and other Greyworks apps, including bug reports, privacy requests, and account assistance.">
+  <meta name="description" content="Official Greyworks support for LullyTale and other apps. Bug reports, privacy requests, and account assistance.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://greyworks.org/support/">
   <meta property="og:site_name" content="Greyworks">
   <meta property="og:url" content="https://greyworks.org/support/">
   <meta property="og:title" content="Support | Greyworks">
-  <meta property="og:description" content="Official support details for LullyTale and other Greyworks apps and services.">
+  <meta property="og:description" content="Official Greyworks support for LullyTale and other apps. Bug reports, privacy requests, and account assistance.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://greyworks.org/greyworks-banner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="655">
-  <meta property="og:image:alt" content="Greyworks logo banner">
-  <meta name="theme-color" content="#d8d5cf">
+  <meta name="theme-color" content="#09090b">
   <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260401-layout-reset-b">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20260616-premium-v1">
 </head>
-<body class="inner-page utility-page">
-  <div class="page-shell">
-    <header class="site-header">
+<body>
+  <header class="site-header" id="site-header">
+    <div class="site-header-inner">
       <a class="brand" href="/">
-        <span class="brand-mark">GW</span>
-        <span class="brand-copy">
-          <strong>Greyworks Productions</strong>
-          <span>Digital product surfaces</span>
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span class="brand-text">
+          <strong>Greyworks</strong>
+          <span>AI-native collective</span>
         </span>
       </a>
-      <nav class="top-nav" aria-label="Primary">
-        <a href="/#approach">Approach</a>
-        <a href="/contact/">Contact</a>
-        <a href="/support/" aria-current="page">Support</a>
+      <nav class="nav-main" id="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about/">About</a>
+        <a class="nav-link" href="/services/">Services</a>
+        <a class="nav-link" href="/usecases/">Use Cases</a>
+        <a class="nav-link" href="/games/">Games</a>
+        <a class="nav-link" href="/contact/" aria-current="page">Contact</a>
+        <a class="btn btn-accent btn-sm nav-cta" href="/contact/">Get in Touch</a>
       </nav>
-    </header>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <div class="page-top"></div>
 
-    <main class="content-page">
-      <section class="page-hero" data-reveal>
-        <p class="eyebrow">Support</p>
-        <h1>Support for Greyworks apps</h1>
-        <p>
-          This page is the public support contact for Greyworks websites, apps, and related digital products,
-          including LullyTale on Google Play.
-        </p>
-        <p class="policy-meta">
-          Last updated: 23 March 2026. Covers support requests for web, App Store, and Google Play products.
-        </p>
-      </section>
+  <main>
+    <section class="page-hero container" data-reveal>
+      <span class="text-label">Support</span>
+      <h1 class="text-display">We're here to help.</h1>
+      <p>Support for Greyworks websites, apps, and digital products, including LullyTale on Google Play.</p>
+    </section>
 
-      <div class="page-meta-grid support-grid" data-reveal>
-        <article class="support-card">
+    <section class="page-content container">
+      <div class="support-grid" data-reveal>
+        <div class="card support-card">
           <h2>Email support</h2>
-          <p><a href="mailto:contact@greyworks.com">contact@greyworks.com</a></p>
-        </article>
-        <article class="support-card">
-          <h2>Typical help topics</h2>
-          <p>Access issues, bug reports, ad reports, feature problems, and privacy-related requests.</p>
-        </article>
-        <article class="support-card">
-          <h2>Response details</h2>
-          <p>Include the product name, device type, OS version, and a short description so the issue can be reviewed faster.</p>
-        </article>
+          <p><a href="mailto:contact@greyworks.com" style="color: var(--accent-bright);">contact@greyworks.com</a></p>
+        </div>
+        <div class="card support-card">
+          <h2>What we help with</h2>
+          <p>Access issues, bug reports, feature problems, privacy requests, billing questions, and account assistance.</p>
+        </div>
+        <div class="card support-card">
+          <h2>Response time</h2>
+          <p>Include the product name, device type, OS version, and a short description for faster review.</p>
+        </div>
       </div>
 
-      <section class="page-card" data-reveal>
-        <h2>LullyTale</h2>
-        <p>
-          If your request is about LullyTale, include the app name, device model,
-          OS version, and a short description of what happened.
-        </p>
-        <ul class="legal-list">
-          <li>For audio or playback problems, include the story title and whether it occurs with specific content.</li>
-          <li>For subscription or purchase issues, mention the platform used and the transaction date.</li>
-          <li>For parent or guardian questions about privacy or child safety, email <a href="mailto:contact@greyworks.com">contact@greyworks.com</a>.</li>
+      <div class="page-section" style="margin-top: var(--space-xl);" data-reveal>
+        <h2>LullyTale support</h2>
+        <p>If your request is about LullyTale, include the app name, device model, OS version, and what happened.</p>
+        <ul style="padding-left: var(--space-lg); margin-top: var(--space-md);">
+          <li>Audio or playback problems: include the story title and whether it happens with specific content.</li>
+          <li>Subscription or purchase issues: mention the platform and transaction date.</li>
+          <li>Privacy or child safety questions: email <a href="mailto:contact@greyworks.com" style="color: var(--accent-bright);">contact@greyworks.com</a>.</li>
         </ul>
-      </section>
+      </div>
 
-      <section class="page-card" data-reveal>
+      <div class="page-section" data-reveal>
         <h2>Before contacting support</h2>
-        <ul class="legal-list">
-          <li>Check that you are using the latest version of the app or product.</li>
+        <ul style="padding-left: var(--space-lg); margin-top: var(--space-md);">
+          <li>Check that you are using the latest version of the app.</li>
           <li>Include screenshots or error messages where relevant.</li>
-          <li>For purchase issues, mention the platform used for the purchase and the transaction date.</li>
+          <li>For purchase issues, mention the platform and transaction date.</li>
         </ul>
-      </section>
-
-      <section class="page-card" data-reveal>
-        <h2>Account and privacy help</h2>
-        <p>
-          If your request relates to account access, data deletion, correction, or privacy rights,
-          use the contact details on <a href="/contact/">the contact page</a> or email
-          <a href="mailto:contact@greyworks.com">contact@greyworks.com</a>.
-        </p>
-      </section>
-
-      <section class="page-card" data-reveal>
-        <h2>Related pages</h2>
-        <ul class="legal-list">
-          <li><a href="/contact/">Contact</a></li>
-          <li><a href="/privacy/">Privacy Policy</a></li>
-          <li><a href="/terms/">Terms of Use</a></li>
-        </ul>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>Greyworks</p>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/contact/">Contact</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="mailto:contact@greyworks.com">contact@greyworks.com</a>
       </div>
-    </footer>
-  </div>
 
-  <script src="/site.js?v=20260320-scenes-b"></script>
+      <div class="page-section" data-reveal>
+        <h2>Related pages</h2>
+        <div class="footer-links" style="gap: 12px;">
+          <a class="footer-link" href="/contact/">Contact</a>
+          <a class="footer-link" href="/privacy/">Privacy Policy</a>
+          <a class="footer-link" href="/terms/">Terms of Use</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <span class="footer-brand-mark">GW</span>
+            <span class="footer-brand-name">Greyworks</span>
+          </div>
+          <p>AI-native growth and product collective.</p>
+        </div>
+        <div>
+          <p class="footer-col-label">Products</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/lullytale/">LullyTale</a>
+            <a class="footer-link" href="/utku-bozkurt/">Digital Twin</a>
+            <a class="footer-link" href="/games/">Games</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-label">Company</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/about/">About</a>
+            <a class="footer-link" href="/services/">Services</a>
+            <a class="footer-link" href="/usecases/">Use Cases</a>
+            <a class="footer-link" href="/contact/">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-label">Legal</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/privacy/">Privacy Policy</a>
+            <a class="footer-link" href="/terms/">Terms of Use</a>
+            <a class="footer-link" href="/support/">Support</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Greyworks. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="/site.js?v=20260616-premium-v1"></script>
 </body>
 </html>

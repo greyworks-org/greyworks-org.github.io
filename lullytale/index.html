@@ -3,136 +3,194 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LullyTale — Baby Sleep Stories | Greyworks</title>
-  <meta name="description" content="LullyTale — Baby sleep stories, lullabies, and soothing sounds for 0-4 years. Built by Greyworks for Google Play.">
+  <title>LullyTale | Greyworks</title>
+  <meta name="description" content="Baby sleep stories, lullabies, and soothing sounds for 0-4 years. Built by Greyworks for Google Play.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://greyworks.org/lullytale/">
   <meta property="og:site_name" content="Greyworks">
   <meta property="og:url" content="https://greyworks.org/lullytale/">
-  <meta property="og:title" content="LullyTale — Baby Sleep Stories | Greyworks">
-  <meta property="og:description" content="Baby sleep stories, lullabies, and soothing sounds for 0-4 years. Built by Greyworks.">
+  <meta property="og:title" content="LullyTale | Greyworks">
+  <meta property="og:description" content="Baby sleep stories, lullabies, and soothing sounds for 0-4 years. Built by Greyworks for Google Play.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://greyworks.org/greyworks-banner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="655">
-  <meta name="theme-color" content="#d8d5cf">
+  <meta name="theme-color" content="#09090b">
   <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260401-layout-reset-b">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20260616-premium-v1">
 </head>
-<body class="inner-page utility-page">
-  <div class="page-shell">
-    <header class="site-header">
+<body>
+  <header class="site-header" id="site-header">
+    <div class="site-header-inner">
       <a class="brand" href="/">
-        <span class="brand-mark">GW</span>
-        <span class="brand-copy">
-          <strong>Greyworks Productions</strong>
-          <span>Digital product surfaces</span>
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span class="brand-text">
+          <strong>Greyworks</strong>
+          <span>AI-native collective</span>
         </span>
       </a>
-      <nav class="top-nav" aria-label="Primary">
-        <a href="/#approach">Approach</a>
-        <a href="/contact/">Contact</a>
-        <a href="/support/">Support</a>
+      <nav class="nav-main" id="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about/">About</a>
+        <a class="nav-link" href="/services/">Services</a>
+        <a class="nav-link" href="/usecases/">Use Cases</a>
+        <a class="nav-link" href="/games/">Games</a>
+        <a class="nav-link" href="/contact/">Contact</a>
+        <a class="btn btn-accent btn-sm nav-cta" href="/contact/">Get in Touch</a>
       </nav>
-    </header>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <div class="page-top"></div>
 
-    <main class="content-page content-page-project">
-      <section class="page-hero page-hero-project" data-reveal>
-        <p class="eyebrow">Project</p>
-        <h1>LullyTale</h1>
-        <p class="project-tagline">Baby sleep stories, lullabies, and soothing sounds.</p>
-        <p class="policy-meta">Ages 0–4 &middot; English &amp; Turkish &middot; Google Play</p>
-      </section>
+  <main>
+    <section class="page-content container">
+      <div class="project-hero" data-reveal>
+        <img src="assets/feature-graphic.png" alt="LullyTale" class="project-hero-image" width="700" height="342" loading="eager">
+        <div class="project-hero-overlay">
+          <div class="project-hero-content">
+            <img src="assets/icon.png" alt="LullyTale icon" class="project-hero-icon" width="72" height="72">
+            <div class="project-hero-text">
+              <span class="text-label" style="color: rgba(255,255,255,0.6);">Project</span>
+              <h1 class="text-headline" style="color: white;">LullyTale</h1>
+              <p style="color: rgba(255,255,255,0.8);">Baby sleep stories, lullabies, and soothing sounds.</p>
+              <p class="text-caption" style="color: rgba(255,255,255,0.5);">Ages 0-4 · English &amp; Turkish · Google Play</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <section class="page-card" data-reveal>
+      <div class="page-section" data-reveal>
         <h2>What LullyTale does</h2>
-        <p>
-          LullyTale helps babies and toddlers drift into sleep with a library of carefully crafted
-          sleep stories, gentle lullabies, and calming ambient sounds. Designed for parents who want
-          a screen-off, audio-first bedtime routine that actually works.
-        </p>
-        <p>
-          The app includes a sleep timer that fades out automatically, a playlist builder for
-          consistent routines, and bilingual content in English and Turkish — with Spanish on the way.
-        </p>
-      </section>
-
-      <div class="page-meta-grid support-grid project-features" data-reveal>
-        <article class="support-card">
-          <h2>Sleep Stories</h2>
-          <p>38+ original sleep stories and lullabies crafted to calm, not stimulate. Each story uses gentle pacing and soft language to ease little ones toward sleep.</p>
-        </article>
-        <article class="support-card">
-          <h2>Soothing Sounds</h2>
-          <p>White noise, rain, lullaby melodies, and ambient soundscapes. Mix and match to create the perfect sleep environment for your baby.</p>
-        </article>
-        <article class="support-card">
-          <h2>Sleep Timer</h2>
-          <p>Set a timer and let the app fade out gently — no sudden stops to wake the baby. The auto-stop keeps the routine hands-free once your child is asleep.</p>
-        </article>
+        <p>LullyTale helps babies and toddlers drift into sleep with a library of carefully crafted sleep stories, gentle lullabies, and calming ambient sounds. Designed for parents who want a screen-off, audio-first bedtime routine.</p>
+        <p>The app includes a sleep timer that fades out automatically, a playlist builder for consistent routines, and bilingual content in English and Turkish.</p>
       </div>
 
-      <section class="page-card" data-reveal>
+      <div class="grid-3" style="margin: var(--space-xl) 0;" data-reveal-stagger>
+        <div class="card service-card">
+          <h3>Sleep Stories</h3>
+          <p>38+ original sleep stories and lullabies crafted to calm, not stimulate. Gentle pacing and soft language.</p>
+        </div>
+        <div class="card service-card">
+          <h3>Soothing Sounds</h3>
+          <p>White noise, rain, lullaby melodies, and ambient soundscapes. Mix and match for the perfect sleep environment.</p>
+        </div>
+        <div class="card service-card">
+          <h3>Sleep Timer</h3>
+          <p>Set a timer and let the app fade out gently. Auto-stop keeps the routine hands-free once your child is asleep.</p>
+        </div>
+      </div>
+
+      <div class="page-section" data-reveal>
+        <h2>Story Library</h2>
+        <p class="text-caption" style="margin-bottom: var(--space-md);">Original tales crafted for bedtime calm</p>
+        <div class="gallery-scroll">
+          <div class="gallery-track">
+            <div class="gallery-item"><img src="assets/story-001.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/story-003.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/story-005.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/story-006.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/story-009.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/story-011.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/story-015.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+            <div class="gallery-item"><img src="assets/story-020.png" alt="Sleep story" width="200" height="200" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-section" data-reveal>
+        <h2>Inside the app</h2>
+        <p class="text-caption" style="margin-bottom: var(--space-md);">Audio-first, calm, and built for parents</p>
+        <div class="screenshots-grid">
+          <div class="phone-mockup"><img src="assets/screenshot-01.png" alt="Home screen" width="360" height="640" loading="lazy"></div>
+          <div class="phone-mockup"><img src="assets/screenshot-03.png" alt="Story player" width="360" height="640" loading="lazy"></div>
+          <div class="phone-mockup"><img src="assets/screenshot-05.png" alt="Soundscapes" width="360" height="640" loading="lazy"></div>
+          <div class="phone-mockup"><img src="assets/screenshot-07.png" alt="Sleep timer" width="360" height="640" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="page-section" data-reveal>
         <h2>Why parents trust LullyTale</h2>
-        <ul class="legal-list">
-          <li>Audio-first design — no screen time, just calming sound.</li>
-          <li>Bilingual library: English and Turkish content, with Spanish in development.</li>
-          <li>Ad-free experience with a premium subscription option.</li>
-          <li>Built with child safety and privacy as core requirements.</li>
-          <li>Regular content updates and seasonal stories.</li>
-        </ul>
-      </section>
-
-      <section class="page-card" data-reveal>
-        <h2>Built by Greyworks</h2>
-        <p>
-          LullyTale is the first Greyworks-published app on Google Play. Every surface — from the
-          store listing to the in-app audio player — was designed and built as part of Greyworks'
-          digital product surface practice.
-        </p>
-        <p>
-          The project spans store presence, support flows, privacy policy, terms of use,
-          and the app interface itself — a complete public-facing layer wrapped around
-          a focused, useful product.
-        </p>
-      </section>
-
-      <section class="page-card" data-reveal>
-        <h2>Get LullyTale</h2>
-        <p>
-          <a href="https://play.google.com/store/apps/details?id=com.greyworks.lullytale"
-             class="button button-primary"
-             target="_blank"
-             rel="noopener noreferrer">
-            Open on Google Play
-          </a>
-        </p>
-        <p style="margin-top: 1rem;">
-          For support, questions, or privacy requests, visit the
-          <a href="/support/">Support page</a> or
-          <a href="mailto:contact@greyworks.com">contact@greyworks.com</a>.
-        </p>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>Greyworks</p>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/contact/">Contact</a>
-        <a href="/support/">Support</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="/terms/">Terms</a>
-        <a href="mailto:contact@greyworks.com">contact@greyworks.com</a>
+        <div class="trust-list">
+          <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16"><path d="M5 8l2 2 4-4"/></svg></div><span>Audio-first design: no screen time, just calming sound.</span></div>
+          <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16"><path d="M5 8l2 2 4-4"/></svg></div><span>Bilingual library: English and Turkish, with Spanish in development.</span></div>
+          <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16"><path d="M5 8l2 2 4-4"/></svg></div><span>Ad-free experience with a premium subscription option.</span></div>
+          <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16"><path d="M5 8l2 2 4-4"/></svg></div><span>Built with child safety and privacy as core requirements.</span></div>
+          <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16"><path d="M5 8l2 2 4-4"/></svg></div><span>Regular content updates and seasonal stories.</span></div>
+        </div>
       </div>
-    </footer>
-  </div>
 
-  <script src="/site.js?v=20260320-scenes-b"></script>
+      <div class="page-section" data-reveal>
+        <h2>Built by Greyworks</h2>
+        <p>LullyTale is the first Greyworks-published app on Google Play. Every surface, from the store listing to the in-app audio player, was designed and built as part of Greyworks' product practice.</p>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-mesh" aria-hidden="true"><div class="cta-mesh-1"></div><div class="cta-mesh-2"></div></div>
+      <div class="container" data-reveal>
+        <div class="cta-inner">
+          <h2 class="text-headline">Get LullyTale</h2>
+          <p>Available now on Google Play. Free download with premium stories and unlimited access via subscription.</p>
+          <div class="cta-actions">
+            <a class="btn btn-accent btn-lg" href="https://play.google.com/store/apps/details?id=com.greyworks.lullytale" target="_blank" rel="noopener noreferrer">Open on Google Play</a>
+          </div>
+          <p class="text-caption" style="margin-top: var(--space-lg);">For support, visit the <a href="/support/" style="color: var(--accent-bright);">Support page</a> or email <a href="mailto:contact@greyworks.com" style="color: var(--accent-bright);">contact@greyworks.com</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <span class="footer-brand-mark">GW</span>
+            <span class="footer-brand-name">Greyworks</span>
+          </div>
+          <p>AI-native growth and product collective.</p>
+        </div>
+        <div>
+          <p class="footer-col-label">Products</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/lullytale/">LullyTale</a>
+            <a class="footer-link" href="/utku-bozkurt/">Digital Twin</a>
+            <a class="footer-link" href="/games/">Games</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-label">Company</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/about/">About</a>
+            <a class="footer-link" href="/services/">Services</a>
+            <a class="footer-link" href="/usecases/">Use Cases</a>
+            <a class="footer-link" href="/contact/">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-col-label">Legal</p>
+          <div class="footer-links">
+            <a class="footer-link" href="/privacy/">Privacy Policy</a>
+            <a class="footer-link" href="/terms/">Terms of Use</a>
+            <a class="footer-link" href="/support/">Support</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Greyworks. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="/site.js?v=20260616-premium-v1"></script>
 </body>
 </html>
