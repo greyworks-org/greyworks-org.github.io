@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Support | Greyworks</title>
-  <meta name="description" content="Official Greyworks support for LullyTale and other apps. Bug reports, privacy requests, and account assistance.">
+  <title>Games | Greyworks</title>
+  <meta name="description" content="Interactive experiments and games built by Greyworks. Play Breaker and more.">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <link rel="canonical" href="https://greyworks.org/support/">
+  <link rel="canonical" href="https://greyworks.org/games/">
   <meta property="og:site_name" content="Greyworks">
-  <meta property="og:url" content="https://greyworks.org/support/">
-  <meta property="og:title" content="Support | Greyworks">
-  <meta property="og:description" content="Official Greyworks support for LullyTale and other apps. Bug reports, privacy requests, and account assistance.">
+  <meta property="og:url" content="https://greyworks.org/games/">
+  <meta property="og:title" content="Games | Greyworks">
+  <meta property="og:description" content="Interactive experiments and games built by Greyworks. Play Breaker and more.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://greyworks.org/greyworks-banner.jpg">
   <meta property="og:image:width" content="1200">
@@ -39,8 +39,8 @@
         <a class="nav-link" href="/about/">About</a>
         <a class="nav-link" href="/services/">Services</a>
         <a class="nav-link" href="/usecases/">Use Cases</a>
-        <a class="nav-link" href="/games/">Games</a>
-        <a class="nav-link" href="/contact/" aria-current="page">Contact</a>
+        <a class="nav-link" href="/games/" aria-current="page">Games</a>
+        <a class="nav-link" href="/contact/">Contact</a>
         <a class="btn btn-accent btn-sm nav-cta" href="/contact/">Get in Touch</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -50,56 +50,36 @@
       </button>
     </div>
   </header>
+
   <div class="page-top"></div>
 
   <main>
     <section class="page-hero container" data-reveal>
-      <span class="text-label">Support</span>
-      <h1 class="text-display">We're here to help.</h1>
-      <p>Support for Greyworks websites, apps, and digital products, including LullyTale on Google Play.</p>
+      <span class="text-label">Games</span>
+      <h1 class="text-display">Play.</h1>
+      <p>Interactive experiments and mini-games we built. Because building products should also be fun.</p>
     </section>
 
     <section class="page-content container">
-      <div class="support-grid" data-reveal>
-        <div class="card support-card">
-          <h2>Email support</h2>
-          <p><a href="mailto:contact@greyworks.com" style="color: var(--accent-bright);">contact@greyworks.com</a></p>
+      <div class="grid-2" data-reveal-stagger>
+        <div class="game-card" id="game-breaker">
+          <div class="game-card-grid" aria-hidden="true"></div>
+          <div class="game-card-canvas" data-canvas></div>
+          <div class="game-card-content">
+            <h3>Breaker</h3>
+            <p>Guide the core. Break the slabs. Keep climbing. A classic brick-breaker with a minimalist twist.</p>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span class="text-label" data-score>ALTITUDE: 0000</span>
+            </div>
+            <p class="text-caption" data-instructions style="margin-top: 12px;">Move left and right to guide the core. Click or tap to start.</p>
+          </div>
         </div>
-        <div class="card support-card">
-          <h2>What we help with</h2>
-          <p>Access issues, bug reports, feature problems, privacy requests, billing questions, and account assistance.</p>
-        </div>
-        <div class="card support-card">
-          <h2>Response time</h2>
-          <p>Include the product name, device type, OS version, and a short description for faster review.</p>
-        </div>
-      </div>
 
-      <div class="page-section" style="margin-top: var(--space-xl);" data-reveal>
-        <h2>LullyTale support</h2>
-        <p>If your request is about LullyTale, include the app name, device model, OS version, and what happened.</p>
-        <ul style="padding-left: var(--space-lg); margin-top: var(--space-md);">
-          <li>Audio or playback problems: include the story title and whether it happens with specific content.</li>
-          <li>Subscription or purchase issues: mention the platform and transaction date.</li>
-          <li>Privacy or child safety questions: email <a href="mailto:contact@greyworks.com" style="color: var(--accent-bright);">contact@greyworks.com</a>.</li>
-        </ul>
-      </div>
-
-      <div class="page-section" data-reveal>
-        <h2>Before contacting support</h2>
-        <ul style="padding-left: var(--space-lg); margin-top: var(--space-md);">
-          <li>Check that you are using the latest version of the app.</li>
-          <li>Include screenshots or error messages where relevant.</li>
-          <li>For purchase issues, mention the platform and transaction date.</li>
-        </ul>
-      </div>
-
-      <div class="page-section" data-reveal>
-        <h2>Related pages</h2>
-        <div class="footer-links" style="gap: 12px;">
-          <a class="footer-link" href="/contact/">Contact</a>
-          <a class="footer-link" href="/privacy/">Privacy Policy</a>
-          <a class="footer-link" href="/terms/">Terms of Use</a>
+        <div class="card" style="padding: var(--space-2xl); display: flex; flex-direction: column; justify-content: center; text-align: center;">
+          <span class="text-label" style="margin-bottom: var(--space-md);">More coming soon</span>
+          <h2 class="text-title">Stay tuned.</h2>
+          <p style="margin-top: var(--space-md);">We are building more interactive experiments. Check back for new games and experiences.</p>
+          <a class="btn btn-secondary" style="margin-top: var(--space-xl); align-self: center;" href="/">Back to home</a>
         </div>
       </div>
     </section>
@@ -113,7 +93,7 @@
             <span class="footer-brand-mark">GW</span>
             <span class="footer-brand-name">Greyworks</span>
           </div>
-          <p>AI-native growth and product collective.</p>
+          <p>AI-native growth and product collective. Founder-led, shipping real products and systems.</p>
         </div>
         <div>
           <p class="footer-col-label">Products</p>
@@ -138,14 +118,26 @@
             <a class="footer-link" href="/privacy/">Privacy Policy</a>
             <a class="footer-link" href="/terms/">Terms of Use</a>
             <a class="footer-link" href="/support/">Support</a>
+            <a class="footer-link footer-link-external" href="https://play.google.com/store/apps/developer?id=Greyworks+Software" target="_blank" rel="noopener noreferrer">Google Play</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Greyworks. All rights reserved.</span>
+        <div class="footer-socials">
+          <a class="footer-social" href="mailto:contact@greyworks.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a class="footer-social" href="https://play.google.com/store/apps/developer?id=Greyworks+Software" target="_blank" rel="noopener noreferrer" aria-label="Google Play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 2.8 14.8 14 3.6 21.2c-.5-.3-.8-.8-.8-1.4V4.1c0-.5.2-1 .6-1.3ZM16.5 15.7 19.7 12l-3.2-3.7-3 3 3 3.4ZM4.6 22 15.9 14.8l3.5 2-12.7 7.1c-.8.5-1.8.4-2.1-.9ZM19.4 7.2 6.7 0C6.1-.3 5 .1 4.7 1l11.2 11.1 3.5-2Z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="/site.js?v=20260616-premium-v1"></script>
+  <script src="/interactive-scenes.js?v=20260616-premium-v1"></script>
 </body>
 </html>
