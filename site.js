@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initAnchorLinks(reduceMotion);
   initParticles(reduceMotion);
+  initScrollProgress();
+  initCardGlowTracking();
 
   if (!reduceMotion) {
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
       initGSAPAnimations();
       initParallax();
+      initCountUpStats();
     } else {
       initReveals();
     }
@@ -167,16 +170,16 @@ function initGSAPAnimations() {
   // Hero entrance with timeline
   const hero = document.querySelector(".hero-content");
   if (hero) {
-    const heroTimeline = gsap.timeline({ delay: 0.3 });
+    const heroTimeline = gsap.timeline({ delay: 0.2 });
     const badge = hero.querySelector(".hero-badge");
     const h1 = hero.querySelector("h1");
     const sub = hero.querySelector(".hero-subtitle");
     const actions = hero.querySelector(".hero-actions");
 
-    if (badge) heroTimeline.from(badge, { opacity: 0, y: 20, duration: 0.5, ease: "power3.out" });
-    if (h1) heroTimeline.from(h1, { opacity: 0, y: 40, duration: 0.7, ease: "power3.out" }, "-=0.2");
-    if (sub) heroTimeline.from(sub, { opacity: 0, y: 20, duration: 0.5, ease: "power3.out" }, "-=0.3");
-    if (actions) heroTimeline.from(actions, { opacity: 0, y: 16, duration: 0.5, ease: "power3.out" }, "-=0.2");
+    if (badge) heroTimeline.from(badge, { opacity: 0, y: 30, scale: 0.9, duration: 0.6, ease: "back.out(1.7)" });
+    if (h1) heroTimeline.from(h1, { opacity: 0, y: 50, duration: 0.8, ease: "power4.out" }, "-=0.3");
+    if (sub) heroTimeline.from(sub, { opacity: 0, y: 25, duration: 0.6, ease: "power3.out" }, "-=0.4");
+    if (actions) heroTimeline.from(actions, { opacity: 0, y: 20, scale: 0.95, duration: 0.5, ease: "power3.out" }, "-=0.3");
   }
 
   // Service cards hover tilt with GSAP
@@ -510,5 +513,64 @@ function initContactForm() {
     setTimeout(() => {
       if (status) status.textContent = "";
     }, 5000);
+  });
+}
+
+/* ── Scroll Progress Bar ──────────────────────────────────────── */
+function initScrollProgress() {
+  const bar = document.getElementById("scroll-progress");
+  if (!bar) return;
+
+  const update = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+    bar.style.transform = `scaleX(${progress})`;
+    bar.style.width = "100%";
+  };
+
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
+/* ── Card Glow Tracking (mouse position for radial gradient) ─── */
+function initCardGlowTracking() {
+  document.querySelectorAll(".showcase-card").forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--mouse-x", x + "%");
+      card.style.setProperty("--mouse-y", y + "%");
+    });
+  });
+}
+
+/* ── Count-up Stats with GSAP ────────────────────────────────── */
+function initCountUpStats() {
+  document.querySelectorAll(".stat-value[data-count]").forEach(el => {
+    const target = parseInt(el.dataset.count, 10);
+    const obj = { val: 0 };
+
+    gsap.to(obj, {
+      val: target,
+      duration: 2.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 90%",
+        once: true
+      },
+      onUpdate: () => {
+        const v = Math.round(obj.val);
+        if (target >= 100000) {
+          el.textContent = Math.round(v / 1000) + "K+";
+        } else if (target >= 1000) {
+          el.textContent = (v / 1000).toFixed(0) + "K+";
+        } else {
+          el.textContent = v + "+";
+        }
+      }
+    });
   });
 }
