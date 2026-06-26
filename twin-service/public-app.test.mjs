@@ -36,6 +36,7 @@ test('GET /utku-bozkurt/ serves the public recruiter page shell', async () => {
   assert.match(html, /Available for new opportunities/);
   assert.match(html, /Recruiter FAQ/);
   assert.match(html, /Reading, UK/);
+  assert.match(html, /https:\/\/twin\.greyworks\.org/);
 
   await app.close();
 });

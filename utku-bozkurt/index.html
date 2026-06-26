@@ -289,6 +289,9 @@
 const messagesEl = document.getElementById('messages');
 const inputEl = document.getElementById('msg-input');
 const sendBtn = document.getElementById('send-btn');
+const PUBLIC_CHAT_ORIGIN = 'https://twin.greyworks.org';
+const CHAT_API_BASE = ['greyworks.org', 'www.greyworks.org'].includes(window.location.hostname) ? PUBLIC_CHAT_ORIGIN : '';
+const DEGRADED_FALLBACK = 'The secure chat service is temporarily unavailable. Please contact Utku directly: LinkedIn linkedin.com/in/utkubozkurt or email utku.bozkurt96@gmail.com.';
 let history = [];
 let busy = false;
 
@@ -370,23 +373,23 @@ async function sendMessage() {
   const typing = addTyping();
 
   try {
-    const res = await fetch('/v1/digital-twin/chat', {
+    const res = await fetch(`${CHAT_API_BASE}/v1/digital-twin/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text, history }),
     });
-    const data = await res.json();
+    const data = await res.json().catch(() => ({}));
     typing.remove();
 
-    const answer = data.answer || data.message || 'Something went wrong — please try again.';
+    const answer = data.answer || data.message || DEGRADED_FALLBACK;
     addMsg('ai', answer);
 
     history.push({ role: 'user', text });
-    history.push({ role: 'assistant', text: answer });
+    if (res.ok && data.answer) history.push({ role: 'assistant', text: answer });
     if (history.length > 24) history = history.slice(-24);
   } catch (_) {
     typing.remove();
-    addMsg('ai', 'The twin is temporarily unavailable. Please try again or reach out via LinkedIn.');
+    addMsg('ai', DEGRADED_FALLBACK);
   }
 
   busy = false;
