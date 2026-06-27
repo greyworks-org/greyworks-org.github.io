@@ -578,29 +578,29 @@ ul, ol { list-style: none; }
 }
 
 .hero-mesh-1 {
-  width: 600px;
-  height: 600px;
-  background: rgba(108,71,255,0.2);
-  top: -10%;
-  left: -5%;
+  width: 700px;
+  height: 700px;
+  background: rgba(108,71,255,0.25);
+  top: -15%;
+  left: -8%;
   animation-delay: 0s;
 }
 
 .hero-mesh-2 {
-  width: 500px;
-  height: 500px;
-  background: rgba(14,165,233,0.15);
-  bottom: -10%;
-  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: rgba(14,165,233,0.2);
+  bottom: -15%;
+  right: -8%;
   animation-delay: -5s;
 }
 
 .hero-mesh-3 {
-  width: 400px;
-  height: 400px;
-  background: rgba(139,92,246,0.12);
-  top: 40%;
-  left: 50%;
+  width: 500px;
+  height: 500px;
+  background: rgba(139,92,246,0.18);
+  top: 35%;
+  left: 45%;
   animation-delay: -10s;
 }
 
@@ -1764,6 +1764,171 @@ img[loading="lazy"][complete] {
   background: rgba(34,197,94,0.1);
   color: #16a34a;
   border: 1px solid rgba(34,197,94,0.2);
+}
+
+/* -- Animated Gradient Border on Hover --------------------------- */
+.service-card::after,
+.usecase-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent-bright), var(--accent));
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--t-slow) var(--ease);
+  z-index: 0;
+  pointer-events: none;
+  animation: borderGlow 4s linear infinite;
+}
+
+.service-card:hover::after,
+.usecase-card:hover::after {
+  opacity: 1;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -- Scroll Progress Bar ---------------------------------------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--grad-accent);
+  z-index: 1001;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: none;
+  pointer-events: none;
+}
+
+/* -- Enhanced Showcase Section ---------------------------------- */
+.showcase-enhanced {
+  background: linear-gradient(180deg, #e8e8ec 0%, #f0f0f3 50%, #e8e8ec 100%);
+  position: relative;
+}
+
+.showcase-enhanced::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(108,71,255,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(14,165,233,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* -- Enhanced Games Section -------------------------------------- */
+.games-enhanced {
+  background: linear-gradient(180deg, #e8e8ec 0%, #eaeaf0 50%, #e8e8ec 100%);
+  position: relative;
+}
+
+.games-enhanced::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(108,71,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(14,165,233,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* -- Shimmer Text Effect ---------------------------------------- */
+.text-shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--text) 0%,
+    var(--text) 40%,
+    var(--accent) 50%,
+    var(--text) 60%,
+    var(--text) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* -- Floating Badge Animation ----------------------------------- */
+.hero-badge {
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* -- Enhanced CTA Section --------------------------------------- */
+.cta-glow-ring {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(108,71,255,0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ringPulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.6; }
+}
+
+/* -- Card Hover Glow Effect ------------------------------------- */
+.showcase-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(108,71,255,0.08) 0%,
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity var(--t-slow);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.showcase-card:hover::after {
+  opacity: 1;
+}
+
+/* -- Typing Cursor ---------------------------------------------- */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  background: var(--accent);
+  margin-left: 4px;
+  animation: blink 0.8s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* -- Print ------------------------------------------------------ */
