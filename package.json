@@ -1,8 +1,14 @@
 {
-  "name": "greyworks-redesign",
+  "name": "greyworks-site",
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "node --test test/site-contract.test.mjs test/content-contract.test.mjs test/browser-qa.test.mjs",
+    "test:contract": "node --test test/site-contract.test.mjs test/content-contract.test.mjs",
+    "test:browser": "node --test test/browser-qa.test.mjs",
+    "check:syntax": "node --check site.js && node --check breaker.js && node --check slingshot.js",
+    "check:sitemap": "xmllint --noout sitemap.xml",
+    "smoke": "./smoke-check.sh",
     "start:twin-service": "node twin-service/server.mjs",
     "start:twin-public": "node twin-service/public-app.mjs",
     "test:twin-service": "node --test twin-service/server.test.mjs",

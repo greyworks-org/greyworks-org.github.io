@@ -1,1 +1,10 @@
 CLAUDE.md
+.gstack/
+
+# Local secrets. Never commit: this repo is published by GitHub Pages, so a
+# tracked .env is downloadable from the live domain.
+.env
+
+# Test and QA artefacts
+.playwright-mcp/
+node_modules/
