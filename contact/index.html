@@ -15,14 +15,14 @@
   <meta property="og:image" content="https://greyworks.org/greyworks-banner.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="655">
-  <meta name="theme-color" content="#eee8de">
+  <meta name="theme-color" content="#f0f0f3">
   <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260820-v1">
+  <link rel="stylesheet" href="/styles.css?v=20260821-v5">
 </head>
 <body>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
@@ -32,7 +32,7 @@
   <header class="site-header" id="site-header">
     <div class="site-header-inner">
       <a class="brand" href="/">
-        <img class="brand-logo" src="/greyworks-logo-192.png" alt="" width="32" height="32">
+        <img class="brand-logo brand-logo-img" src="/greyworks-logo-192.png" alt="" width="32" height="32">
         <span class="brand-text">
           <strong>Greyworks</strong>
         </span>
@@ -43,6 +43,7 @@
         <a class="nav-link" href="/services/">Services</a>
         <a class="nav-link" href="/usecases/">Use Cases</a>
         <a class="nav-link" href="/contact/" aria-current="page">Contact</a>
+        <a class="btn btn-accent btn-sm nav-cta" href="/contact/">Get in Touch</a>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-main">
         <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -60,6 +61,7 @@
     <section class="page-hero container" data-reveal>
       <span class="text-label">Contact</span>
       <h1 class="text-display">Let's talk.</h1>
+      <p>Product support, project enquiries, partnerships, or just a conversation. We respond to everything.</p>
     </section>
 
     <section class="page-content container">
@@ -96,7 +98,7 @@
         </div>
 
         <div class="card" style="padding: var(--space-xl);" data-reveal>
-          <h2 class="text-title" style="margin-bottom: var(--space-lg);">Send a note</h2>
+          <h2 class="text-title" style="margin-bottom: var(--space-lg);">Send a message</h2>
           <p class="form-intro">Tell us what you are making, fixing, or trying to understand.</p>
           <form id="contact-form" action="/api/contact" method="post" novalidate>
             <div class="form-group">
@@ -122,12 +124,12 @@
             <div class="slingshot" id="contact-slingshot" data-slingshot>
               <div class="slingshot-copy">
                 <span class="text-label">Send with a pull</span>
-                <p>Drag the cord down and release. The regular button stays here as a fallback.</p>
+                <p>Drag the cord down and release. The button below stays here as a fallback.</p>
               </div>
-              <canvas class="slingshot-canvas" data-slingshot-canvas width="560" height="120" aria-label="Drag the Greyworks cord down to send"></canvas>
+              <canvas class="slingshot-canvas" data-slingshot-canvas width="560" height="130" aria-label="Drag the cord down to send your message"></canvas>
               <p class="slingshot-status" data-slingshot-status aria-live="polite">Waiting for your note.</p>
             </div>
-            <button class="btn btn-primary" type="submit" style="width: 100%;">Send note</button>
+            <button class="btn btn-primary" type="submit" style="width: 100%;">Send Message</button>
             <p id="form-status" class="text-caption" aria-live="polite" style="margin-top: var(--space-md); min-height: 1.5em;"></p>
           </form>
         </div>
@@ -157,7 +159,7 @@
             <img class="footer-brand-mark" src="/greyworks-logo-192.png" alt="" width="32" height="32">
             <span class="footer-brand-name">Greyworks</span>
           </div>
-          <p>A small independent studio for digital products.</p>
+          <p>A founder-led collective shipping products, growth systems, and digital experiences.</p>
         </div>
         <div>
           <p class="footer-col-label">Products</p>
@@ -188,7 +190,7 @@
       </div>
     </div>
   </footer>
-  <script src="/site.js?v=20260820-v1"></script>
-  <script src="/slingshot.js?v=20260820-v1"></script>
+  <script src="/site.js?v=20260821-v5"></script>
+  <script src="/slingshot.js?v=20260821-v5"></script>
 </body>
 </html>

@@ -412,6 +412,33 @@ Kullanıcının 2026-08-20 ekran kaydı bu çalışma alanında okunabilir dosya
 
 Değişiklikler commit edilmedi. Çalışma ağacı bilinçli olarak dirty durumda. Başka AI önce `git status` ve `git diff` okumalı.
 
+## 0. ÖNCE BUNU OKU: tasarım yönü 2026-08-21'de değişti
+
+Aşağıdaki bölüm 3 ve 4, kullanıcının **daha eski** geri bildirimlerini kaydediyor
+ve o kayda göre mor/mavi palet, kartlar, rozetler ve başlık altı açıklama
+istenmiyordu. **Bu artık geçerli değil.**
+
+2026-08-21'de kullanıcı, sıcak kâğıt + serif editorial yönü gördü ve reddetti:
+
+> "hiç beğenmedim. Claude sunumu gibi duruyor. Fontlardan renklere her şey aynı.
+> Canlıdaki websitesini incele: https://greyworks.org/ ben bu tarzda olmasını
+> istiyorum ayrıca Lullytale vs. şeyleri bu kadar öne çıkarma generic tut"
+
+Alınan kararlar:
+
+| Konu | Karar |
+|---|---|
+| Görsel dil | Canlı sitenin v4 sistemi. `styles.css` `98a25ce` commit'inden birebir geri alındı |
+| Palet | `--bg #f0f0f3`, `--accent #6c47ff` mor, `--accent2 #0ea5e9`. Sıcak kâğıt/amber **kullanılmıyor** |
+| Tipografi | Yalnızca Manrope. Serif display **yok** |
+| Bileşen | Yuvarlak kartlar, pill butonlar, mor ikon tile'ları, gradient mesh hero, marquee. Editorial satır yapısı **kullanılmıyor** |
+| Hero | Pill rozet + büyük sans başlık + **başlık altı açıklama var** |
+| Metrikler | Yok. Kullanıcı stat bloğunun geri gelmemesini seçti |
+| LullyTale | Showcase'de iki eşit karttan biri. Hero görseli veya featured kart **değil** |
+
+Serif, kâğıt paleti, amber accent veya `.detail-row` editorial satırları geri
+getirilmemeli. Bunlar denendi ve reddedildi.
+
 ## 11b. 2026-08-21 düzeltme turu
 
 ### Test harness

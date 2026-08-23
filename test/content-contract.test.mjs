@@ -45,13 +45,25 @@ test("every page states the same footer positioning", async () => {
   );
 });
 
-test("every page carries the paper theme colour", async () => {
+// Must equal --bg in styles.css so the browser chrome matches the page.
+const THEME_COLOUR = "#f0f0f3";
+
+test("every page declares the theme colour that matches the background", async () => {
+  const css = await read("styles.css");
+  const bg = css.match(/--bg:\s*(#[0-9a-f]{6})/i);
+  assert.ok(bg, "styles.css does not define --bg");
+  assert.equal(
+    bg[1].toLowerCase(),
+    THEME_COLOUR,
+    "the --bg token drifted from the theme colour this test pins"
+  );
+
   for (const page of PAGES) {
     const html = await read(page);
     assert.match(
       html,
-      /<meta name="theme-color" content="#eee8de">/,
-      `${page} does not declare the paper theme colour`
+      new RegExp(`<meta name="theme-color" content="${THEME_COLOUR}">`),
+      `${page} does not declare the page background as its theme colour`
     );
   }
 });
@@ -93,52 +105,54 @@ async function anchorLabels(page) {
   return labels;
 }
 
-test("home service rows match the heading they deep-link to", async () => {
+/** Homepage tiles: the deep-link target paired with the tile's own heading. */
+async function homeTiles(section) {
   const home = await read("index.html");
+  return [
+    ...home.matchAll(
+      new RegExp(`href="/${section}/#([a-z-]+)"[\\s\\S]{0,400}?<h3>([\\s\\S]*?)</h3>`, "g")
+    )
+  ].map(([, id, heading]) => ({ id, heading: stripTags(heading) }));
+}
+
+test("home service tiles match the heading they deep-link to", async () => {
+  const tiles = await homeTiles("services");
   const labels = await anchorLabels("services/index.html");
+  assert.equal(tiles.length, 6, "expected six service tiles on the homepage");
 
-  const rows = [
-    ...home.matchAll(/href="\/services\/#([a-z-]+)"[\s\S]*?<strong>([\s\S]*?)<\/strong>/g)
-  ];
-  assert.equal(rows.length, 6, "expected six service rows on the homepage");
-
-  for (const [, id, rawLabel] of rows) {
-    const label = stripTags(rawLabel);
-    const heading = labels.get(id);
-    assert.ok(heading, `services page has no section with id "${id}"`);
-    assert.ok(
-      heading.toLowerCase().includes(label.toLowerCase()),
-      `home says "${label}" but /services/#${id} is headed "${heading}"`
-    );
-  }
-});
-
-test("home use case rows match the heading they deep-link to", async () => {
-  const home = await read("index.html");
-  const labels = await anchorLabels("usecases/index.html");
-
-  const rows = [
-    ...home.matchAll(/href="\/usecases\/#([a-z-]+)"[\s\S]*?<strong>([\s\S]*?)<\/strong>/g)
-  ];
-  assert.equal(rows.length, 6, "expected six use case rows on the homepage");
-
-  for (const [, id, rawLabel] of rows) {
-    const label = stripTags(rawLabel);
-    const heading = labels.get(id);
-    assert.ok(heading, `usecases page has no section with id "${id}"`);
+  for (const { id, heading } of tiles) {
+    const target = labels.get(id);
+    assert.ok(target, `services page has no section with id "${id}"`);
     assert.equal(
+      target.toLowerCase(),
       heading.toLowerCase(),
-      label.toLowerCase(),
-      `home says "${label}" but /usecases/#${id} is headed "${heading}"`
+      `home says "${heading}" but /services/#${id} is headed "${target}"`
     );
   }
 });
 
-test("service rows keep their order between home and the services page", async () => {
-  const home = await read("index.html");
+test("home use case tiles match the heading they deep-link to", async () => {
+  const tiles = await homeTiles("usecases");
+  const labels = await anchorLabels("usecases/index.html");
+  assert.equal(tiles.length, 6, "expected six use case tiles on the homepage");
+
+  for (const { id, heading } of tiles) {
+    const target = labels.get(id);
+    assert.ok(target, `usecases page has no section with id "${id}"`);
+    assert.equal(
+      target.toLowerCase(),
+      heading.toLowerCase(),
+      `home says "${heading}" but /usecases/#${id} is headed "${target}"`
+    );
+  }
+});
+
+test("service areas keep their order between home and the services page", async () => {
   const services = await read("services/index.html");
 
-  const homeOrder = [...home.matchAll(/href="\/services\/#([a-z-]+)"/g)].map((m) => m[1]);
+  // A showcase tile may also deep-link into services, so take the first
+  // mention of each area rather than every link on the page.
+  const homeOrder = [...new Set((await homeTiles("services")).map((t) => t.id))];
   const pageOrder = [...services.matchAll(/id="([a-z-]+)"/g)]
     .map((m) => m[1])
     .filter((id) => homeOrder.includes(id));
@@ -172,12 +186,15 @@ test("open graph image dimensions match the asset that is served", async () => {
 
 /* ── nothing real is hidden, nothing dead is shipped ──────────── */
 
-test("no page ships markup that CSS only hides again", async () => {
-  const deadMarkup = [/id="cursor-glow"/, /class="cta-mesh"/, /class="[^"]*nav-cta/];
+test("no page ships markup whose driving script was removed", async () => {
+  // The cursor glow only ever appears once JS adds .active, and that script is
+  // gone, so the element can never render. Anything else decorative is CSS-only
+  // and does render; the browser suite checks for hidden-but-present content.
+  const orphaned = [/id="cursor-glow"/, /id="particles-canvas"/];
   for (const page of PAGES) {
     const html = await read(page);
-    for (const pattern of deadMarkup) {
-      assert.doesNotMatch(html, pattern, `${page} still ships ${pattern} that CSS hides`);
+    for (const pattern of orphaned) {
+      assert.doesNotMatch(html, pattern, `${page} ships ${pattern} with no script to drive it`);
     }
   }
 });
@@ -219,12 +236,27 @@ test("every page can be reached by keyboard past the header", async () => {
 
 /* ── claims stay sourced ──────────────────────────────────────── */
 
-test("no page invents a metric, a team size, or a phone number", async () => {
+test("no page presents a headline traction figure for the studio", async () => {
+  // Numbers inside prose can be sourced biography (a founder's previous
+  // company, for instance). What is banned is the studio quoting its own
+  // traction as a display statistic, which is what the stats block did.
+  for (const page of PAGES) {
+    const html = await read(page);
+    assert.doesNotMatch(html, /class="stats-row"/, `${page} still renders a traction stat block`);
+    assert.doesNotMatch(html, /class="stat-value"[^>]*data-count/, `${page} animates a counter`);
+    assert.doesNotMatch(html, /data-count=/, `${page} ships a count-up statistic`);
+  }
+});
+
+test("no page invents a contact channel or an unearned superlative", async () => {
   for (const page of PAGES) {
     const html = await read(page);
     const text = stripTags(html.replace(/<script[\s\S]*?<\/script>/g, ""));
-    assert.doesNotMatch(text, /\b\d+\s*(?:\+|k\+)\s*(?:users|customers|clients|downloads)/i, page);
-    assert.doesNotMatch(text, /\btel:\+?\d/i, page);
-    assert.doesNotMatch(text, /\b(?:award[- ]winning|industry[- ]leading|world[- ]class)\b/i, page);
+    assert.doesNotMatch(html, /\btel:\+?\d/i, `${page} lists a phone number`);
+    assert.doesNotMatch(
+      text,
+      /\b(?:award[- ]winning|industry[- ]leading|world[- ]class|best[- ]in[- ]class)\b/i,
+      `${page} makes an unearned claim`
+    );
   }
 });
