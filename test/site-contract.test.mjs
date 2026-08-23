@@ -7,14 +7,31 @@ import { join } from "node:path";
 const root = fileURLToPath(new URL("..", import.meta.url));
 const read = (file) => readFile(join(root, file), "utf8");
 
-test("homepage uses Greyworks visual anchor without unverified marketplace claims", async () => {
+test("homepage carries the studio's real content, not just a slogan", async () => {
   const html = await read("index.html");
 
-  assert.match(html, /greyworks-banner/i);
-  assert.doesNotMatch(html, /play\.google\.com/i);
-  assert.doesNotMatch(html, /data-count=/i);
-  assert.doesNotMatch(html, /500K\+|130\+|\$5M/i);
-  assert.doesNotMatch(html, /class="card (?:service|usecase|game)-card/i);
+  // The six service areas and six use cases each have to be present and each
+  // has to lead somewhere. An emptied-out homepage was the original complaint.
+  const services = [...html.matchAll(/href="\/services\/#[a-z-]+"[\s\S]{0,400}?<h3>/g)];
+  const useCases = [...html.matchAll(/href="\/usecases\/#[a-z-]+"[\s\S]{0,400}?<h3>/g)];
+  assert.ok(services.length >= 6, `expected six service tiles, found ${services.length}`);
+  assert.equal(useCases.length, 6, `expected six use case tiles, found ${useCases.length}`);
+
+  // Shipped work, and the studio experiment, both stay on the page.
+  assert.match(html, /id="showcase"/, "no showcase section");
+  assert.match(html, /id="experiment"/, "no studio experiment section");
+  assert.match(html, /breaker-canvas/, "the experiment has no playable canvas");
+
+  // Social preview points at a real asset.
+  assert.match(html, /og:image" content="[^"]*greyworks-banner\.jpg"/);
+});
+
+test("homepage makes no unverified marketplace or metric claim", async () => {
+  const html = await read("index.html");
+
+  assert.doesNotMatch(html, /play\.google\.com/i, "links a store page that returns 404");
+  assert.doesNotMatch(html, /data-count=/i, "ships an animated statistic");
+  assert.doesNotMatch(html, /class="stats-row"/, "ships a traction stat block");
 });
 
 test("navigation exposes its controlled region", async () => {

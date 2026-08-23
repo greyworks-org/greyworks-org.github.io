@@ -30,10 +30,15 @@ Var olmayan özellik UYDURMA.
 
 _Not: Durum değişirse bu dosyayı güncelle — Dobby bunu yetkili kaynak olarak okuyor._
 
-## 21 AĞUSTOS 2026 DÜZELTME TURU (local, deploy edilmedi)
+## 21 AĞUSTOS 2026 (local, deploy edilmedi)
+
+**Tasarım yönü:** Canlı sitenin v4 sistemi (mor accent, soğuk gri, yuvarlak
+kartlar, yalnızca Manrope) korunuyor. Sıcak kâğıt + serif editorial denemesi
+kullanıcı tarafından reddedildi ve geri alındı. Detay: GREYWORKS_AI_HANDOFF.md
+bölüm 0.
 
 P0 (bozuk işlev), P1 (içerik bütünlüğü), P2 (tasarım tutarlılığı) ve P3 (temizlik)
-turları tamamlandı. Gate: `npm test` → 39/39.
+turları tamamlandı. Gate: `npm test` → 41/41.
 
 Düzeltilen bloker'lar: contact formu mobilde iki sütunda 147px'e sıkışıyordu;
 Breaker'ın Start/Pause/Restart butonları koyu zeminde görünmezdi; kapalı mobil menü

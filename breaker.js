@@ -47,7 +47,7 @@
           width: 72,
           height: 15,
           alive: true,
-          hue: row % 2 === 0 ? "#c95b35" : "#b87832"
+          hue: row % 2 === 0 ? "#6c47ff" : "#8b6dff"
         });
       }
     }
@@ -97,9 +97,9 @@
   }
 
   function drawBackground() {
-    ctx.fillStyle = "#231c16";
+    ctx.fillStyle = "#14142a";
     ctx.fillRect(0, 0, W, H);
-    ctx.strokeStyle = "rgba(238,232,222,0.08)";
+    ctx.strokeStyle = "rgba(255,255,255,0.06)";
     ctx.lineWidth = 1;
     for (let x = 0; x <= W; x += 48) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
@@ -115,15 +115,15 @@
       if (!brick.alive) return;
       ctx.fillStyle = brick.hue;
       ctx.fillRect(brick.x, brick.y, brick.width, brick.height);
-      ctx.fillStyle = "rgba(255,250,241,0.28)";
+      ctx.fillStyle = "rgba(255,255,255,0.24)";
       ctx.fillRect(brick.x, brick.y, brick.width, 2);
     });
-    ctx.fillStyle = "#eee8de";
+    ctx.fillStyle = "#f0f0f3";
     ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#e7b170";
-    ctx.shadowColor = reduceMotion ? "transparent" : "rgba(231,177,112,0.7)";
+    ctx.fillStyle = "#a78bfa";
+    ctx.shadowColor = reduceMotion ? "transparent" : "rgba(167,139,250,0.75)";
     ctx.shadowBlur = reduceMotion ? 0 : 18;
     ctx.fill();
     ctx.shadowBlur = 0;
