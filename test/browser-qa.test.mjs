@@ -13,7 +13,6 @@ const ROUTES = [
   "/about/",
   "/services/",
   "/usecases/",
-  "/lullytale/",
   "/contact/",
   "/support/",
   "/privacy/",

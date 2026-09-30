@@ -160,7 +160,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 .footer-link:focus-visible,
 .footer-social:focus-visible,
 .card:focus-visible,
-.showcase-card:focus-visible,
 .form-input:focus-visible,
 .form-textarea:focus-visible,
 .slingshot-canvas:focus-visible {
@@ -445,49 +444,6 @@ a.card:hover h3 { color: var(--accent); }
   color: var(--accent);
 }
 
-/* -- Showcase ---------------------------------------------------- */
-.showcase-card {
-  display: block;
-  overflow: hidden;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--r-card);
-  background: var(--surface);
-  color: inherit;
-  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
-}
-.showcase-card:hover { background: var(--surface-hover); border-color: var(--text-muted); }
-/* The slot is deliberately wider than the LullyTale store banner (700x342),
-   so `cover` crops the banner vertically and the clipped wordmark along its
-   bottom edge never reaches the card. */
-.showcase-card-image { aspect-ratio: 12 / 5; overflow: hidden; background: var(--bg-raised); }
-.showcase-card-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-.showcase-card-image-figure {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  opacity: 0.45;
-}
-.showcase-card-body { padding: var(--space-xl); }
-.showcase-card-label {
-  display: block;
-  margin-bottom: 10px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.showcase-card-body h3 { font-size: 22px; margin-bottom: 10px; }
-.showcase-card-body p { color: var(--text-secondary); font-size: 15px; }
-.showcase-card-tag {
-  display: block;
-  margin-top: var(--space-md);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
 /* -- Process line ------------------------------------------------ */
 .process-line { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-xl); border-top: 1px solid var(--border-strong); }
 .process-line li { padding-top: var(--space-lg); }
@@ -636,29 +592,6 @@ main ul:not(.marquee-track):not(.footer-links):not(.nav-main):not(.process-line)
   .breaker-overlay { position: static; display: block; padding: var(--space-lg) 0 0; background: none; }
 }
 
-/* -- LullyTale page ---------------------------------------------- */
-.project-hero { position: relative; overflow: hidden; border: 1px solid var(--border-strong); border-radius: var(--r-card); }
-/* The source graphic is a store banner whose wordmark is clipped at the
-   bottom edge. Framing above it keeps the artwork and drops the lettering. */
-.project-hero-image { width: 100%; display: block; aspect-ratio: 700 / 285; object-fit: cover; object-position: center top; }
-.project-hero-overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: var(--space-xl); background: linear-gradient(0deg, rgba(10,16,32,0.94) 0%, rgba(10,16,32,0.5) 55%, rgba(10,16,32,0.2) 100%); }
-.project-hero-content { display: flex; align-items: center; gap: var(--space-md); }
-.project-hero-icon { width: 64px; height: 64px; border-radius: 14px; }
-.project-hero-text h1 { color: var(--text); }
-.project-hero-text p { color: var(--text-secondary); margin-top: 4px; }
-
-.gallery-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: var(--space-sm); }
-.gallery-track { display: flex; gap: var(--space-md); width: max-content; }
-.gallery-item img { width: 190px; height: 190px; border-radius: var(--r-sm); border: 1px solid var(--border-strong); object-fit: cover; }
-
-.screenshots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-md); }
-.phone-mockup img { width: 100%; border-radius: var(--r-sm); border: 1px solid var(--border-strong); }
-
-.trust-list { display: grid; gap: var(--space-md); }
-.trust-item { display: flex; gap: 12px; align-items: flex-start; color: var(--text-secondary); font-size: 15px; }
-.trust-icon { flex: 0 0 auto; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--accent-soft); }
-.trust-icon svg { width: 13px; height: 13px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
 /* -- Support page ------------------------------------------------ */
 .support-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-lg); }
 .support-card { border: 1px solid var(--border-strong); border-radius: var(--r-card); }
@@ -747,13 +680,10 @@ main ul:not(.marquee-track):not(.footer-links):not(.nav-main):not(.process-line)
 @media (max-width: 760px) {
   body { font-size: 16px; }
   .card { padding: var(--space-lg); }
-  .showcase-card-body { padding: var(--space-lg); }
   /* Keep small mono labels above the readability floor on a phone. */
   .text-label,
   .marquee-item,
   .hero-badge,
-  .showcase-card-label,
-  .showcase-card-tag,
   .footer-col-label,
   .footer-bottom,
   .usecase-number,
@@ -783,6 +713,6 @@ main ul:not(.marquee-track):not(.footer-links):not(.nav-main):not(.process-line)
 @media print {
   .site-header, .nav-toggle, .scroll-progress, .skip-link, .marquee-wrapper { display: none; }
   body { background: #fff; color: #111; }
-  .card, .showcase-card { border: 1px solid #ddd; background: none; }
+  .card { border: 1px solid #ddd; background: none; }
   .js [data-reveal], .js [data-reveal-stagger] > * { opacity: 1; transform: none; }
 }

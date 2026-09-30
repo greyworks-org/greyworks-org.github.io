@@ -12,7 +12,6 @@ const PAGES = [
   "about/index.html",
   "services/index.html",
   "usecases/index.html",
-  "lullytale/index.html",
   "contact/index.html",
   "support/index.html",
   "privacy/index.html",
@@ -150,7 +149,7 @@ test("home use case tiles match the heading they deep-link to", async () => {
 test("service areas keep their order between home and the services page", async () => {
   const services = await read("services/index.html");
 
-  // A showcase tile may also deep-link into services, so take the first
+  // A tile may deep-link into services more than once, so take the first
   // mention of each area rather than every link on the page.
   const homeOrder = [...new Set((await homeTiles("services")).map((t) => t.id))];
   const pageOrder = [...services.matchAll(/id="([a-z-]+)"/g)]
@@ -235,6 +234,23 @@ test("every page can be reached by keyboard past the header", async () => {
 });
 
 /* ── claims stay sourced ──────────────────────────────────────── */
+
+test("the retired LullyTale product is not surfaced anywhere", async () => {
+  for (const page of PAGES) {
+    const html = await read(page);
+    assert.doesNotMatch(html, /lullytale/i, `${page} still references LullyTale`);
+  }
+
+  const sitemap = await read("sitemap.xml");
+  assert.doesNotMatch(sitemap, /lullytale/i, "sitemap still lists the LullyTale route");
+});
+
+test("the homepage has no showcase section", async () => {
+  const html = await read("index.html");
+  assert.doesNotMatch(html, /id="showcase"/, "the showcase section is still on the homepage");
+  assert.doesNotMatch(html, /showcase-card/, "showcase cards are still on the homepage");
+  assert.doesNotMatch(html, /Work that shipped/i, "the showcase heading is still on the homepage");
+});
 
 test("no page presents a headline traction figure for the studio", async () => {
   // Numbers inside prose can be sourced biography (a founder's previous
