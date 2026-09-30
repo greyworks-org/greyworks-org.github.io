@@ -48,22 +48,22 @@
     const travel = Math.max(height - postFoot - 46, 34);
     const pouchY = postTop + restSag + progress * travel;
     const armed = progress > READY_AT;
-    const ink = armed ? "#6c47ff" : "#5a5a72";
+    const ink = armed ? "#ff7a59" : "#7a86a8";
 
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = "#e8e8ec";
+    ctx.fillStyle = "#0d1527";
     ctx.fillRect(0, 0, width, height);
 
     // Frame: two uprights standing on a baseline, so the shape reads as a
     // sling at rest rather than as a slider track.
-    ctx.strokeStyle = "rgba(26,26,46,0.16)";
+    ctx.strokeStyle = "rgba(238,242,255,0.16)";
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(centreX - armSpan - 10, postFoot);
     ctx.lineTo(centreX + armSpan + 10, postFoot);
     ctx.stroke();
 
-    ctx.strokeStyle = "#6c47ff";
+    ctx.strokeStyle = "#ff7a59";
     ctx.lineWidth = 3;
     ctx.lineCap = "round";
     [-1, 1].forEach((side) => {
@@ -85,7 +85,7 @@
     // The pouch carries a note, not a ball: it is a contact form.
     const noteW = 30;
     const noteH = 21;
-    ctx.fillStyle = armed ? "#6c47ff" : "#1a1a2e";
+    ctx.fillStyle = armed ? "#ff7a59" : "#eef2ff";
     ctx.beginPath();
     if (typeof ctx.roundRect === "function") {
       ctx.roundRect(centreX - noteW / 2, pouchY - noteH / 2, noteW, noteH, 3);
@@ -93,7 +93,7 @@
     } else {
       ctx.fillRect(centreX - noteW / 2, pouchY - noteH / 2, noteW, noteH);
     }
-    ctx.strokeStyle = "#ffffff";
+    ctx.strokeStyle = "#0a1020";
     ctx.lineWidth = 1.4;
     ctx.beginPath();
     ctx.moveTo(centreX - noteW / 2 + 4, pouchY - noteH / 2 + 5);
@@ -101,8 +101,8 @@
     ctx.lineTo(centreX + noteW / 2 - 4, pouchY - noteH / 2 + 5);
     ctx.stroke();
 
-    ctx.fillStyle = armed ? "#6c47ff" : "#6b6b80";
-    ctx.font = "600 12px Manrope, system-ui, sans-serif";
+    ctx.fillStyle = armed ? "#ff7a59" : "#9aa6c6";
+    ctx.font = "500 12px 'JetBrains Mono', ui-monospace, monospace";
     ctx.textAlign = "center";
     ctx.fillText(armed ? "RELEASE TO SEND" : "PULL DOWN TO SEND", centreX, height - 12);
   }

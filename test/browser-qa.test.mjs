@@ -116,19 +116,36 @@ test("slingshot canvas backing store matches its rendered width", async () => {
 
 test("breaker controls are legible against the dark stage", async () => {
   await withPage(VIEWPORT_DESKTOP, "/", async (page) => {
-    const buttons = await page.evaluate(() =>
-      [...document.querySelectorAll(".breaker-actions .btn")].map((btn) => ({
-        label: btn.textContent.trim(),
-        color: getComputedStyle(btn).color,
-        hidden: btn.hidden
-      }))
-    );
+    const measured = await page.evaluate(() => {
+      const opaque = (el) => {
+        for (let n = el; n; n = n.parentElement) {
+          const bg = getComputedStyle(n).backgroundColor;
+          if (bg && !/rgba\(0, 0, 0, 0\)|transparent/.test(bg)) return bg;
+        }
+        return getComputedStyle(document.body).backgroundColor;
+      };
+      return {
+        // What a control actually sits on at the foot of the stage.
+        stage: opaque(document.querySelector(".breaker-stage")),
+        buttons: [...document.querySelectorAll(".breaker-actions .btn")].map((btn) => {
+          const style = getComputedStyle(btn);
+          return {
+            label: btn.textContent.trim(),
+            color: style.color,
+            background: style.backgroundColor
+          };
+        })
+      };
+    });
 
-    assert.ok(buttons.length >= 3, "expected start, pause and restart controls");
-    // The stage gradient bottoms out at the overlay colour over a near-black canvas.
-    const stage = "rgb(35, 28, 22)";
-    for (const button of buttons) {
-      const ratio = contrastRatio(button.color, stage);
+    assert.ok(measured.buttons.length >= 3, "expected start, pause and restart controls");
+    for (const button of measured.buttons) {
+      // A filled control is read against its own fill, an outlined one
+      // against the stage behind it.
+      const behind = /rgba\(0, 0, 0, 0\)|transparent/.test(button.background)
+        ? measured.stage
+        : button.background;
+      const ratio = contrastRatio(button.color, behind);
       assert.ok(
         ratio >= 4.5,
         `breaker "${button.label}" control fails contrast on the dark stage: ${ratio.toFixed(2)}:1`
