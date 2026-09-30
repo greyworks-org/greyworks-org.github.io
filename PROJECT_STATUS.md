@@ -30,12 +30,17 @@ Var olmayan özellik UYDURMA.
 
 _Not: Durum değişirse bu dosyayı güncelle — Dobby bunu yetkili kaynak olarak okuyor._
 
-## 21 AĞUSTOS 2026 (local, deploy edilmedi)
+## 30 EYLÜL 2026 (canlıda)
 
-**Tasarım yönü:** Canlı sitenin v4 sistemi (mor accent, soğuk gri, yuvarlak
-kartlar, yalnızca Manrope) korunuyor. Sıcak kâğıt + serif editorial denemesi
-kullanıcı tarafından reddedildi ve geri alındı. Detay: GREYWORKS_AI_HANDOFF.md
-bölüm 0.
+**Tasarım yönü:** Koyu lacivert + ember turuncu (`#0a1020` / `#ff7a59`), Sora +
+DM Sans + JetBrains Mono. Kaynak: kullanıcının kendi Claude Design taslağı.
+Mor v4 ve sıcak kâğıt editorial denemeleri reddedildi. Detay:
+GREYWORKS_AI_HANDOFF.md bölüm 0.
+
+21 Ağustos turunun düzeltmeleri 30 Eylül'de production'a push edildi. `.env`
+artık takipte değil ve `https://greyworks.org/.env` 404 dönüyor.
+
+## 21 AĞUSTOS 2026 TURU
 
 P0 (bozuk işlev), P1 (içerik bütünlüğü), P2 (tasarım tutarlılığı) ve P3 (temizlik)
 turları tamamlandı. Gate: `npm test` → 41/41.

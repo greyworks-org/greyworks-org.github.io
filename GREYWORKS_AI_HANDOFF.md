@@ -412,7 +412,46 @@ Kullanıcının 2026-08-20 ekran kaydı bu çalışma alanında okunabilir dosya
 
 Değişiklikler commit edilmedi. Çalışma ağacı bilinçli olarak dirty durumda. Başka AI önce `git status` ve `git diff` okumalı.
 
-## 0. ÖNCE BUNU OKU: tasarım yönü 2026-08-21'de değişti
+## 0. ÖNCE BUNU OKU: geçerli tasarım yönü (2026-09-30)
+
+Sitenin görsel dili **koyu lacivert + ember turuncu**. Kaynağı kullanıcının kendi
+Claude Design taslağı: `Greyworks websitesi temizleme.zip` içindeki
+`Greyworks.dc.html`. O dosya bir canvas taslağıydı, siteye taşınırken şablon
+içerik (Project One/Two/Three) kullanılmadı ve rota yapısı korundu.
+
+| Token | Değer |
+|---|---|
+| `--bg` | `#0a1020` |
+| `--surface` | `#111a30` |
+| `--border-strong` | `#243052` |
+| `--text` | `#eef2ff` |
+| `--accent` | `#ff7a59` |
+| `--on-accent` | `#1c0b05` |
+
+Tipografi: **Sora** (display), **DM Sans** (gövde), **JetBrains Mono** (etiket,
+buton, sayaç). Kartlar 24px radius, butonlar pill. Grid'ler 1px hairline ile
+ayrılır (`gap:1px` + `background: var(--border-strong)`).
+
+Denenmiş ve **reddedilmiş** yönler, geri getirilmemeli:
+- Mor/mavi v4 SaaS teması (`#6c47ff`, `#f0f0f3`, Manrope)
+- Sıcak kâğıt + serif editorial (`#eee8de`, amber, Georgia)
+
+Kullanıcı ikisini de gördü ve beğenmedi. Aşağıdaki bölüm 3 ve 4 bu eski
+turlardan kalma kayıtlardır, tarihsel bilgi olarak okunmalı.
+
+### Taslaktan alınmayanlar ve nedeni
+
+- **Şablon iş listesi.** Taslakta "Project One / Two / Three" ve "A short
+  description of the project and its outcome." vardı. Yerine gerçek iki iş
+  kullanıldı: Automation Pipelines ve LullyTale.
+- **`hello@example.com`.** Gerçek adres `contact@greyworks.com`.
+- **Tek sayfa yapısı.** Taslak sadece anchor navigasyonu kullanıyordu. Site 11
+  rotalı kaldı; `/privacy/` ve `/support/` LullyTale'in store kaydına bağlı,
+  kaldırılamaz.
+- **Canvas runtime.** `support.js` ve `<sc-for>` kullanılmadı, içerik statik
+  HTML olarak yazıldı; aksi hâlde crawler ve JS'siz ziyaretçi boş sayfa görür.
+
+## 0b. Önceki tur: tasarım yönü 2026-08-21'de değişti
 
 Aşağıdaki bölüm 3 ve 4, kullanıcının **daha eski** geri bildirimlerini kaydediyor
 ve o kayda göre mor/mavi palet, kartlar, rozetler ve başlık altı açıklama

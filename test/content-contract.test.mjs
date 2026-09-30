@@ -46,7 +46,7 @@ test("every page states the same footer positioning", async () => {
 });
 
 // Must equal --bg in styles.css so the browser chrome matches the page.
-const THEME_COLOUR = "#f0f0f3";
+const THEME_COLOUR = "#0a1020";
 
 test("every page declares the theme colour that matches the background", async () => {
   const css = await read("styles.css");

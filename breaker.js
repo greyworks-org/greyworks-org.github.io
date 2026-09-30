@@ -47,7 +47,7 @@
           width: 72,
           height: 15,
           alive: true,
-          hue: row % 2 === 0 ? "#6c47ff" : "#8b6dff"
+          hue: row % 2 === 0 ? "#ff7a59" : "#ff9f86"
         });
       }
     }
@@ -97,7 +97,7 @@
   }
 
   function drawBackground() {
-    ctx.fillStyle = "#14142a";
+    ctx.fillStyle = "#0d1527";
     ctx.fillRect(0, 0, W, H);
     ctx.strokeStyle = "rgba(255,255,255,0.06)";
     ctx.lineWidth = 1;
@@ -118,12 +118,12 @@
       ctx.fillStyle = "rgba(255,255,255,0.24)";
       ctx.fillRect(brick.x, brick.y, brick.width, 2);
     });
-    ctx.fillStyle = "#f0f0f3";
+    ctx.fillStyle = "#eef2ff";
     ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#a78bfa";
-    ctx.shadowColor = reduceMotion ? "transparent" : "rgba(167,139,250,0.75)";
+    ctx.fillStyle = "#ff7a59";
+    ctx.shadowColor = reduceMotion ? "transparent" : "rgba(255,122,89,0.8)";
     ctx.shadowBlur = reduceMotion ? 0 : 18;
     ctx.fill();
     ctx.shadowBlur = 0;
