@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Retired pages and scripts are kept in the repo for history, not for readers.
+Disallow: /archive/
+
 Sitemap: https://greyworks.org/sitemap.xml

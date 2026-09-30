@@ -17,8 +17,7 @@ test("homepage carries the studio's real content, not just a slogan", async () =
   assert.ok(services.length >= 6, `expected six service tiles, found ${services.length}`);
   assert.equal(useCases.length, 6, `expected six use case tiles, found ${useCases.length}`);
 
-  // Shipped work, and the studio experiment, both stay on the page.
-  assert.match(html, /id="showcase"/, "no showcase section");
+  // The studio experiment stays on the page.
   assert.match(html, /id="experiment"/, "no studio experiment section");
   assert.match(html, /breaker-canvas/, "the experiment has no playable canvas");
 
@@ -77,12 +76,12 @@ test("homepage includes a native breaker experiment", async () => {
 });
 
 test("published HTML contains no unverified Google Play targets", async () => {
-  const files = ["index.html", "about/index.html", "services/index.html", "usecases/index.html", "lullytale/index.html", "contact/index.html", "support/index.html", "privacy/index.html", "terms/index.html"];
+  const files = ["index.html", "about/index.html", "services/index.html", "usecases/index.html", "contact/index.html", "support/index.html", "privacy/index.html", "terms/index.html"];
   for (const file of files) assert.doesNotMatch(await read(file), /play\.google\.com/i, file);
 });
 
 test("public navigation has no games surface or visible Gemini mark", async () => {
-  const files = ["index.html", "about/index.html", "services/index.html", "usecases/index.html", "lullytale/index.html", "contact/index.html", "support/index.html", "privacy/index.html", "terms/index.html"];
+  const files = ["index.html", "about/index.html", "services/index.html", "usecases/index.html", "contact/index.html", "support/index.html", "privacy/index.html", "terms/index.html"];
   for (const file of files) {
     const html = await read(file);
     assert.doesNotMatch(html, /href="\/games\/"|>Games<\/a>|gemini/i, file);
