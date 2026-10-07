@@ -337,12 +337,30 @@ Breaker ana sayfada `Studio experiment` olarak bulunur. Yeni bir AI bunu Games s
 | `site.js` | Header, nav, reveal, anchor, contact form, scroll davranışları |
 | `breaker.js` | Native Breaker oyunu |
 | `slingshot.js` | Contact Canvas etkileşimi |
+| `fluid-orb.js` | WebGL ile çizilen hareketli küre. Henüz hiçbir sayfada kullanılmıyor |
+| `.mcp.json` | Claude Code için shadcn MCP sunucusu tanımı |
 | `services/index.html` | Servis sayfası |
 | `usecases/index.html` | Kullanım senaryoları |
 | `lullytale/index.html` | Ürün sayfası |
 | `smoke-check.sh` | Statik rota ve içerik kontrolü |
 | `test/site-contract.test.mjs` | HTML/JS sözleşme testleri |
 | `PROJECT_STATUS.md` | Dobby için kısa durum dosyası |
+
+### Fluid orb ve shadcn MCP
+
+`fluid-orb.js`, swamimalode07/rare-ui deposundaki `fluid-orb` shadcn bileşeninin React'siz kopyasıdır. Bu site derleme adımı olmayan düz HTML olduğu için `.tsx` bileşenleri doğrudan kullanılamaz. Kullanımı:
+
+```html
+<div class="fluid-orb" data-size="240" data-color="#ff7a59"></div>
+<script src="/fluid-orb.js?v=20260930-v6"></script>
+```
+
+- `data-size` piksel cinsindendir (varsayılan 240), `data-color` hex renktir (varsayılan `#1A73F2`).
+- Kürenin üst kısmı her zaman beyaza yakındır. Koyu zeminde sayfanın en parlak öğesi olur, yeri buna göre seçilmeli.
+- Görünmediği zaman da her karede çizim yapar. Kalıcı bir alana konacaksa ekran dışındayken durdurulmalı.
+- Yukarıdaki JS uyarısı geçerlidir: yalnızca anlamlı bir yerde kullan, süs olsun diye ekleme.
+
+`.mcp.json`, Claude Code oturumlarına shadcn MCP sunucusunu (`npx shadcn@latest mcp`) tanıtır. Bu araçlarla shadcn kayıtlarındaki bileşenler aranabilir ve kodu görüntülenebilir. `shadcn add` bu depoda çalıştırılmamalı: React, Tailwind ve `components.json` kurulumu başlatır ve sitede kullanılamayan dosyalar üretir. Bileşen gerekiyorsa kodu `view` ile okunup `fluid-orb.js` gibi düz JS'e çevrilmeli.
 
 ### CSS uyarısı
 
