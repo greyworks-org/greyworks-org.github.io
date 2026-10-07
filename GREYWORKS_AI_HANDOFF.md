@@ -339,6 +339,7 @@ Breaker ana sayfada `Studio experiment` olarak bulunur. Yeni bir AI bunu Games s
 | `slingshot.js` | Contact Canvas etkileşimi |
 | `fluid-orb.js` | WebGL ile çizilen hareketli küre. Henüz hiçbir sayfada kullanılmıyor |
 | `.mcp.json` | Claude Code için shadcn MCP sunucusu tanımı |
+| `.claude/skills/grill-me`, `.claude/skills/grilling` | Planlama öncesi soru-cevap skill'i. Kaynak: mattpocock/skills (MIT), commit `f3fc563` |
 | `services/index.html` | Servis sayfası |
 | `usecases/index.html` | Kullanım senaryoları |
 | `lullytale/index.html` | Ürün sayfası |
