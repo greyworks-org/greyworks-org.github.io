@@ -13,8 +13,5 @@
     "start:twin-public": "node twin-service/public-app.mjs",
     "test:twin-service": "node --test twin-service/server.test.mjs",
     "test:twin-public": "node --test twin-service/public-app.test.mjs"
-  },
-  "devDependencies": {
-    "shadcn": "^4.21.3"
   }
 }
